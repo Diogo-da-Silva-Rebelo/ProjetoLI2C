@@ -5,10 +5,17 @@
 #include "interface.h"
 
 ////funções
-// Função que mostra o tabuleiro
+// Função que mostra o tabuleiro ao receber um estado
+// i é linha; j é coluna;
 void mostrar_tabuleiro(ESTADO *e) {
-    for(int i=0; i<8;i++) {
-
+    for(int i=7; i>=0;i--) {
+        for(int j=0;j<8;j++) {
+            if(i==1 && j==1) putchar('1');
+            else if(i==8 && j==8) putchar('2');
+            else if(e->tab[i][j]==VAZIO) putchar('.');
+            else if(e->tab[i][j]==BRANCA) putchar('*');
+            else putchar('#');
+        } putchar('\n');
     }
 }
 

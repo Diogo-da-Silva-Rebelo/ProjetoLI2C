@@ -19,6 +19,14 @@ void mostrar_tabuleiro(ESTADO *e) {
     }
 }
 
+// Função que atualiza o tabuleiro com a nova jogada
+void refresh_board (ESTADO *e, COORDENADA c) {
+    e->tab[e->ultima_jogada.linha][e->ultima_jogada.coluna]=PRETA;
+    e->tab[c.linha][c.coluna]=BRANCA;
+    e->ultima_jogada.linha=c.linha;
+    e->ultima_jogada.coluna=c.coluna;
+}
+
 // Função que interpreta
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];

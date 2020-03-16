@@ -1,4 +1,4 @@
-# ProjetoLI2C
+# ProjetoLI2
 
 UC: Laboratórios de Informática II
 

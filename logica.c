@@ -13,7 +13,7 @@ int jogar(ESTADO *e, COORDENADA c) {
        jogar(e, c);
    }
    else refresh_board(e,c);
-    return 1;
+   return 1;
 }
 
 //função que verifica se a jogada é válida
@@ -28,8 +28,8 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
 
     if (e->tab[c.linha][c.coluna]==VAZIO) {
         if (rlinha>=(-1) && rlinha<=1 && rcoluna>=(-1) && rcoluna<=1) {
-            return 1;
+            return 0;
         }
-        else return 0;
+        else return 1;
     }
 }

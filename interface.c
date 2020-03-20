@@ -9,7 +9,8 @@
 // i é linha; j é coluna;
 void mostrar_tabuleiro(ESTADO *e) {
     COORDENADA c;
-    for(int i=7; i>=0;i--) {
+    for(int i=8; i>0;i--) {
+        printf("%d ", i);
         for(int j=0;j<8;j++) {
             c.coluna=j; c.linha=i;
             if(i==1 && j==1) putchar('1');
@@ -18,7 +19,8 @@ void mostrar_tabuleiro(ESTADO *e) {
             else if(obter_estado_casa(e,c)==BRANCA) putchar('*');
             else putchar('#');
         } putchar('\n');
-    }
+    } putchar('\n');
+    printf("  abcdefgh");
 }
 
 // Função que atualiza o tabuleiro com a nova jogada

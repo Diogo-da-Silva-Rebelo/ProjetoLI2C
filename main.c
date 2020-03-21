@@ -1,7 +1,9 @@
 #include "dados.h"
 #include "interface.h"
 
-//função principal
+/**
+Função principal
+ */
 int main()
 {
     ESTADO *e = inicializar_estado();

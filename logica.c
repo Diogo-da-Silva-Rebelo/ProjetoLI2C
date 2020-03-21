@@ -17,7 +17,8 @@ int jogar(ESTADO *e, COORDENADA c) {
    return 1;
 }
 
-/**função que verifica se a jogada é válida
+/**
+ * Função que verifica se a jogada é válida
 */
 int verifica_jogada (ESTADO *e, COORDENADA c) {
 

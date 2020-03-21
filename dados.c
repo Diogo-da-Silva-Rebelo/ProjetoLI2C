@@ -2,8 +2,9 @@
 #include "dados.h"
 
 
-//Função que inicia o estado com o tabuleiro vazio
-ESTADO *inicializar_estado() {
+/**Função que inicia o estado com o tabuleiro vazio
+*/
+ ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
     e->jogador_atual = 1;
     e->num_jogadas = 0;

@@ -36,10 +36,13 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
     int rlinha = plinha-alinha;
     int rcoluna = pcoluna-acoluna;
 
-    if (e->tab[c.linha][c.coluna]==VAZIO) {
-        if (rlinha>=(-1) && rlinha<=1 && rcoluna>=(-1) && rcoluna<=1) {
-            return 0;
+    if (pcoluna>8 || pcoluna<1 || plinha>8 || pcoluna<1)
+        return 0;
+    else {
+        if (obter_estado_proxima(ESTADO *e,COORDENADA c) == VAZIO) {
+            if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1)
+                return 1;
+            else return 0;
         }
-        else return 1;
     }
 }

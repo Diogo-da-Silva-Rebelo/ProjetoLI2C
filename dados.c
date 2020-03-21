@@ -1,11 +1,16 @@
 #include <stdlib.h>
 #include "dados.h"
 
+/**
+@file dados.c
+Funções que alteram o estado
+*/
 
 /**
- * Função que inicia o estado com o tabuleiro vazio
+\brief Função que inicia o estado com o tabuleiro vazio
 */
- ESTADO *inicializar_estado() {
+
+ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
     e->jogador_atual = 1;
     e->num_jogadas = 0;
@@ -21,30 +26,38 @@
     return e;
 }
 
+
 /**
- * Função que obtem o número do jogador atual
+\brief Função que obtem o número do jogador atual
 */
- int obter_jogador_atual(ESTADO *estado) {
+
+int obter_jogador_atual(ESTADO *estado) {
     return estado->jogador_atual;
 }
 
+
 /**
- * Função que obtém a última jogada
+\brief Função que obtém a última jogada
 */
+
 COORDENADA obter_ultima_jogada(ESTADO *estado){
     return estado->ultima_jogada;
 }
 
+
 /**
- * Função que obtem o número de jogadas efetuadas
+\brief Função que obtem o número de jogadas efetuadas
 */
+
 int obter_numero_de_jogadas(ESTADO *estado) {
     return (estado->num_jogadas)/2;
 }
 
+
 /**
- * Função que obtem o estado atual da casa
+\brief Função que obtem o estado atual da casa
 */
+
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     return e->tab[c.coluna][c.linha];
 }

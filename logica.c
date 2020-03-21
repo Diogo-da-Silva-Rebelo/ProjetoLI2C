@@ -3,7 +3,13 @@
 #include "logica.h"
 #include "interface.h"
 
-/**Função que inicia o jogo
+/**
+@file logica.c
+Funções que verificam as jogadas
+*/
+
+/**
+\brief Função que inicia o jogo
 */
 int jogar(ESTADO *e, COORDENADA c) {
     printf("jogar %d %d\n", c.coluna, c.linha);
@@ -18,8 +24,9 @@ int jogar(ESTADO *e, COORDENADA c) {
 }
 
 /**
- * Função que verifica se a jogada é válida
+\brief Função que verifica se a jogada é válida
 */
+
 int verifica_jogada (ESTADO *e, COORDENADA c) {
 
     int plinha = c.linha;

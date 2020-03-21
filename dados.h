@@ -1,7 +1,10 @@
 #ifndef PROJETOLI2_DADOS_H
 #define PROJETOLI2_DADOS_H
 
-////Estruturas de Dados
+/**
+Estruturas de Dados
+*/
+
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
 typedef struct {
@@ -24,7 +27,11 @@ typedef struct {
     int jogador_atual;
 } ESTADO;
 
-////Funções
+
+/**
+Funções
+*/
+
 ESTADO *inicializar_estado();
 int obter_jogador_atual(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);

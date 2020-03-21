@@ -2,8 +2,10 @@
 #include "interface.h"
 
 /**
-Função principal
- */
+@file main.c
+Função principal do projeto
+*/
+
 int main()
 {
     ESTADO *e = inicializar_estado();

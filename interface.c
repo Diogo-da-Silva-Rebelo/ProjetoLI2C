@@ -5,11 +5,12 @@
 #include "interface.h"
 
 /**
-Funções
+@file interface.c
+Funções que alteram o tabuleiro
 */
 
 /**
-Função que mostra o tabuleiro ao receber um estado
+\brief Função que mostra o tabuleiro ao receber um estado
 i é linha; j é coluna;
 */
 void mostrar_tabuleiro(ESTADO *e) {
@@ -29,7 +30,7 @@ void mostrar_tabuleiro(ESTADO *e) {
 }
 
 /**
-Função que atualiza o tabuleiro com a nova jogada
+\brief Função que atualiza o tabuleiro com a nova jogada
 */
 void refresh_board (ESTADO *e, COORDENADA c) {
     e->tab[e->ultima_jogada.linha][e->ultima_jogada.coluna]=PRETA;
@@ -39,8 +40,9 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 }
 
 /**
-Função que interpreta
+\brief Função que interpreta
 */
+
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];

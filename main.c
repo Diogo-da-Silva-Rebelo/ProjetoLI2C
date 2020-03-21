@@ -1,5 +1,6 @@
 #include "dados.h"
 #include "interface.h"
+#include "logica.h"
 
 /**
 @file main.c

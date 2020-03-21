@@ -3,7 +3,8 @@
 #include "logica.h"
 #include "interface.h"
 
-//Função que inicia o jogo
+/**Função que inicia o jogo
+*/
 int jogar(ESTADO *e, COORDENADA c) {
     printf("jogar %d %d\n", c.coluna, c.linha);
    if (verifica_jogada(e,c)==0) {
@@ -16,7 +17,8 @@ int jogar(ESTADO *e, COORDENADA c) {
    return 1;
 }
 
-//função que verifica se a jogada é válida
+/**função que verifica se a jogada é válida
+*/
 int verifica_jogada (ESTADO *e, COORDENADA c) {
 
     int plinha = c.linha;

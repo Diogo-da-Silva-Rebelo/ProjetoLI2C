@@ -20,22 +20,26 @@
     return e;
 }
 
-// Função que obtem o número do jogador atual
-int obter_jogador_atual(ESTADO *estado) {
+/** Função que obtem o número do jogador atual
+*/
+ int obter_jogador_atual(ESTADO *estado) {
     return estado->jogador_atual;
 }
 
-// função que obtém a última jogada
+/** função que obtém a última jogada
+*/
 COORDENADA obter_ultima_jogada(ESTADO *estado){
     return estado->ultima_jogada;
 }
 
-//Função que obtem o número de jogadas efetuadas
+/**Função que obtem o número de jogadas efetuadas
+*/
 int obter_numero_de_jogadas(ESTADO *estado) {
     return (estado->num_jogadas)/2;
 }
 
-//Função que obtem o estado atual da casa
+/**Função que obtem o estado atual da casa
+*/
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     return e->tab[c.coluna][c.linha];
 }

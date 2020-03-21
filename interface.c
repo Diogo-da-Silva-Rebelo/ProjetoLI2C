@@ -5,8 +5,9 @@
 #include "interface.h"
 
 ////funções
-// Função que mostra o tabuleiro ao receber um estado
-// i é linha; j é coluna;
+/** Função que mostra o tabuleiro ao receber um estado
+i é linha; j é coluna;
+*/
 void mostrar_tabuleiro(ESTADO *e) {
     COORDENADA c;
     for(int i=8; i>0;i--) {
@@ -23,7 +24,8 @@ void mostrar_tabuleiro(ESTADO *e) {
     printf("  abcdefgh");
 }
 
-// Função que atualiza o tabuleiro com a nova jogada
+/** Função que atualiza o tabuleiro com a nova jogada
+*/
 void refresh_board (ESTADO *e, COORDENADA c) {
     e->tab[e->ultima_jogada.linha][e->ultima_jogada.coluna]=PRETA;
     e->tab[c.linha][c.coluna]=BRANCA;
@@ -31,7 +33,8 @@ void refresh_board (ESTADO *e, COORDENADA c) {
     e->ultima_jogada.coluna=c.coluna;
 }
 
-// Função que interpreta
+/** Função que interpreta
+*/
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];

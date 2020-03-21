@@ -39,7 +39,7 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
     if (pcoluna>8 || pcoluna<1 || plinha>8 || pcoluna<1)
         return 0;
     else {
-        if (obter_estado_proxima(ESTADO *e,COORDENADA c) == VAZIO) {
+        if (obter_estado_casa(e,c) == VAZIO) {
             if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1)
                 return 1;
             else return 0;

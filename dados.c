@@ -56,10 +56,3 @@ int obter_numero_de_jogadas(ESTADO *estado) {
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     return e->tab[c.coluna][c.linha];
 }
-
-/**
-\brief Função que obtem o estado da próxima casa
-*/
-CASA obter_estado_proxima(ESTADO *e,COORDENADA c){
-    return tab[c.linha][c.coluna];
-}

@@ -2,7 +2,7 @@
 #define PROJETOLI2_DADOS_H
 
 /**
-Estruturas de Dados
+\brief Estruturas de Dados
 */
 
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
@@ -29,7 +29,7 @@ typedef struct {
 
 
 /**
-Funções
+\brief Funções
 */
 
 ESTADO *inicializar_estado();

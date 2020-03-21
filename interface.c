@@ -11,7 +11,7 @@ Funções que alteram o tabuleiro
 
 /**
 \brief Função que mostra o tabuleiro ao receber um estado
-i é linha; j é coluna;
+\brief i é linha; j é coluna;
 */
 void mostrar_tabuleiro(ESTADO *e) {
     COORDENADA c;
@@ -29,6 +29,7 @@ void mostrar_tabuleiro(ESTADO *e) {
     printf("  abcdefgh");
 }
 
+
 /**
 \brief Função que atualiza o tabuleiro com a nova jogada
 */
@@ -38,6 +39,7 @@ void refresh_board (ESTADO *e, COORDENADA c) {
     e->ultima_jogada.linha=c.linha;
     e->ultima_jogada.coluna=c.coluna;
 }
+
 
 /**
 \brief Função que interpreta

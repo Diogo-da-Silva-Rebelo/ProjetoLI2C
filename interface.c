@@ -38,6 +38,8 @@ void refresh_board (ESTADO *e, COORDENADA c) {
     e->tab[c.linha][c.coluna]=BRANCA;
     e->ultima_jogada.linha=c.linha;
     e->ultima_jogada.coluna=c.coluna;
+    if (e->jogador_atual==2) {e->jogador_atual=1;}
+    else e->jogador_atual=2;
 }
 
 
@@ -48,7 +50,7 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    if(fgets(linha, BUF_SIZE, stdin) == NULL)
+    if(fgets(linha, BUF_SIZE, stdin) == NULL || (linha[0]== 'Q' && linha[1]=='\0'))
         return 0;
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};

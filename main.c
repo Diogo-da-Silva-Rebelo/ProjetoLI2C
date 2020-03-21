@@ -1,9 +1,8 @@
 #include "dados.h"
 #include "interface.h"
 
-/**função principal
-*/
- int main()
+//função principal
+int main()
 {
     ESTADO *e = inicializar_estado();
     interpretador(e);

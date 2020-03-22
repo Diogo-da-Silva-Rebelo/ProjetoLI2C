@@ -43,6 +43,22 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 }
 
 
+void promt(ESTADO *e){
+    mostrar_tabuleiro(e);
+
+    int jogador = e->jogador_atual;
+    printf ("Próximo jogador: %d\n",jogador);
+
+    int linha = e->ultima_jogada.linha;
+    linha = linha + 'a';
+
+    int coluna = e->ultima_jogada.coluna;
+    printf ("Última jogada: %c%d",linha,coluna);
+
+    int njogadas = e->num_jogadas;
+    printf("Número de jogadas feitas: %02d",njogadas);
+}
+
 /**
 \brief Função que interpreta
 */
@@ -55,7 +71,6 @@ int interpretador(ESTADO *e) {
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
-        mostrar_tabuleiro(e);
     }
     return 1;
 }

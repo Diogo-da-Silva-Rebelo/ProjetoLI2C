@@ -20,6 +20,7 @@ int jogar(ESTADO *e, COORDENADA c) {
        jogar(e, c);
    }
    else refresh_board(e,c);
+        promt(e);
    return 1;
 }
 

@@ -72,7 +72,7 @@ int fim_jogo(ESTADO *e){
     c1.linha=c.linha+1;
     c1.coluna=c.coluna+1;
 
-    c1.linha=c.linha1;
+    c1.linha=c.linha;
     c1.coluna=c.coluna-1;
 
 

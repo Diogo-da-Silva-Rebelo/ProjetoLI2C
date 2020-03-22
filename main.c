@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "dados.h"
 #include "interface.h"
 #include "logica.h"
@@ -9,7 +10,7 @@ Função principal do projeto
 
 int main()
 {
-    FILE *fp
+    FILE *fp;
     fp = fopen("dados.txt","w+");
     fclose (fp);
 

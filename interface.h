@@ -3,7 +3,7 @@
 
 void mostrar_tabuleiro(ESTADO *e);
 void file_m_tab(CASA *tab);
-int interpretador(ESTADO *e);
+int interpretador(ESTADO *e,FILE *fp);
 void refresh_board (ESTADO *e, COORDENADA c);
 void prompt(ESTADO *e);
 

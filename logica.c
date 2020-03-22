@@ -17,17 +17,15 @@ int jogar(ESTADO *e, COORDENADA c) {
        printf("Erro! Introduza uma jogada válida.");
        scanf("%d", &c.linha);
        scanf("%d", &c.coluna);
-       jogar(e, c);
-   }
-   else refresh_board(e,c);
-        prompt(e);
+       jogar(e, c);}
+   else {refresh_board(e,c);
+         prompt(e);}
    return 1;
 }
 
 /**
 \brief Função que verifica se a jogada é válida
 */
-
 int verifica_jogada (ESTADO *e, COORDENADA c) {
 
     int plinha = c.linha;
@@ -43,9 +41,8 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
         if (obter_estado_casa(e,c) == VAZIO) {
             if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1)
                 return 1;
-            else return 0;
-        }
-    }
+            else return 0;}
+        else return 0;}
 }
 
 
@@ -75,7 +72,6 @@ int fim_jogo(ESTADO *e){
     c1.linha=c.linha;
     c1.coluna=c.coluna-1;
 
-
     int p1 = verifica_jogada(e,c1);
     int p2 = verifica_jogada(e,c2);
     int p3 = verifica_jogada(e,c3);
@@ -86,19 +82,17 @@ int fim_jogo(ESTADO *e){
     if (c.linha==1 && c.coluna==1){
         printf("Parabéns ao Jogador 1!");
         return 1;}
-    else {
-        if (c.linha == 8 && c.coluna == 8) {
-            printf("Parabéns ao Jogador 2!");
-            return 1;}
-        else { if (p1 == 0 || p2 == 0 || p3 == 0 || p4 == 0 || p5 == 0 || p6 == 0) {
+    else {if (c.linha == 8 && c.coluna == 8) {
+              printf("Parabéns ao Jogador 2!");
+              return 1;}
+          else {if (p1 == 0 || p2 == 0 || p3 == 0 || p4 == 0 || p5 == 0 || p6 == 0) {
                     if (e->jogador_atual == 2)
                         vencedor = 1;
-                    else {vencedor = 2;}
+                    else vencedor = 2;
 
                     printf("Parabéns ao Jogador %d!", vencedor);
-                    return 1;
-                }
+                    return 1;}
                 else return 0;
-             }
+               }
          }
 }

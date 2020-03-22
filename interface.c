@@ -29,6 +29,25 @@ void mostrar_tabuleiro(ESTADO *e) {
     printf("  abcdefgh");
 }
 
+/**
+\brief Função que mostra o tabuleiro a partir do ficheiro criado
+*/
+void file_m_tab(CASA *tab) {
+    for(int i=8; i>0;i--) {
+        fprintf("%d ", i);
+        for(int j=0;j<8;j++) {
+            c.coluna=j; c.linha=i;
+            if(i==1 && j==1) fputc(49,fp);
+            else if(i==8 && j==8) fputc(50,fp);
+            else if(obter_estado_casa(e,c)==VAZIO) fputc(46,fp);
+            else if(obter_estado_casa(e,c)==BRANCA) fputc(52,fp);
+            else fputc(35,fp);
+        } fputc('\n',fp);
+    } fputc('\n',fp);
+    fprintf(fp,%s,"  abcdefgh");
+}
+}
+
 
 /**
 \brief Função que atualiza o tabuleiro com a nova jogada
@@ -73,7 +92,12 @@ int interpretador(ESTADO *e, FILE *fp) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-z]%[a-z]", a, b) == 2){
         if (a=='g' && b=='r') {
             fopen(fp);
-            file_m_tab(*e);
+            CASA tab_save[8][8];
+
+            for (int i = 0; i<8; i++)
+                for (int j = 0; j<8; j++)
+                    tab_save[i][j] = e->tab[i][j];
+
             fclose(fp);
         }
         return 0;
@@ -81,7 +105,7 @@ int interpretador(ESTADO *e, FILE *fp) {
     if (strlen(linha) == 4 && sscanf(linha, "%[a-z]%[a-z]%[a-z]", a, b, c) == 3){
         if (a=='l' && b=='e' && c=='r') {
             fopen(fp);
-            file_m_tab(*e);
+            file_m_tab(fp);
             fclose(fp);
         }
         return 0;

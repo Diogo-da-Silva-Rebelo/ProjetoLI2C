@@ -43,7 +43,10 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 }
 
 
-void promt(ESTADO *e){
+/**
+\brief Função que mostra o tabuleiro, o número de jogadas, o próximo jogador e a última jogada
+ */
+void prompt(ESTADO *e){
     mostrar_tabuleiro(e);
 
     int jogador = e->jogador_atual;
@@ -62,12 +65,27 @@ void promt(ESTADO *e){
 /**
 \brief Função que interpreta
 */
-
-int interpretador(ESTADO *e) {
+int interpretador(ESTADO *e, FILE *fp) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
     if(fgets(linha, BUF_SIZE, stdin) == NULL || (linha[0]== 'Q' && linha[1]=='\0'))
         return 0;
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-z]%[a-z]", a, b) == 2){
+        if (a=='g' && b=='r') {
+            fopen(fp);
+            file_m_tab(*e);
+            fclose(fp);
+        }
+        return 0;
+    }
+    if (strlen(linha) == 4 && sscanf(linha, "%[a-z]%[a-z]%[a-z]", a, b, c) == 3){
+        if (a=='l' && b=='e' && c=='r') {
+            fopen(fp);
+            file_m_tab(*e);
+            fclose(fp);
+        }
+        return 0;
+    }
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);

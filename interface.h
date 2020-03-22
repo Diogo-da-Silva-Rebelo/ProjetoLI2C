@@ -4,6 +4,6 @@
 void mostrar_tabuleiro(ESTADO *e);
 int interpretador(ESTADO *e);
 void refresh_board (ESTADO *e, COORDENADA c);
-void promt(ESTADO *e);
+void prompt(ESTADO *e);
 
 #endif //PROJETOLI2_INTERFACE_H

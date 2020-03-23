@@ -9,13 +9,70 @@ Include dependency graph for logica.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{logica_8c_ac313d7e553b1e2b5f266acb9bfff8141}\label{logica_8c_ac313d7e553b1e2b5f266acb9bfff8141}} 
 int \hyperlink{logica_8c_ac313d7e553b1e2b5f266acb9bfff8141}{jogar} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
 \begin{DoxyCompactList}\small\item\em Função que inicia o jogo. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}\label{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}} 
 int \hyperlink{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}{verifica\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
-\begin{DoxyCompactList}\small\item\em Função que verifica se a jogada é válida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Função que verifica se a jogada é válida. \end{DoxyCompactList}\item 
+int \hyperlink{logica_8c_ad3c7054170580d3d9c74e7d5cdd00395}{fim\+\_\+jogo} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que verifica se o jogo acabou. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Funções que verificam as jogadas 
+Funções que verificam as jogadas. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{logica_8c_ad3c7054170580d3d9c74e7d5cdd00395}\label{logica_8c_ad3c7054170580d3d9c74e7d5cdd00395}} 
+\index{logica.\+c@{logica.\+c}!fim\+\_\+jogo@{fim\+\_\+jogo}}
+\index{fim\+\_\+jogo@{fim\+\_\+jogo}!logica.\+c@{logica.\+c}}
+\subsubsection{\texorpdfstring{fim\+\_\+jogo()}{fim\_jogo()}}
+{\footnotesize\ttfamily int fim\+\_\+jogo (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se o jogo acabou. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o número do jogador vencedor (1 ou 2), um número que mostra que ainda há hipoteses de jogar (3), ou outro número que mostra que o jogo já acabou mas não há vencedores (0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_ac313d7e553b1e2b5f266acb9bfff8141}\label{logica_8c_ac313d7e553b1e2b5f266acb9bfff8141}} 
+\index{logica.\+c@{logica.\+c}!jogar@{jogar}}
+\index{jogar@{jogar}!logica.\+c@{logica.\+c}}
+\subsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily int jogar (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que inicia o jogo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+{\em c} & Última coordenada recebida pelo jogador. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}\label{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}} 
+\index{logica.\+c@{logica.\+c}!verifica\+\_\+jogada@{verifica\+\_\+jogada}}
+\index{verifica\+\_\+jogada@{verifica\+\_\+jogada}!logica.\+c@{logica.\+c}}
+\subsubsection{\texorpdfstring{verifica\+\_\+jogada()}{verifica\_jogada()}}
+{\footnotesize\ttfamily int verifica\+\_\+jogada (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se a jogada é válida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+{\em c} & Última coordenada recebida pelo jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso (1 ou 0, respetivamente) quando à possibilidade da jogada. 
+\end{DoxyReturn}

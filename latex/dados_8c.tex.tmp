@@ -9,22 +9,18 @@ Include dependency graph for dados.\+c\+:
 \item 
 \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$ \hyperlink{dados_8c_a7e0c7e26fb685d9ab501e19b05e6954f}{inicializar\+\_\+estado} ()
 \begin{DoxyCompactList}\small\item\em Função que inicia o estado com o tabuleiro vazio. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{dados_8c_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{dados_8c_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
-int \hyperlink{dados_8c_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\+\_\+jogador\+\_\+atual} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
-\begin{DoxyCompactList}\small\item\em Função que obtem o número do jogador atual. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{dados_8c_a002d7b97f6e1f8bfa2b50efbe03d62bf}\label{dados_8c_a002d7b97f6e1f8bfa2b50efbe03d62bf}} 
-\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} \hyperlink{dados_8c_a002d7b97f6e1f8bfa2b50efbe03d62bf}{obter\+\_\+ultima\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+int \hyperlink{dados_8c_acc6c25533188a99cb69c12e7f2c406ef}{obter\+\_\+jogador\+\_\+atual} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que obtém o número do jogador atual. \end{DoxyCompactList}\item 
+\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} \hyperlink{dados_8c_a40555aff97afc67bd1866f2785111310}{obter\+\_\+ultima\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que obtém a última jogada. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{dados_8c_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8c_a6cd0b387bdee9e18003c78852394aa63}} 
-int \hyperlink{dados_8c_a6cd0b387bdee9e18003c78852394aa63}{obter\+\_\+numero\+\_\+de\+\_\+jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+int \hyperlink{dados_8c_abbfeab93575f20e5867482fd41a71cba}{obter\+\_\+numero\+\_\+de\+\_\+jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que obtem o número de jogadas efetuadas. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{dados_8c_a6faa68373203923729ed38657aa0f768}\label{dados_8c_a6faa68373203923729ed38657aa0f768}} 
 C\+A\+SA \hyperlink{dados_8c_a6faa68373203923729ed38657aa0f768}{obter\+\_\+estado\+\_\+casa} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
 \begin{DoxyCompactList}\small\item\em Função que obtem o estado atual da casa. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Funções que alteram o estado 
+Funções que alteram o estado. 
 
 \subsection{Function Documentation}
 \mbox{\Hypertarget{dados_8c_a7e0c7e26fb685d9ab501e19b05e6954f}\label{dados_8c_a7e0c7e26fb685d9ab501e19b05e6954f}} 
@@ -37,4 +33,78 @@ Funções que alteram o estado
 
 Função que inicia o estado com o tabuleiro vazio. 
 
-Funções. 
+\begin{DoxyReturn}{Returns}
+O estado inicializado, com a primeira jogada ser e4. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dados_8c_a6faa68373203923729ed38657aa0f768}\label{dados_8c_a6faa68373203923729ed38657aa0f768}} 
+\index{dados.\+c@{dados.\+c}!obter\+\_\+estado\+\_\+casa@{obter\+\_\+estado\+\_\+casa}}
+\index{obter\+\_\+estado\+\_\+casa@{obter\+\_\+estado\+\_\+casa}!dados.\+c@{dados.\+c}}
+\subsubsection{\texorpdfstring{obter\+\_\+estado\+\_\+casa()}{obter\_estado\_casa()}}
+{\footnotesize\ttfamily C\+A\+SA obter\+\_\+estado\+\_\+casa (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que obtem o estado atual da casa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Estado da coordenada. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dados_8c_acc6c25533188a99cb69c12e7f2c406ef}\label{dados_8c_acc6c25533188a99cb69c12e7f2c406ef}} 
+\index{dados.\+c@{dados.\+c}!obter\+\_\+jogador\+\_\+atual@{obter\+\_\+jogador\+\_\+atual}}
+\index{obter\+\_\+jogador\+\_\+atual@{obter\+\_\+jogador\+\_\+atual}!dados.\+c@{dados.\+c}}
+\subsubsection{\texorpdfstring{obter\+\_\+jogador\+\_\+atual()}{obter\_jogador\_atual()}}
+{\footnotesize\ttfamily int obter\+\_\+jogador\+\_\+atual (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que obtém o número do jogador atual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O jogador que jogará a seguir. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dados_8c_abbfeab93575f20e5867482fd41a71cba}\label{dados_8c_abbfeab93575f20e5867482fd41a71cba}} 
+\index{dados.\+c@{dados.\+c}!obter\+\_\+numero\+\_\+de\+\_\+jogadas@{obter\+\_\+numero\+\_\+de\+\_\+jogadas}}
+\index{obter\+\_\+numero\+\_\+de\+\_\+jogadas@{obter\+\_\+numero\+\_\+de\+\_\+jogadas}!dados.\+c@{dados.\+c}}
+\subsubsection{\texorpdfstring{obter\+\_\+numero\+\_\+de\+\_\+jogadas()}{obter\_numero\_de\_jogadas()}}
+{\footnotesize\ttfamily int obter\+\_\+numero\+\_\+de\+\_\+jogadas (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que obtem o número de jogadas efetuadas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O número de jogadas. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dados_8c_a40555aff97afc67bd1866f2785111310}\label{dados_8c_a40555aff97afc67bd1866f2785111310}} 
+\index{dados.\+c@{dados.\+c}!obter\+\_\+ultima\+\_\+jogada@{obter\+\_\+ultima\+\_\+jogada}}
+\index{obter\+\_\+ultima\+\_\+jogada@{obter\+\_\+ultima\+\_\+jogada}!dados.\+c@{dados.\+c}}
+\subsubsection{\texorpdfstring{obter\+\_\+ultima\+\_\+jogada()}{obter\_ultima\_jogada()}}
+{\footnotesize\ttfamily \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} obter\+\_\+ultima\+\_\+jogada (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que obtém a última jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A última jogada. 
+\end{DoxyReturn}

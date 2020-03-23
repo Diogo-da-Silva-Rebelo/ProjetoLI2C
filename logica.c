@@ -5,49 +5,57 @@
 
 /**
 @file logica.c
-Funções que verificam as jogadas
+Funções que verificam as jogadas.
 */
 
 /**
-\brief Função que inicia o jogo
+\brief Função que inicia o jogo.
+ \param e Estado recebido.
+ \param c Última coordenada recebida pelo jogador.
 */
-int jogar(ESTADO *e, COORDENADA c) {
-    printf("jogar %d %d\n", c.coluna, c.linha);
-   if (verifica_jogada(e,c)==0) {
-       printf("Erro! Introduza uma jogada válida.");
-       scanf("%d", &c.linha);
-       scanf("%d", &c.coluna);
-       jogar(e, c);}
-   else {refresh_board(e,c);
-         prompt(e);}
-   return 1;
+int jogar(ESTADO *e, COORDENADA c){
+    if (verifica_jogada(e,c)==0) {
+        printf ("Jogada impossível, tente novamente.\n");
+        interpretador(e);}
+    else{
+    refresh_board(e,c);
+    }
+
+    return 1;
 }
 
 /**
-\brief Função que verifica se a jogada é válida
-*/
+\brief Função que verifica se a jogada é válida.
+ \param e Estado recebido.
+ \param c Última coordenada recebida pelo jogador.
+ \returns Verdadeiro ou falso (1 ou 0, respetivamente) quando à possibilidade da jogada.
+ */
 int verifica_jogada (ESTADO *e, COORDENADA c) {
 
-    int plinha = c.linha;
+    c.linha = 7-c.linha;
     int pcoluna = c.coluna;
-    int alinha = e->ultima_jogada.linha;
+    int alinha = 7-e->ultima_jogada.linha;
     int acoluna = e->ultima_jogada.coluna;
-    int rlinha = plinha-alinha;
+    int rlinha = c.linha-alinha;
     int rcoluna = pcoluna-acoluna;
 
-    if (pcoluna>8 || pcoluna<1 || plinha>8 || pcoluna<1)
+    if (pcoluna>8 || pcoluna<0 || c.linha>7 || c.linha<0)
         return 0;
     else {
-        if (obter_estado_casa(e,c) == VAZIO) {
-            if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1)
-                return 1;
+        if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1){
+            if (obter_estado_casa(e,c) == VAZIO) return 1;
             else return 0;}
-        else return 0;}
+        else return 0;
+         }
 }
 
 
 /**
-\brief Função que verifica se o jogo acabou
+\brief Função que verifica se o jogo acabou.
+ \param e Estado recebido.
+ \returns o número do jogador vencedor (1 ou 2),
+  um número que mostra que ainda há hipoteses de jogar (3),
+  ou outro número que mostra que o jogo já acabou mas não há vencedores (0).
 */
 int fim_jogo(ESTADO *e){
 
@@ -68,7 +76,7 @@ int fim_jogo(ESTADO *e){
     c5.linha=c.linha+1;
     c5.coluna=c.coluna+1;
 
-    c6.linha=c.linha;
+    c6.linha=c.linha-1;
     c6.coluna=c.coluna-1;
 
     int p1 = verifica_jogada(e,c1);
@@ -78,13 +86,15 @@ int fim_jogo(ESTADO *e){
     int p5 = verifica_jogada(e,c5);
     int p6 = verifica_jogada(e,c6);
 
-    if (c.linha==1 && c.coluna==1){
+    if (c.linha==0 && c.coluna==0){
         return 1;}
-    else {if (c.linha == 8 && c.coluna == 8) {
-              return 1;}
-          else {if (p1 == 0 || p2 == 0 || p3 == 0 || p4 == 0 || p5 == 0 || p6 == 0) {
-                    return 1;}
-                else return 0;
+    else {if (c.linha == 7 && c.coluna == 7) {
+              return 2;}
+          else {if (p1 == 0 && p2 == 0 && p3 == 0 && p4 == 0 && p5 == 0 && p6 == 0) {
+                    return (e->jogador_atual == 1)? 1:2;}
+                else {if (p1 == 1 || p2 == 1 || p3 == 1 || p4 == 1 || p5 == 1 || p6 == 1)
+                      return 3;
+                      else return 0;};
                }
          }
 }

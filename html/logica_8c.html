@@ -77,18 +77,122 @@ Include dependency graph for logica.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac313d7e553b1e2b5f266acb9bfff8141"><td class="memItemLeft" align="right" valign="top"><a id="ac313d7e553b1e2b5f266acb9bfff8141"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8c.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
-<tr class="memdesc:ac313d7e553b1e2b5f266acb9bfff8141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que inicia o jogo. <br /></td></tr>
+<tr class="memitem:ac313d7e553b1e2b5f266acb9bfff8141"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8c.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
+<tr class="memdesc:ac313d7e553b1e2b5f266acb9bfff8141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que inicia o jogo.  <a href="#ac313d7e553b1e2b5f266acb9bfff8141">More...</a><br /></td></tr>
 <tr class="separator:ac313d7e553b1e2b5f266acb9bfff8141"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93247f56972b42114bd135ad4ce3a0d0"><td class="memItemLeft" align="right" valign="top"><a id="a93247f56972b42114bd135ad4ce3a0d0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8c.html#a93247f56972b42114bd135ad4ce3a0d0">verifica_jogada</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
-<tr class="memdesc:a93247f56972b42114bd135ad4ce3a0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que verifica se a jogada é válida. <br /></td></tr>
+<tr class="memitem:a93247f56972b42114bd135ad4ce3a0d0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8c.html#a93247f56972b42114bd135ad4ce3a0d0">verifica_jogada</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
+<tr class="memdesc:a93247f56972b42114bd135ad4ce3a0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que verifica se a jogada é válida.  <a href="#a93247f56972b42114bd135ad4ce3a0d0">More...</a><br /></td></tr>
 <tr class="separator:a93247f56972b42114bd135ad4ce3a0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c7054170580d3d9c74e7d5cdd00395"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8c.html#ad3c7054170580d3d9c74e7d5cdd00395">fim_jogo</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:ad3c7054170580d3d9c74e7d5cdd00395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que verifica se o jogo acabou.  <a href="#ad3c7054170580d3d9c74e7d5cdd00395">More...</a><br /></td></tr>
+<tr class="separator:ad3c7054170580d3d9c74e7d5cdd00395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Funções que verificam as jogadas </p>
-</div></div><!-- contents -->
+<div class="textblock"><p>Funções que verificam as jogadas. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ad3c7054170580d3d9c74e7d5cdd00395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3c7054170580d3d9c74e7d5cdd00395">&#9670;&nbsp;</a></span>fim_jogo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fim_jogo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que verifica se o jogo acabou. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>o número do jogador vencedor (1 ou 2), um número que mostra que ainda há hipoteses de jogar (3), ou outro número que mostra que o jogo já acabou mas não há vencedores (0). </dd></dl>
+
+</div>
+</div>
+<a id="ac313d7e553b1e2b5f266acb9bfff8141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac313d7e553b1e2b5f266acb9bfff8141">&#9670;&nbsp;</a></span>jogar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int jogar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que inicia o jogo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+    <tr><td class="paramname">c</td><td>Última coordenada recebida pelo jogador. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a93247f56972b42114bd135ad4ce3a0d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93247f56972b42114bd135ad4ce3a0d0">&#9670;&nbsp;</a></span>verifica_jogada()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int verifica_jogada </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que verifica se a jogada é válida. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+    <tr><td class="paramname">c</td><td>Última coordenada recebida pelo jogador. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Verdadeiro ou falso (1 ou 0, respetivamente) quando à possibilidade da jogada. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

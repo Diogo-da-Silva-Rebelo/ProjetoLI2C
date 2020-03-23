@@ -5,13 +5,14 @@
 
 /**
 @file main.c
-Função principal do projeto
+Função principal do projeto.
 */
 
 int main()
 {
     ESTADO *e;
     e = inicializar_estado();
-    mostrar_tabuleiro(e);
+    while(interpretador(e)==1);
+
 
 }

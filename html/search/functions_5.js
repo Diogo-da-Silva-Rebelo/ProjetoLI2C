@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verifica_5fjogada',['verifica_jogada',['../logica_8c.html#a93247f56972b42114bd135ad4ce3a0d0',1,'logica.c']]]
+  ['prompt',['prompt',['../interface_8c.html#a33d09196f922a638847c19f3aca3fc3c',1,'interface.c']]]
 ];

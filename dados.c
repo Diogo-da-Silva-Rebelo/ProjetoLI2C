@@ -1,14 +1,14 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "dados.h"
 
 /**
 @file dados.c
-Funções que alteram o estado
+Funções que alteram o estado.
 */
 
 /**
-\brief Função que inicia o estado com o tabuleiro vazio
+\brief Função que inicia o estado com o tabuleiro vazio.
+  \returns O estado inicializado, com a primeira jogada ser e4.
 */
 ESTADO *inicializar_estado() {
     ESTADO *e;
@@ -16,7 +16,7 @@ ESTADO *inicializar_estado() {
     e->jogador_atual = 1;
     e->num_jogadas = 0;
     e->ultima_jogada.coluna= 4;
-    e->ultima_jogada.linha= 3;
+    e->ultima_jogada.linha= 4;
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -29,31 +29,39 @@ ESTADO *inicializar_estado() {
 
 
 /**
-\brief Função que obtem o número do jogador atual
+\brief Função que obtém o número do jogador atual.
+ \param e Estado recebido.
+ \returns O jogador que jogará a seguir.
 */
-int obter_jogador_atual(ESTADO *estado) {
-    return estado->jogador_atual;
+int obter_jogador_atual(ESTADO *e) {
+    return e->jogador_atual;
 }
 
 
 /**
-\brief Função que obtém a última jogada
+\brief Função que obtém a última jogada.
+ \param e Estado recebido.
+ \returns A última jogada.
 */
-COORDENADA obter_ultima_jogada(ESTADO *estado){
-    return estado->ultima_jogada;
+COORDENADA obter_ultima_jogada(ESTADO *e){
+    return e->ultima_jogada;
 }
 
 
 /**
 \brief Função que obtem o número de jogadas efetuadas
+ \param e Estado recebido.
+ \returns O número de jogadas.
 */
-int obter_numero_de_jogadas(ESTADO *estado) {
-    return (estado->num_jogadas)/2;
+int obter_numero_de_jogadas(ESTADO *e) {
+    return (e->num_jogadas)/2;
 }
 
 
 /**
-\brief Função que obtem o estado atual da casa
+\brief Função que obtem o estado atual da casa.
+ \param e Estado recebido.
+ \returns Estado da coordenada.
 */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     return e->tab[c.linha][c.coluna];

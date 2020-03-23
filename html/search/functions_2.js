@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mostrar_5ftabuleiro',['mostrar_tabuleiro',['../interface_8c.html#aa0b6c1689e60ac852a73d67e066c1df5',1,'interface.c']]]
+  ['jogar',['jogar',['../logica_8c.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logica.c']]]
 ];

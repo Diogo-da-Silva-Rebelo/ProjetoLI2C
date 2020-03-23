@@ -68,7 +68,7 @@ $(function() {
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;dados.h&quot;</code><br />
-<code>#include &quot;interface.h&quot;</code><br />
+<code>#include &quot;logica.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for interface.c:</div>
 <div class="dyncontent">
@@ -87,18 +87,46 @@ Functions</h2></td></tr>
 <tr class="memitem:aa0b6c1689e60ac852a73d67e066c1df5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#aa0b6c1689e60ac852a73d67e066c1df5">mostrar_tabuleiro</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
 <tr class="memdesc:aa0b6c1689e60ac852a73d67e066c1df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que mostra o tabuleiro ao receber um estado.  <a href="#aa0b6c1689e60ac852a73d67e066c1df5">More...</a><br /></td></tr>
 <tr class="separator:aa0b6c1689e60ac852a73d67e066c1df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac1f8a934d52c4c6550685e2749c48c4"><td class="memItemLeft" align="right" valign="top"><a id="aac1f8a934d52c4c6550685e2749c48c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#aac1f8a934d52c4c6550685e2749c48c4">refresh_board</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
-<tr class="memdesc:aac1f8a934d52c4c6550685e2749c48c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que atualiza o tabuleiro com a nova jogada. <br /></td></tr>
+<tr class="memitem:aac1f8a934d52c4c6550685e2749c48c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#aac1f8a934d52c4c6550685e2749c48c4">refresh_board</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
+<tr class="memdesc:aac1f8a934d52c4c6550685e2749c48c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que atualiza o tabuleiro com a nova jogada.  <a href="#aac1f8a934d52c4c6550685e2749c48c4">More...</a><br /></td></tr>
 <tr class="separator:aac1f8a934d52c4c6550685e2749c48c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24da95ebeede4a540e37790ce8be359b"><td class="memItemLeft" align="right" valign="top"><a id="a24da95ebeede4a540e37790ce8be359b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#a24da95ebeede4a540e37790ce8be359b">interpretador</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:a24da95ebeede4a540e37790ce8be359b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que interpreta. <br /></td></tr>
+<tr class="memitem:a33d09196f922a638847c19f3aca3fc3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#a33d09196f922a638847c19f3aca3fc3c">prompt</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a33d09196f922a638847c19f3aca3fc3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que mostra o tabuleiro, o número de jogadas, o próximo jogador e a última jogada.  <a href="#a33d09196f922a638847c19f3aca3fc3c">More...</a><br /></td></tr>
+<tr class="separator:a33d09196f922a638847c19f3aca3fc3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24da95ebeede4a540e37790ce8be359b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#a24da95ebeede4a540e37790ce8be359b">interpretador</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a24da95ebeede4a540e37790ce8be359b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que interpreta o comando dado pelo utilizador. Primeiro verifica se o jogador já não tem mais hipóteses de jogada.  <a href="#a24da95ebeede4a540e37790ce8be359b">More...</a><br /></td></tr>
 <tr class="separator:a24da95ebeede4a540e37790ce8be359b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Funções que alteram o tabuleiro </p>
+<div class="textblock"><p>Funções que alteram o tabuleiro. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a24da95ebeede4a540e37790ce8be359b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24da95ebeede4a540e37790ce8be359b">&#9670;&nbsp;</a></span>interpretador()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int interpretador </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que interpreta o comando dado pelo utilizador. Primeiro verifica se o jogador já não tem mais hipóteses de jogada. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Verdadeiro ou falso (1 ou 0) se o comando dado é valido. </dd></dl>
+
+</div>
+</div>
 <a id="aa0b6c1689e60ac852a73d67e066c1df5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0b6c1689e60ac852a73d67e066c1df5">&#9670;&nbsp;</a></span>mostrar_tabuleiro()</h2>
 
@@ -116,7 +144,75 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
 </div><div class="memdoc">
 
 <p>Função que mostra o tabuleiro ao receber um estado. </p>
-<p>i é linha; j é coluna; </p>
+<p>i é linha; j é coluna; </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a33d09196f922a638847c19f3aca3fc3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d09196f922a638847c19f3aca3fc3c">&#9670;&nbsp;</a></span>prompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prompt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que mostra o tabuleiro, o número de jogadas, o próximo jogador e a última jogada. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aac1f8a934d52c4c6550685e2749c48c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac1f8a934d52c4c6550685e2749c48c4">&#9670;&nbsp;</a></span>refresh_board()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void refresh_board </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que atualiza o tabuleiro com a nova jogada. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado recebido. </td></tr>
+    <tr><td class="paramname">c</td><td>Última coordenada dada pelo jogador. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

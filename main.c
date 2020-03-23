@@ -10,11 +10,8 @@ Função principal do projeto
 
 int main()
 {
-    FILE *fp;
-    fp = fopen("dados.txt","w+");
-    fclose (fp);
-
-    ESTADO *e = inicializar_estado();
-    while (fim_jogo(e)!=1 && interpretador(e,fp));
+    ESTADO *e;
+    e = inicializar_estado();
+    mostrar_tabuleiro(e);
 
 }

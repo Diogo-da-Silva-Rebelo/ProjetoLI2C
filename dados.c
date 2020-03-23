@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "dados.h"
 
@@ -10,18 +11,19 @@ Funções que alteram o estado
 \brief Função que inicia o estado com o tabuleiro vazio
 */
 ESTADO *inicializar_estado() {
-    ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
+    ESTADO *e;
+    e = malloc(sizeof(ESTADO));
     e->jogador_atual = 1;
     e->num_jogadas = 0;
     e->ultima_jogada.coluna= 4;
-    e->ultima_jogada.linha= 4;
+    e->ultima_jogada.linha= 3;
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (i == 4 && j == 4) e->tab[i][j] == BRANCA;
-            else e->tab[i][j] == VAZIO;
+            e->tab[i][j] = VAZIO;
         }
     }
+    e->tab[3][4] = BRANCA;
     return e;
 }
 
@@ -54,5 +56,5 @@ int obter_numero_de_jogadas(ESTADO *estado) {
 \brief Função que obtem o estado atual da casa
 */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
-    return e->tab[c.coluna][c.linha];
+    return e->tab[c.linha][c.coluna];
 }

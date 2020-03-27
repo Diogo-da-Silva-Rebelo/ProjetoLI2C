@@ -22,17 +22,17 @@ void mostrar_tabuleiro(ESTADO *e) {
         for (int j = 0; j <= 7; j++) {
             c.linha = 7 - i;
             c.coluna = j;
-            if (obter_estado_casa(e, c) == BRANCA) printf("*");
+            if (obter_estado_casa(e, c) == BRANCA) fprintf(stdout,"*");
             else {
-                if (obter_estado_casa(e, c) == PRETA) printf("#");
-                else {if (c.linha == 7 && c.coluna == 0) printf ("1");
-                      else {if (c.linha == 0 && c.coluna == 7) printf ("2");
-                            else printf(".");}}
+                if (obter_estado_casa(e, c) == PRETA) fprintf(stdout,"#");
+                else {if (c.linha == 7 && c.coluna == 0) fprintf (stdout,"1");
+                      else {if (c.linha == 0 && c.coluna == 7) fprintf (stdout,"2");
+                            else fprintf(stdout,".");}}
             }
         }
-        printf("\n");
+        fprintf(stdout,"\n");
     }
-    printf ("  abcdefgh \n");
+    fprintf (stdout,"  abcdefgh \n");
 }
 
 /**
@@ -93,7 +93,7 @@ int interpretador(ESTADO *e) {
         char linha[BUF_SIZE];
         char col[2], lin[2];
         prompt(e);
-        printf("Introduza uma jogada: ");
+        printf("Jogador %d, introduza uma jogada: ",obter_jogador_atual(e));
         if (fgets(linha, BUF_SIZE, stdin) == NULL) {
             return 0;
         }

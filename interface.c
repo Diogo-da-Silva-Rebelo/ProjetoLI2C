@@ -1,6 +1,7 @@
 #define BUF_SIZE 1024
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "dados.h"
 #include "logica.h"
 
@@ -84,6 +85,8 @@ void prompt(ESTADO *e){
  \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
 */
 int interpretador(ESTADO *e) {
+    FILE *ficheiro;
+    ficheiro = fopen("ficheiro.txt","w+");
     int r = fim_jogo(e);
     if (r == 1 || r == 2) {
         printf("\n                                                           Parabéns ao Jogador %d!", r);
@@ -103,6 +106,20 @@ int interpretador(ESTADO *e) {
 
             jogar(e, coord);
             return 1;
+        }
+
+        if (strlen (linha) == 3 && linha[0]=='g' && linha[1]=='r'){
+            fopen(ficheiro,r+);
+            fclose(ficheiro);
+
+        }
+
+        if (strlen(linha)==4 && linha[0]=='l' && linha[1]=='e' && linha[2]=='r'){
+            fopen(ficheiro,r+);
+            fclose(ficheiro);
+        }
+        if (strlen(linha)==2 && linha[0]=='Q') {
+            return 0;
         }
     }
 }

@@ -11,6 +11,7 @@ Função principal do projeto.
 int main()
 {
     ESTADO *e;
+
     e = inicializar_estado();
     while(interpretador(e)==1);
 

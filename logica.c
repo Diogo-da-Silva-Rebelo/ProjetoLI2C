@@ -39,15 +39,12 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
     int rlinha = c.linha-alinha;
     int rcoluna = pcoluna-acoluna;
 
-    if (pcoluna>8 || pcoluna<0 || c.linha>7 || c.linha<0)
-        return 0;
-    else {
-        if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1){
-            if (obter_estado_casa(e,c) == VAZIO) return 1;
-            else return 0;}
-        else return 0;
-         }
+    if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1){
+        if (obter_estado_casa(e,c) == VAZIO) return 1;
+        else return 0;}
+    else return 0;
 }
+
 
 
 /**

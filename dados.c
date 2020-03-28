@@ -1,5 +1,7 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "dados.h"
+#include "interface.h"
 
 /**
 @file dados.c
@@ -13,10 +15,10 @@ Funções que alteram o estado.
 ESTADO *inicializar_estado() {
     ESTADO *e;
     e = malloc(sizeof(ESTADO));
-    e->jogador_atual = 1;
-    e->num_jogadas = 0;
-    e->ultima_jogada.coluna= 4;
-    e->ultima_jogada.linha= 4;
+    e->jogador_atual = 2;
+    e->num_jogadas = -1;
+    e->ultima_jogada.coluna = 4;
+    e->ultima_jogada.linha = 4;
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -24,6 +26,7 @@ ESTADO *inicializar_estado() {
         }
     }
     e->tab[3][4] = BRANCA;
+    refresh_board(e,e->ultima_jogada);
     return e;
 }
 
@@ -54,7 +57,7 @@ COORDENADA obter_ultima_jogada(ESTADO *e){
  \returns O número de jogadas.
 */
 int obter_numero_de_jogadas(ESTADO *e) {
-    return (e->num_jogadas)/2;
+    return e->num_jogadas;
 }
 
 

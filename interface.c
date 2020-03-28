@@ -1,9 +1,10 @@
 #define BUF_SIZE 1024
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "dados.h"
 #include "logica.h"
+#include "io.h"
 
 /**
 @file interface.c
@@ -15,7 +16,7 @@ Funções que alteram o tabuleiro.
 \brief i é linha; j é coluna;
  \param e Estado recebido.
 */
-void mostrar_tabuleiro(ESTADO *e) {
+void mostrar_tabuleiro(ESTADO *e,FILE *stdout) {
     COORDENADA c;
 
     for (int i = 7; i>=0; i--) {
@@ -42,15 +43,31 @@ void mostrar_tabuleiro(ESTADO *e) {
  \param c Última coordenada dada pelo jogador.
 */
 void refresh_board (ESTADO *e, COORDENADA c) {
+/**
+\brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e o array de jogadas
+*/
+    if (e->jogador_atual==2) {
+        e->jogador_atual = 1;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador2.linha = c.linha;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador2.coluna = c.coluna;
+
+    }
+    else {e->jogador_atual = 2;
+          e->num_jogadas = e->num_jogadas+1;
+          e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
+          e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
+    }
+
+/**
+\brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e/ou o array de jogadas
+*/
     int ult_lin = 7-(e->ultima_jogada.linha);
     e->tab[ult_lin][e->ultima_jogada.coluna]=PRETA;
     int lin = 7-c.linha;
     e->tab[lin][c.coluna]=BRANCA;
+
     e->ultima_jogada.linha=(c.linha);
     e->ultima_jogada.coluna=(c.coluna);
-    e->num_jogadas = e->num_jogadas+1;
-    if (e->jogador_atual==2) {e->jogador_atual=1;}
-    else e->jogador_atual=2;
 }
 
 
@@ -59,7 +76,7 @@ void refresh_board (ESTADO *e, COORDENADA c) {
  \param e Estado recebido.
  */
 void prompt(ESTADO *e){
-    mostrar_tabuleiro(e);
+    mostrar_tabuleiro(e,stdout);
 
     printf("\n");
 
@@ -109,16 +126,26 @@ int interpretador(ESTADO *e) {
         }
 
         if (strlen (linha) == 3 && linha[0]=='g' && linha[1]=='r'){
-            fopen(ficheiro,r+);
+            fopen(ficheiro,"r+");
+            grava(ficheiro,e);
             fclose(ficheiro);
-
+            return 1;
         }
 
         if (strlen(linha)==4 && linha[0]=='l' && linha[1]=='e' && linha[2]=='r'){
-            fopen(ficheiro,r+);
+            fopen(ficheiro,"r+");
+            le(ficheiro,e);
             fclose(ficheiro);
+            return 1;
         }
+
+        if (strlen(linha)==5 && linha[0]=='m' && linha[1]=='o' && linha[2]=='v' && linha[3]=='s'){
+            movs(e);
+            return 1;
+        }
+
         if (strlen(linha)==2 && linha[0]=='Q') {
+            printf("Prazer!");
             return 0;
         }
     }

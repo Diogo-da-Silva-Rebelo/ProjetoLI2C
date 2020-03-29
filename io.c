@@ -14,18 +14,58 @@ Funções que respondem a determinados comandos.
 \brief Função que grava o estado atual do jogo num ficheiro que se chama "Ficheiro.txt"
 */
 void grava(FILE *ficheiro,ESTADO *e){
-    fopen(ficheiro,"w+");
+    ficheiro = fopen("ficheiro.txt","w");
     mostrar_tabuleiro(e,ficheiro);
     movs(e,ficheiro);
     fclose(ficheiro);
 }
 
-void le(FILE *ficheiro,ESTADO *e){
-    FILE *fp;
-    fp = fopen(ficheiro,"r+");
-    mostrar_tabuleiro(e,fp);
-    fclose(fp);
+void set_casa(ESTADO *e, COORDENADA c, char buffer){
+    if (buffer=='#') e->tab[c.linha][c.coluna]=PRETA;
+    else if (buffer=='*') e->tab[c.linha][c.coluna-2]=BRANCA;
+         else e->tab[c.linha][c.coluna-2]=VAZIO;
 }
+
+COORDENADA string_to_coordenada(char c, char l){
+
+    COORDENADA coord;
+    return coord;
+}
+
+void le(FILE *ficheiro,ESTADO *estado){
+    ficheiro = fopen("ficheiro.txt","r");
+    char linha[11];
+    ESTADO *e;
+    e = malloc(sizeof(ESTADO));
+    e = inicializar_estado();
+
+    char buffer[11];
+    int l = 0;
+    while(l<8) {
+        fgets(buffer,10,ficheiro);
+        for(int c = 2; c < 10; c++) set_casa(e, (COORDENADA) {l,c-2}, buffer[c]);
+
+        l++;
+        }
+    mostrar_tabuleiro(e,stdout);
+
+    fgets(buffer,10,ficheiro);
+    fgets(buffer,10,ficheiro);
+    fgets(buffer,21,ficheiro);
+
+    int nj = obter_numero_de_jogadas(estado);
+    int i = 7, j = 0, k = 19;
+    while (nj>0){
+      e->jogadas[j].jogador1 = string_to_coordenada(buffer[i],buffer[i+1]);
+      e->jogadas[j].jogador2 = string_to_coordenada(buffer[k],buffer[k+1]);
+      nj--;
+    }
+
+    movs(e,stdout);
+    fclose(ficheiro);
+}
+
+
 
 /**
 \brief Função que dá as jogadas anteriores.

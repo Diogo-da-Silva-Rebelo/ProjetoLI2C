@@ -1,0 +1,37 @@
+\hypertarget{io_8c}{}\section{io.\+c File Reference}
+\label{io_8c}\index{io.\+c@{io.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+Include dependency graph for io.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{io_8c_a3888ef0782a8877bba3cdbbb6a3b9f92}\label{io_8c_a3888ef0782a8877bba3cdbbb6a3b9f92}} 
+void {\bfseries grava} (F\+I\+LE $\ast$ficheiro, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{io_8c_aa69cd2eb4d0facb838fc117afe1089a7}\label{io_8c_aa69cd2eb4d0facb838fc117afe1089a7}} 
+void {\bfseries le} (F\+I\+LE $\ast$ficheiro, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+void \hyperlink{io_8c_a8d63019a8176de612e33bf8c72121760}{movs} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que dá as jogadas anteriores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Funções que respondem a determinados comandos. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{io_8c_a8d63019a8176de612e33bf8c72121760}\label{io_8c_a8d63019a8176de612e33bf8c72121760}} 
+\index{io.\+c@{io.\+c}!movs@{movs}}
+\index{movs@{movs}!io.\+c@{io.\+c}}
+\subsubsection{\texorpdfstring{movs()}{movs()}}
+{\footnotesize\ttfamily void movs (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que dá as jogadas anteriores. 
+
+Assim significa que o último jogador que jogou foi o jogador 1. Imprime a última jogada.

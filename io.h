@@ -5,6 +5,6 @@
 
 void grava(FILE *ficheiro, ESTADO *e);
 void le(FILE *ficheiro,ESTADO *e);
-void movs(ESTADO *e);
+void movs(ESTADO *e,FILE *stdout);
 
 #endif //PROJETOLI2_IO_H

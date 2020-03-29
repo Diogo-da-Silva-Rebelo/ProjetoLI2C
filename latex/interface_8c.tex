@@ -1,9 +1,11 @@
 \hypertarget{interface_8c}{}\section{interface.\+c File Reference}
 \label{interface_8c}\index{interface.\+c@{interface.\+c}}
-{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}logica.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
 Include dependency graph for interface.\+c\+:
 % FIG 0
 \subsection*{Macros}
@@ -15,7 +17,7 @@ Include dependency graph for interface.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{interface_8c_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\+\_\+tabuleiro} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+void \hyperlink{interface_8c_a302d8a35fe68ed8fe2d17637e5360d40}{mostrar\+\_\+tabuleiro} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, F\+I\+LE $\ast$stdout)
 \begin{DoxyCompactList}\small\item\em Função que mostra o tabuleiro ao receber um estado. \end{DoxyCompactList}\item 
 void \hyperlink{interface_8c_aac1f8a934d52c4c6550685e2749c48c4}{refresh\+\_\+board} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
 \begin{DoxyCompactList}\small\item\em Função que atualiza o tabuleiro com a nova jogada. \end{DoxyCompactList}\item 
@@ -47,11 +49,11 @@ Função que interpreta o comando dado pelo utilizador. Primeiro verifica se o j
 \begin{DoxyReturn}{Returns}
 Verdadeiro ou falso (1 ou 0) se o comando dado é valido. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{interface_8c_aa0b6c1689e60ac852a73d67e066c1df5}\label{interface_8c_aa0b6c1689e60ac852a73d67e066c1df5}} 
+\mbox{\Hypertarget{interface_8c_a302d8a35fe68ed8fe2d17637e5360d40}\label{interface_8c_a302d8a35fe68ed8fe2d17637e5360d40}} 
 \index{interface.\+c@{interface.\+c}!mostrar\+\_\+tabuleiro@{mostrar\+\_\+tabuleiro}}
 \index{mostrar\+\_\+tabuleiro@{mostrar\+\_\+tabuleiro}!interface.\+c@{interface.\+c}}
 \subsubsection{\texorpdfstring{mostrar\+\_\+tabuleiro()}{mostrar\_tabuleiro()}}
-{\footnotesize\ttfamily void mostrar\+\_\+tabuleiro (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void mostrar\+\_\+tabuleiro (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{F\+I\+LE $\ast$}]{stdout }\end{DoxyParamCaption})}
 
 
 
@@ -94,3 +96,6 @@ Função que atualiza o tabuleiro com a nova jogada.
 {\em c} & Última coordenada dada pelo jogador. \\
 \hline
 \end{DoxyParams}
+Nesta parte, atualiza-\/se o número de jogadas, o jogador atual e o array de jogadas
+
+Nesta parte, atualiza-\/se o número de jogadas, o jogador atual e/ou o array de jogadas

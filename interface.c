@@ -20,7 +20,7 @@ void mostrar_tabuleiro(ESTADO *e,FILE *stdout) {
     COORDENADA c;
 
     for (int i = 7; i>=0; i--) {
-        printf("%d ",i+1);
+        fprintf(stdout,"%d ",i+1);
         for (int j = 0; j <= 7; j++) {
             c.linha = 7 - i;
             c.coluna = j;
@@ -101,9 +101,7 @@ void prompt(ESTADO *e){
  \param e Estado recebido.
  \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
 */
-int interpretador(ESTADO *e) {
-    FILE *ficheiro;
-    ficheiro = fopen("ficheiro.txt","w+");
+int interpretador(ESTADO *e,FILE *ficheiro) {
     int r = fim_jogo(e);
     if (r == 1 || r == 2) {
         printf("\n                                                           Parabéns ao Jogador %d!", r);
@@ -121,26 +119,21 @@ int interpretador(ESTADO *e) {
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
 
-            jogar(e, coord);
+            jogar(e, coord,ficheiro);
             return 1;
         }
 
         if (strlen (linha) == 3 && linha[0]=='g' && linha[1]=='r'){
-            fopen(ficheiro,"r+");
             grava(ficheiro,e);
-            fclose(ficheiro);
             return 1;
         }
 
         if (strlen(linha)==4 && linha[0]=='l' && linha[1]=='e' && linha[2]=='r'){
-            fopen(ficheiro,"r+");
-            le(ficheiro,e);
-            fclose(ficheiro);
             return 1;
         }
 
         if (strlen(linha)==5 && linha[0]=='m' && linha[1]=='o' && linha[2]=='v' && linha[3]=='s'){
-            movs(e);
+            movs(e,stdout);
             return 1;
         }
 

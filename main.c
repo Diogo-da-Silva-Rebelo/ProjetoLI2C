@@ -13,7 +13,10 @@ int main()
     ESTADO *e;
 
     e = inicializar_estado();
-    while(interpretador(e)==1);
+    FILE *ficheiro;
+    ficheiro = fopen("ficheiro.txt","w+");
+
+    while(interpretador(e,ficheiro)==1);
 
 
 }

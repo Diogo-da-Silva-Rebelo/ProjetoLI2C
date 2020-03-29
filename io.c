@@ -10,11 +10,14 @@
 Funções que respondem a determinados comandos.
 */
 
+/**
+\brief Função que grava o estado atual do jogo num ficheiro que se chama "Ficheiro.txt"
+*/
 void grava(FILE *ficheiro,ESTADO *e){
-    FILE *fp;
-    fp = fopen(ficheiro,"w+");
-    mostrar_tabuleiro(e,fp);
-    fclose(fp);
+    fopen(ficheiro,"w+");
+    mostrar_tabuleiro(e,ficheiro);
+    movs(e,ficheiro);
+    fclose(ficheiro);
 }
 
 void le(FILE *ficheiro,ESTADO *e){
@@ -27,9 +30,9 @@ void le(FILE *ficheiro,ESTADO *e){
 /**
 \brief Função que dá as jogadas anteriores.
 */
-void movs(ESTADO *e) {
+void movs(ESTADO *e,FILE *stdout) {
     int j = obter_numero_de_jogadas(e);
-    printf("__| Jogador 1 | Jogador 2\n");
+    fprintf(stdout,"__| Jogador 1 | Jogador 2\n");
 
     for (int i = 1; i < j; i++) {
         int ljum = e->jogadas[i].jogador1.linha + 1;
@@ -37,7 +40,7 @@ void movs(ESTADO *e) {
         int ljdois = e->jogadas[i].jogador2.linha + 1;
         char cjdois = e->jogadas[i].jogador2.coluna + 97;
 
-        printf("%d |    %c%d     |    %c%d\n", i, cjum, ljum, cjdois, ljdois);
+        fprintf(stdout,"%02d|    %c%d     |    %c%d\n", i, cjum, ljum, cjdois, ljdois);
     }
 
 /**
@@ -49,16 +52,16 @@ void movs(ESTADO *e) {
             int ljum = e->jogadas[j].jogador1.linha + 1;
             char cjum = e->jogadas[j].jogador1.coluna + 97;
 
-            printf("%d |    %c%d\n", j, cjum, ljum);
+            fprintf(stdout,"%02d|    %c%d\n", j, cjum, ljum);
         } else {
             int ljum = e->jogadas[j].jogador1.linha + 1;
             char cjum = e->jogadas[j].jogador1.coluna + 97;
             int ljdois = e->jogadas[j].jogador2.linha + 1;
             char cjdois = e->jogadas[j].jogador2.coluna + 97;
 
-            printf("%d |    %c%d     |    %c%d\n", j, cjum, ljum, cjdois, ljdois);
+            fprintf(stdout,"%02d|    %c%d     |    %c%d\n", j, cjum, ljum, cjdois, ljdois);
         }
     }
-    printf("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
+    fprintf(stdout,"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 }
 

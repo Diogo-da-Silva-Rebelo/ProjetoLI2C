@@ -15,8 +15,8 @@ Funções que alteram o estado.
 ESTADO *inicializar_estado() {
     ESTADO *e;
     e = malloc(sizeof(ESTADO));
-    e->jogador_atual = 1;
-    e->num_jogadas = 0;
+    e->jogador_atual = 2;
+    e->num_jogadas = -1;
     e->ultima_jogada.coluna = 4;
     e->ultima_jogada.linha = 4;
 
@@ -26,6 +26,7 @@ ESTADO *inicializar_estado() {
         }
     }
     e->tab[3][4] = BRANCA;
+    refresh_board(e,e->ultima_jogada);
 
     return e;
 }

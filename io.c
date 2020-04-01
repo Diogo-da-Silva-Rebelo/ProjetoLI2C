@@ -3,6 +3,7 @@
 #include "io.h"
 #include "interface.h"
 #include "dados.h"
+#include "logica.h"
 
 
 /**
@@ -73,35 +74,38 @@ void le(FILE *ficheiro,ESTADO *estado){
 void movs(ESTADO *e,FILE *stdout) {
     int j = obter_numero_de_jogadas(e);
     fprintf(stdout,"__| Jogador 1 | Jogador 2\n");
+    int i = 0;
+    int ljum,cjum,ljdois,cjdois;
 
-    for (int i = 1; i < j; i++) {
-        int ljum = e->jogadas[i].jogador1.linha + 1;
-        char cjum = e->jogadas[i].jogador1.coluna + 97;
-        int ljdois = e->jogadas[i].jogador2.linha + 1;
-        char cjdois = e->jogadas[i].jogador2.coluna + 97;
+    for (i; i < j; i++) {
+        ljum = e->jogadas[i].jogador1.linha + 1;
+        cjum = e->jogadas[i].jogador1.coluna + 97;
+        ljdois = e->jogadas[i].jogador2.linha + 1;
+        cjdois = e->jogadas[i].jogador2.coluna + 97;
 
-        fprintf(stdout,"%02d|    %c%d     |    %c%d\n", i, cjum, ljum, cjdois, ljdois);
+        fprintf(stdout,"%02d|    %c%d     |    %c%d\n", i+1, cjum, ljum, cjdois, ljdois);
     }
 
 /**
 \brief Assim significa que o último jogador que jogou foi o jogador 1.
 \brief Imprime a última jogada.
 */
-    if (obter_numero_de_jogadas(e) > 0) {
-        if (obter_jogador_atual(e) == 2) {
-            int ljum = e->jogadas[j].jogador1.linha + 1;
-            char cjum = e->jogadas[j].jogador1.coluna + 97;
-
-            fprintf(stdout,"%02d|    %c%d\n", j, cjum, ljum);
-        } else {
-            int ljum = e->jogadas[j].jogador1.linha + 1;
-            char cjum = e->jogadas[j].jogador1.coluna + 97;
-            int ljdois = e->jogadas[j].jogador2.linha + 1;
-            char cjdois = e->jogadas[j].jogador2.coluna + 97;
-
-            fprintf(stdout,"%02d|    %c%d     |    %c%d\n", j, cjum, ljum, cjdois, ljdois);
-        }
-    }
+    if (obter_jogador_atual(e) == 2) {
+       ljum = e->jogadas[j].jogador1.linha + 1;
+       cjum = e->jogadas[j].jogador1.coluna + 97;
+       fprintf(stdout,"%02d|    %c%d\n", j+1, cjum, ljum);
+       }
     fprintf(stdout,"¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 }
 
+
+void pos(ESTADO *e,int i) {
+    ESTADO *novoestado;
+    novoestado = inicializar_estado();
+    for (int k = 0;i>0;i--,k++){
+        refresh_board(novoestado,e->jogadas[k].jogador1);
+        refresh_board(novoestado,e->jogadas[k].jogador2);
+    }
+    free(e);
+    *e = *novoestado;
+}

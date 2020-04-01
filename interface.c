@@ -47,13 +47,13 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 \brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e o array de jogadas
 */
     if (e->jogador_atual==2) {
-        e->jogador_atual = 1;
         e->jogadas[obter_numero_de_jogadas(e)].jogador2.linha = c.linha;
         e->jogadas[obter_numero_de_jogadas(e)].jogador2.coluna = c.coluna;
+        e->jogador_atual = 1;
+        e->num_jogadas = e->num_jogadas+1;
 
     }
     else {e->jogador_atual = 2;
-          e->num_jogadas = e->num_jogadas+1;
           e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
           e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
     }
@@ -136,6 +136,22 @@ int interpretador(ESTADO *e, FILE *ficheiro) {
 
         if (strlen(linha)==5 && linha[0]=='m' && linha[1]=='o' && linha[2]=='v' && linha[3]=='s'){
             movs(e,stdout);
+            return 1;
+        }
+
+        if (linha[0]=='p' && linha[1]=='o' && linha[2]=='s' && linha[3]==' ' && ((strlen(linha)==6 && linha[4]>='0' && linha[4]<='9' ) || (strlen(linha)==7 && linha[4]>'0' && linha[4]<='9' && linha[5]>='0'&& linha[5]<='9'))) {
+            *(linha + 4) -= '0';
+            *(linha + 5) -= '0';
+
+            if (strlen(linha) == 6)
+                pos(e, linha[4]);
+            else {
+                if ((linha[4] == 0) && (linha[5] != 0 || linha[5] == 0))
+                    pos(e, linha[5]);
+                else if (linha[4] == 0 && linha[5] == 0)
+                    pos(e, linha[5]);
+                else pos(e, linha[4] * 10 + linha[5]);
+            }
             return 1;
         }
 

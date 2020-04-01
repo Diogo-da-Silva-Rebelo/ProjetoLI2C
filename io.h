@@ -8,5 +8,6 @@ COORDENADA string_to_coordenada(char c, char l);
 void set_casa(ESTADO *e, COORDENADA c, char buffer);
 void le(FILE *ficheiro, ESTADO *estado);
 void movs(ESTADO *e,FILE *stdout);
+void pos(ESTADO *e,int i);
 
 #endif //PROJETOLI2_IO_H

@@ -24,16 +24,10 @@ void mostrar_tabuleiro(ESTADO *e,FILE *stdout) {
         for (int j = 0; j <= 7; j++) {
             c.linha = 7 - i;
             c.coluna = j;
-            if (obter_estado_casa(e, c) == BRANCA) fprintf(stdout,"*");
-            else {
-                if (obter_estado_casa(e, c) == PRETA) fprintf(stdout,"#");
-                else {if (c.linha == 7 && c.coluna == 0) fprintf (stdout,"1");
-                      else {if (c.linha == 0 && c.coluna == 7) fprintf (stdout,"2");
-                            else fprintf(stdout,".");}}
+            fprintf(stdout,"%c",obter_estado_casa(e,c));
             }
-        }
         fprintf(stdout,"\n");
-    }
+        }
     fprintf (stdout,"  abcdefgh \n");
 }
 
@@ -50,7 +44,7 @@ void refresh_board (ESTADO *e, COORDENADA c) {
         e->jogadas[obter_numero_de_jogadas(e)].jogador2.linha = c.linha;
         e->jogadas[obter_numero_de_jogadas(e)].jogador2.coluna = c.coluna;
         e->jogador_atual = 1;
-        e->num_jogadas = e->num_jogadas+1;
+        e->num_jogadas++;
 
     }
     else {e->jogador_atual = 2;

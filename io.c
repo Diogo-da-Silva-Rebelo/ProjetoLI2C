@@ -35,7 +35,6 @@ COORDENADA string_to_coordenada(char c, char l){
 
 void le(FILE *ficheiro,ESTADO *estado){
     ficheiro = fopen("ficheiro.txt","r");
-    char linha[11];
     ESTADO *e;
     e = malloc(sizeof(ESTADO));
     e = inicializar_estado();
@@ -61,7 +60,6 @@ void le(FILE *ficheiro,ESTADO *estado){
       e->jogadas[j].jogador2 = string_to_coordenada(buffer[k],buffer[k+1]);
       nj--;
     }
-
     movs(e,stdout);
     fclose(ficheiro);
 }
@@ -69,7 +67,7 @@ void le(FILE *ficheiro,ESTADO *estado){
 
 
 /**
-\brief Função que dá as jogadas anteriores.
+\brief Função que imprimir as jogadas anteriores.
 */
 void movs(ESTADO *e,FILE *stdout) {
     int j = obter_numero_de_jogadas(e);
@@ -87,8 +85,8 @@ void movs(ESTADO *e,FILE *stdout) {
     }
 
 /**
-\brief Assim significa que o último jogador que jogou foi o jogador 1.
-\brief Imprime a última jogada.
+\brief Imprime a última jogada no caso do jogador 2.
+\brief Caso contrário, a última linha já foi imprimida.
 */
     if (obter_jogador_atual(e) == 2) {
        ljum = e->jogadas[j].jogador1.linha + 1;
@@ -100,12 +98,22 @@ void movs(ESTADO *e,FILE *stdout) {
 
 
 void pos(ESTADO *e,int i) {
-    ESTADO *novoestado;
-    novoestado = inicializar_estado();
-    for (int k = 0;i>0;i--,k++){
-        refresh_board(novoestado,e->jogadas[k].jogador1);
-        refresh_board(novoestado,e->jogadas[k].jogador2);
+    ESTADO *nestado;
+    nestado = inicializar_estado();
+    int a = i;
+    int k = 0;
+    if (i < obter_numero_de_jogadas(e)) {
+        while (a>1){
+            refresh_board(nestado, e->jogadas[k].jogador1);
+            refresh_board(nestado, e->jogadas[k].jogador2);
+            printf("ahsdhvukjd");
+            a--;
+            k++;
+        }
+        printf("ddd");}
+
+    if (obter_jogador_atual(e) == 2) {
+        refresh_board(nestado, e->jogadas[i].jogador1);
+        *e = *nestado;
     }
-    free(e);
-    *e = *novoestado;
 }

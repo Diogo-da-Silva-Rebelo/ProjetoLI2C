@@ -26,6 +26,8 @@ ESTADO *inicializar_estado() {
         }
     }
     e->tab[3][4] = BRANCA;
+    e->tab[7][0] = UM;
+    e->tab[0][7] = DOIS;
     refresh_board(e,e->ultima_jogada);
 
     return e;

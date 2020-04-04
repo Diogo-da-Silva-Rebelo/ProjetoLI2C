@@ -4,10 +4,11 @@
 #include "dados.h"
 
 void grava(FILE *ficheiro, ESTADO *e);
-COORDENADA string_to_coordenada(char c, char l);
-void set_casa(ESTADO *e, COORDENADA c, char buffer);
-void le(FILE *ficheiro, ESTADO *estado);
-void movs(ESTADO *e,FILE *stdout);
+void armazenar_jogada(ESTADO *e,JOGADA j,int l);
+COORDENADA str_to_coord (char *jogada);
+void str_to_casa (char *linha, ESTADO *estado, int l);
+void le(FILE *ficheiro, ESTADO *e);
+void movs(ESTADO *e,FILE *stdout,int l);
 void pos(ESTADO *e,int i);
 
 #endif //PROJETOLI2_IO_H

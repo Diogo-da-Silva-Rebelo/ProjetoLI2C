@@ -54,7 +54,7 @@ typedef JOGADA JOGADAS[32];
 
 typedef struct {
     /** O tabuleiro */
-    CASA tab[8][8];
+    CASA tab[9][9];
     /** As jogadas */
     JOGADAS jogadas;
     /** O número das jogadas, usado no prompt */

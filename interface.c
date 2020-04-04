@@ -16,19 +16,31 @@ Funções que alteram o tabuleiro.
 \brief i é linha; j é coluna;
  \param e Estado recebido.
 */
-void mostrar_tabuleiro(ESTADO *e,FILE *stdout) {
+void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int i) {
     COORDENADA c;
 
-    for (int i = 7; i>=0; i--) {
-        fprintf(stdout, "%d ",i+1);
-        for (int j = 0; j <= 7; j++) {
-            c.linha = 7 - i;
-            c.coluna = j;
-            fprintf(stdout,"%c",obter_estado_casa(e,c));
+    if (i == 1) {
+        for (int i = 0; i <= 7; i++) {
+            for (int j = 0; j <= 7; j++) {
+                c.linha = i;
+                c.coluna = j;
+                fprintf(stdout, "%c", obter_estado_casa(e, c));
             }
-        fprintf(stdout,"\n");
+            fprintf(stdout, "\n");
         }
-    fprintf (stdout,"  abcdefgh \n");
+    } else {
+        fprintf(stdout, "\n");
+        for (int i = 0; i <= 7; i++) {
+            fprintf(stdout, "%d ", i + 1);
+            for (int j = 0; j <= 7; j++) {
+                c.linha = i;
+                c.coluna = j;
+                fprintf(stdout, "%c", obter_estado_casa(e, c));
+            }
+            fprintf(stdout, "\n");
+        }
+        fprintf(stdout, "  abcdefgh \n");
+    }
 }
 
 /**
@@ -70,7 +82,7 @@ void refresh_board (ESTADO *e, COORDENADA c) {
  \param e Estado recebido.
  */
 void prompt(ESTADO *e){
-    mostrar_tabuleiro(e,stdout);
+    mostrar_tabuleiro(e,stdout,2);
 
     printf("\n");
 
@@ -129,7 +141,7 @@ int interpretador(ESTADO *e, FILE *ficheiro) {
         }
 
         if (strlen(linha)==5 && linha[0]=='m' && linha[1]=='o' && linha[2]=='v' && linha[3]=='s'){
-            movs(e,stdout);
+            movs(e,stdout,2);
             return 1;
         }
 

@@ -10,7 +10,7 @@ Funções que alteram o estado.
 
 /**
 \brief Função que inicia o estado com o tabuleiro vazio.
-  \returns O estado inicializado, com a primeira jogada ser e4.
+  \returns O estado inicializado, com a primeira jogada em e4.
 */
 ESTADO *inicializar_estado() {
     ESTADO *e;
@@ -79,7 +79,7 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
 /**
 \brief Função que obtem o número do comando
  \param e Estado recebido.
- \returns Número do comando.
+ \returns Número do comando, existem diferentes números consoante o tipo de comando.
 */
 int obter_comando(ESTADO *e){
     return e->num_comando;

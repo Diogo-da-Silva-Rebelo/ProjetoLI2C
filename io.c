@@ -22,11 +22,19 @@ void grava(FILE *ficheiro,ESTADO *e){
     fclose(ficheiro);
 }
 
+/**
+\brief Função que transforma uma string de coordenadas numa coordenada
+ \param jogada O array recebido (string de coordenadas)
+ \returns coord A coordenada
+*/
 COORDENADA str_to_coord (char *jogada){
     COORDENADA coord = {*jogada - 'a', *(jogada+1) - '1'};
     return coord;
 }
 
+/**
+\brief Função que transforma uma string de coordenadas numa coordenada
+*/
 void str_to_casa (char *linha, ESTADO *estado, int l) {
     int i = 0;
     while (i < 8) {
@@ -49,11 +57,17 @@ void str_to_casa (char *linha, ESTADO *estado, int l) {
     }
 }
 
+/**
+\brief Função que armazena uma determinada jogada (anterior string)
+*/
 void armazenar_jogada(ESTADO *e,JOGADA j,int l){
     e->jogadas[l].jogador1=j.jogador1;
     e->jogadas[l].jogador2=j.jogador2;
 }
 
+/**
+\brief Função responsável por, recebendo um ficheiro e um estado, ler esse estado
+*/
 void le(FILE *ficheiro,ESTADO *e) {
 
     ficheiro = fopen("ficheiro.txt", "w+");
@@ -126,7 +140,9 @@ void movs(ESTADO *e,FILE *stdout,int l) {
     }
 }
 
-
+/**
+\brief
+*/
 void pos(ESTADO *e,int i) {
     if (i==1){printf("s");}
     else if (i < obter_numero_de_jogadas(e)) {

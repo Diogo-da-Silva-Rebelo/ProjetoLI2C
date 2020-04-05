@@ -159,10 +159,10 @@ int interpretador(ESTADO *e, FILE *ficheiro) {
         *(linha + 4) -= '0';
         *(linha + 5) -= '0';
 
-        if (strlen(linha) == 6) pos(e, linha[4]);
-        else if ((linha[4] == 0) && (linha[5] != 0 || linha[5] == 0)) pos(e, linha[5]);
-        else if (linha[4] == 0 && linha[5] == 0) pos(e, linha[5]);
-        else pos(e, linha[4] * 10 + linha[5]);
+        if (strlen(linha) == 6) pos(e, linha[4]+1);
+        else if ((linha[4] == 0) && (linha[5] != 0 || linha[5] == 0)) pos(e, linha[5]+1);
+        else if (linha[4] == 0 && linha[5] == 0) pos(e, linha[5]+1);
+        else pos(e, linha[4] * 10 + linha[5]+1);
 
         e->num_comando = 4;
 

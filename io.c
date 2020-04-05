@@ -63,7 +63,7 @@ void le(FILE *ficheiro,ESTADO *e) {
         int num_jog;
         char jog1[BUF_SIZE];
         char jog2[BUF_SIZE];
-        int num_tokens = sscanf(linha, "%d: %s %s", &num_jog, jog1, jog2);
+        int num_tokens = sscanf(linha, "%02d: %s %s", &num_jog, jog1, jog2);
         if (num_tokens == 3) {
             COORDENADA c1 = str_to_coord(jog1);
             COORDENADA c2 = str_to_coord(jog2);
@@ -128,33 +128,26 @@ void movs(ESTADO *e,FILE *stdout,int l) {
 
 
 void pos(ESTADO *e,int i) {
-    int k = i;
+    if (i==1){printf("s");}
+    else if (i < obter_numero_de_jogadas(e)) {
+        printf("cdh");
+        i--;
+        e->ultima_jogada = e->jogadas[i - 1].jogador2;
+        e->tab[7 - e->jogadas[i - 1].jogador2.linha][e->jogadas[i - 1].jogador2.coluna] = BRANCA;
 
-    if (e->num_comando == 4 && i > obter_numero_de_jogadas(e)) {
-        int a = obter_numero_de_jogadas(e) + 1;
-        while (obter_estado_casa(e, e->jogadas[a].jogador1) != UM &&
-               obter_estado_casa(e, e->jogadas[a].jogador2) != UM) {
-            refresh_board(e,e->jogadas[a].jogador1);
-            refresh_board(e,e->jogadas[a].jogador2);
-            a++;
-        }
-    } else if (i < obter_numero_de_jogadas(e)) {
-        while (k < obter_numero_de_jogadas(e)) {
-            int linha1 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador1.linha;
-            int linha2 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador2.linha;
-            int coluna1 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador1.coluna;
-            int coluna2 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador2.coluna;
+        int itemp = i+1;
 
+        while (i < obter_numero_de_jogadas(e)) {
+            int linha1 = e->jogadas[i].jogador1.linha;
+            int coluna1 = e->jogadas[i].jogador1.coluna;
+            int linha2 = e->jogadas[i].jogador2.linha;
+            int coluna2 = e->jogadas[i].jogador2.coluna;
 
             e->tab[7 - linha1][coluna1] = VAZIO;
             e->tab[7 - linha2][coluna2] = VAZIO;
-            k++;
+            i++;
         }
-        e->num_jogadas = i;
+        e->num_jogadas = itemp;
         e->jogador_atual = 1;
-        e->ultima_jogada = e->jogadas[i - 1].jogador2;
-        int linha = e->ultima_jogada.linha;
-        int coluna = e->ultima_jogada.coluna;
-        e->tab[7 - linha][coluna] = BRANCA;
     }
 }

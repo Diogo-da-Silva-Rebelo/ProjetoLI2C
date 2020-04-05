@@ -75,3 +75,8 @@ int obter_numero_de_jogadas(ESTADO *e) {
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     return e->tab[c.linha][c.coluna];
 }
+
+
+int obter_comando(ESTADO *e){
+    return e->num_comando;
+}

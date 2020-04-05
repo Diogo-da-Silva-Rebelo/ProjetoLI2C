@@ -20,26 +20,25 @@ void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int i) {
     COORDENADA c;
 
     if (i == 1) {
-        for (int i = 0; i <= 7; i++) {
+        for (int i = 8; i > 0; i--) {
             for (int j = 0; j <= 7; j++) {
-                c.linha = i;
+                c.linha = 8-i;
                 c.coluna = j;
-                fprintf(stdout, "%c", obter_estado_casa(e, c));
+                fprintf(stdout, "%c ", obter_estado_casa(e,c));
             }
             fprintf(stdout, "\n");
         }
     } else {
-        fprintf(stdout, "\n");
-        for (int i = 0; i <= 7; i++) {
-            fprintf(stdout, "%d ", i + 1);
+        for (int i = 8; i > 0; i--) {
+            fprintf(stdout, "%d ", i);
             for (int j = 0; j <= 7; j++) {
-                c.linha = i;
+                c.linha = 8-i;
                 c.coluna = j;
-                fprintf(stdout, "%c", obter_estado_casa(e, c));
+                fprintf(stdout, "%c ", obter_estado_casa(e, c));
             }
             fprintf(stdout, "\n");
         }
-        fprintf(stdout, "  abcdefgh \n");
+        fprintf(stdout, "  a b c d e f g h \n");
     }
 }
 
@@ -88,16 +87,11 @@ void prompt(ESTADO *e){
 
     printf ("Próximo jogador: %d\n",obter_jogador_atual(e));
 
-    int linha = e->ultima_jogada.linha;
-    linha = linha+1;
+    printf ("Última jogada: %c%d\n",obter_ultima_jogada(e).coluna+97,obter_ultima_jogada(e).linha+1);
 
-    int coluna = e->ultima_jogada.coluna;
-    coluna = coluna+97;
+    printf("Número de jogadas feitas: %d\n",obter_numero_de_jogadas(e));
 
-    printf ("Última jogada: %c%d\n",coluna,linha);
-
-    int njogadas = e->num_jogadas;
-    printf("Número de jogadas feitas: %d\n",njogadas);
+    printf("Último comando: %d\n",obter_comando(e));
 
     printf("------------------------------------------------------#------------------------------------------------------\n");
 }
@@ -109,61 +103,76 @@ void prompt(ESTADO *e){
 */
 int interpretador(ESTADO *e, FILE *ficheiro) {
 
-    int r = fim_jogo(e);
-    if (r == 1 || r == 2) {
-        printf("\n                                                           Parabéns ao Jogador %d!", r);
+    char linha[BUF_SIZE];
+    char col[2], lin[2];
+    prompt(e);
+    printf("Jogador %d, introduza uma jogada: ", obter_jogador_atual(e));
+
+    if (fgets(linha, BUF_SIZE, stdin) == NULL) {
         return 0;
-    } else {
+    }
 
-        char linha[BUF_SIZE];
-        char col[2], lin[2];
-        prompt(e);
-        printf("Jogador %d, introduza uma jogada: ",obter_jogador_atual(e));
-        if (fgets(linha, BUF_SIZE, stdin) == NULL) {
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+        COORDENADA coord = {*col - 'a', *lin - '1'};
+
+        jogar(e, coord, ficheiro);
+
+        e->num_comando = 1;
+
+        int r = fim_jogo(e);
+        if (r == 1 || r == 2) {
+            printf("\n                                                           Parabéns ao Jogador %d!", r);
             return 0;
         }
 
-        if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-            COORDENADA coord = {*col - 'a', *lin - '1'};
+        return 1;
+    }
 
-            jogar(e, coord,ficheiro);
-            return 1;
-        }
+    if (strcmp(linha, "gr\n")==0) {
+        e->num_comando = 2;
 
-        if (strlen (linha) == 3 && linha[0]=='g' && linha[1]=='r'){
-            grava(ficheiro,e);
-            return 1;
-        }
+        grava(ficheiro, e);
 
-        if (strlen(linha)==4 && linha[0]=='l' && linha[1]=='e' && linha[2]=='r'){
-            le(ficheiro,e);
-            return 1;
-        }
+        return 1;
+    }
 
-        if (strlen(linha)==5 && linha[0]=='m' && linha[1]=='o' && linha[2]=='v' && linha[3]=='s'){
-            movs(e,stdout,2);
-            return 1;
-        }
+    if (strcmp(linha, "ler\n")==0) {
+        e->num_comando = 3;
 
-        if (linha[0]=='p' && linha[1]=='o' && linha[2]=='s' && linha[3]==' ' && ((strlen(linha)==6 && linha[4]>='0' && linha[4]<='9' ) || (strlen(linha)==7 && linha[4]>'0' && linha[4]<='9' && linha[5]>='0'&& linha[5]<='9'))) {
-            *(linha + 4) -= '0';
-            *(linha + 5) -= '0';
+        le(ficheiro, e);
 
-            if (strlen(linha) == 6)
-                pos(e, linha[4]);
-            else {
-                if ((linha[4] == 0) && (linha[5] != 0 || linha[5] == 0))
-                    pos(e, linha[5]);
-                else if (linha[4] == 0 && linha[5] == 0)
-                    pos(e, linha[5]);
-                else pos(e, linha[4] * 10 + linha[5]);
-            }
-            return 1;
-        }
+        return 1;
+    }
 
-        if (strlen(linha)==2 && linha[0]=='Q') {
-            printf("Prazer!");
-            return 0;
-        }
+    if (strcmp(linha, "movs\n")==0) {
+        e->num_comando = 5;
+
+        movs(e, stdout, 2);
+
+        return 1;
+    }
+
+    if (linha[0] == 'p' && linha[1] == 'o' && linha[2] == 's' && linha[3] == ' ' &&
+        ((strlen(linha) == 6 && linha[4] >= '0' && linha[4] <= '9') ||
+         (strlen(linha) == 7 && linha[4] > '0' && linha[4] <= '9' && linha[5] >= '0' && linha[5] <= '9'))) {
+
+        *(linha + 4) -= '0';
+        *(linha + 5) -= '0';
+
+        if (strlen(linha) == 6) pos(e, linha[4]);
+        else if ((linha[4] == 0) && (linha[5] != 0 || linha[5] == 0)) pos(e, linha[5]);
+        else if (linha[4] == 0 && linha[5] == 0) pos(e, linha[5]);
+        else pos(e, linha[4] * 10 + linha[5]);
+
+        e->num_comando = 4;
+
+        return 1;
+    }
+
+    if (strcmp(linha, "Q\n") == 0) {
+
+        printf("Prazer!");
+        
+        return 0;
     }
 }

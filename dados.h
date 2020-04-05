@@ -71,7 +71,9 @@ typedef struct {
 
 ESTADO *inicializar_estado();
 int obter_jogador_atual(ESTADO *estado);
+COORDENADA obter_ultima_jogada(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
+int obter_comando(ESTADO *e);
 
 #endif //___DADOS_H___

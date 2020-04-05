@@ -81,7 +81,7 @@ void le(FILE *ficheiro,ESTADO *e) {
 
 
 /**
-\brief Função que imprimir as jogadas anteriores.
+\brief Função que imprime todas as jogadas anteriores.
 */
 void movs(ESTADO *e,FILE *stdout,int l) {
     int j = obter_numero_de_jogadas(e);
@@ -128,22 +128,33 @@ void movs(ESTADO *e,FILE *stdout,int l) {
 
 
 void pos(ESTADO *e,int i) {
-    ESTADO *nestado;
-    nestado = inicializar_estado();
-    int a = i;
-    int k = 0;
-    if (i < obter_numero_de_jogadas(e)) {
-        while (a>1){
-            refresh_board(nestado, e->jogadas[k].jogador1);
-            refresh_board(nestado, e->jogadas[k].jogador2);
-            printf("ahsdhvukjd");
-            a--;
+    int k = i;
+
+    if (e->num_comando == 4 && i > obter_numero_de_jogadas(e)) {
+        int a = obter_numero_de_jogadas(e) + 1;
+        while (obter_estado_casa(e, e->jogadas[a].jogador1) != UM &&
+               obter_estado_casa(e, e->jogadas[a].jogador2) != UM) {
+            refresh_board(e,e->jogadas[a].jogador1);
+            refresh_board(e,e->jogadas[a].jogador2);
+            a++;
+        }
+    } else if (i < obter_numero_de_jogadas(e)) {
+        while (k < obter_numero_de_jogadas(e)) {
+            int linha1 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador1.linha;
+            int linha2 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador2.linha;
+            int coluna1 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador1.coluna;
+            int coluna2 = e->jogadas[obter_numero_de_jogadas(e) - k].jogador2.coluna;
+
+
+            e->tab[7 - linha1][coluna1] = VAZIO;
+            e->tab[7 - linha2][coluna2] = VAZIO;
             k++;
         }
-        printf("ddd");}
-
-    if (obter_jogador_atual(e) == 2) {
-        refresh_board(nestado, e->jogadas[i].jogador1);
-        *e = *nestado;
+        e->num_jogadas = i;
+        e->jogador_atual = 1;
+        e->ultima_jogada = e->jogadas[i - 1].jogador2;
+        int linha = e->ultima_jogada.linha;
+        int coluna = e->ultima_jogada.coluna;
+        e->tab[7 - linha][coluna] = BRANCA;
     }
 }

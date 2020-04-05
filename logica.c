@@ -13,10 +13,10 @@ Funções que verificam as jogadas.
  \param e Estado recebido.
  \param c Última coordenada recebida pelo jogador.
 */
-int jogar(ESTADO *e, COORDENADA c, FILE *ficheiro){
+int jogar(ESTADO *ae,ESTADO *e, COORDENADA c, FILE *ficheiro){
     if (verifica_jogada(e,c)==0) {
         printf ("Jogada impossível, tente novamente.\n");
-        interpretador(e,ficheiro);}
+        interpretador(ae,e,ficheiro);}
     else{
     refresh_board(e,c);
     }

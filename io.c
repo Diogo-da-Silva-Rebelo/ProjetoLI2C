@@ -127,27 +127,30 @@ void movs(ESTADO *e,FILE *stdout,int l) {
 }
 
 
-void pos(ESTADO *e,int i) {
-    if (i==1){printf("s");}
-    else if (i < obter_numero_de_jogadas(e)) {
-        printf("cdh");
-        i--;
-        e->ultima_jogada = e->jogadas[i - 1].jogador2;
-        e->tab[7 - e->jogadas[i - 1].jogador2.linha][e->jogadas[i - 1].jogador2.coluna] = BRANCA;
+void pos(ESTADO *ae,ESTADO *e,int i) {
 
-        int itemp = i+1;
+    if(e->num_comando==4){
+        *e=*ae;
+    }
 
-        while (i < obter_numero_de_jogadas(e)) {
-            int linha1 = e->jogadas[i].jogador1.linha;
-            int coluna1 = e->jogadas[i].jogador1.coluna;
-            int linha2 = e->jogadas[i].jogador2.linha;
-            int coluna2 = e->jogadas[i].jogador2.coluna;
+    if (i < obter_numero_de_jogadas(e)) {
+        e->jogador_atual = 1;
+        e->ultima_jogada = e->jogadas[i].jogador2;
+        e->tab[7 - e->jogadas[i].jogador2.linha][e->jogadas[i].jogador2.coluna] = BRANCA;
+
+        int itemp = i + 1;
+
+        while (itemp <= obter_numero_de_jogadas(e)) {
+            int linha1 = e->jogadas[itemp].jogador1.linha;
+            int coluna1 = e->jogadas[itemp].jogador1.coluna;
+            int linha2 = e->jogadas[itemp].jogador2.linha;
+            int coluna2 = e->jogadas[itemp].jogador2.coluna;
 
             e->tab[7 - linha1][coluna1] = VAZIO;
             e->tab[7 - linha2][coluna2] = VAZIO;
-            i++;
+            itemp++;
         }
-        e->num_jogadas = itemp;
-        e->jogador_atual = 1;
+        e->num_jogadas = i;
+
     }
 }

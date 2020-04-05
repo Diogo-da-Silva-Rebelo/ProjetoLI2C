@@ -76,7 +76,11 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     return e->tab[c.linha][c.coluna];
 }
 
-
+/**
+\brief Função que obtem o número do comando
+ \param e Estado recebido.
+ \returns Número do comando.
+*/
 int obter_comando(ESTADO *e){
     return e->num_comando;
 }

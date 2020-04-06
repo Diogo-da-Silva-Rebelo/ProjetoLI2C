@@ -101,7 +101,8 @@ void prompt(ESTADO *e){
  \param e Estado recebido.
  \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
 */
-int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
+int interpretador(ESTADO *e, FILE *ficheiro,FILE *ficheiroaux) {
+
 
     char linha[BUF_SIZE];
     char col[2], lin[2];
@@ -115,7 +116,7 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        jogar(ae, e, coord, ficheiro);
+        jogar(e, coord, ficheiro);
 
         e->num_comando = 1;
 
@@ -139,7 +140,7 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     if (strcmp(linha, "ler\n")==0) {
         e->num_comando = 3;
 
-        le(ficheiro, e);
+        le(ficheiro,e,1);
 
         return 1;
     }
@@ -159,11 +160,10 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
         *(linha + 4) -= 47;
         *(linha + 5) -= 47;
 
-        if (strlen(linha)==6) pos(ae,e,linha[4]-1);
-        else if (linha[4]==0) pos(ae,e,linha[5]-1);
-        else pos(ae,e,10*(linha[4]-1)+linha[5]-1);
+        if (strlen(linha)==6) pos(e,linha[4]-1,ficheiroaux);
+        else if (linha[4]==0) pos(e,linha[5]-1,ficheiroaux);
+        else pos(e,10*(linha[4]-1)+linha[5]-1,ficheiroaux);
 
-        e->num_comando = 4;
 
         return 1;
     }

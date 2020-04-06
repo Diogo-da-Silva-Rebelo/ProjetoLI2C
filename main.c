@@ -10,12 +10,12 @@ Função principal do projeto.
 
 int main()
 {
-    ESTADO *e,*ae;
-    ae = inicializar_estado();
+    ESTADO *e;
     e = inicializar_estado();
-    FILE *ficheiro;
+    FILE *ficheiro,*ficheiroaux;
     ficheiro = fopen("ficheiro.txt","w+");
-    while(interpretador(ae,e,ficheiro)==1);
+    ficheiroaux = fopen("ficheiroaux.txt","w+");
+    while(interpretador(e,ficheiro,ficheiroaux)==1);
 
 
 }

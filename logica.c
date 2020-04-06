@@ -13,15 +13,9 @@ Funções que verificam as jogadas.
  \param e Estado recebido.
  \param c Última coordenada recebida pelo jogador.
 */
-int jogar(ESTADO *ae,ESTADO *e, COORDENADA c, FILE *ficheiro){
-    if (verifica_jogada(e,c)==0) {
-        printf ("Jogada impossível, tente novamente.\n");
-        interpretador(ae,e,ficheiro);}
-    else{
-    refresh_board(e,c);
-    }
-
-    return 1;
+void jogar(ESTADO *e, COORDENADA c, FILE *ficheiro){
+    if (verifica_jogada(e,c)==COORDENADA_INVALIDA) printf ("Jogada impossível, tente novamente.\n");
+    else refresh_board(e,c);
 }
 
 /**
@@ -30,19 +24,18 @@ int jogar(ESTADO *ae,ESTADO *e, COORDENADA c, FILE *ficheiro){
  \param c Última coordenada recebida pelo jogador.
  \returns Verdadeiro ou falso (1 ou 0, respetivamente) quando à possibilidade da jogada.
  */
-int verifica_jogada (ESTADO *e, COORDENADA c) {
+ERROS verifica_jogada (ESTADO *e, COORDENADA c) {
 
-    c.linha = 7-c.linha;
+    c.linha = 7 - c.linha;
     int pcoluna = c.coluna;
-    int alinha = 7-e->ultima_jogada.linha;
+    int alinha = 7 - e->ultima_jogada.linha;
     int acoluna = e->ultima_jogada.coluna;
-    int rlinha = c.linha-alinha;
-    int rcoluna = pcoluna-acoluna;
+    int rlinha = c.linha - alinha;
+    int rcoluna = pcoluna - acoluna;
 
-    if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1){
-        if (obter_estado_casa(e,c) == VAZIO) return 1;
-        else return 0;}
-    else return 0;
+    if (rlinha >= (-1) && rlinha <= 1 && rcoluna >= (-1) && rcoluna <= 1 && obter_estado_casa(e, c) == VAZIO)
+        return OK;
+    return COORDENADA_INVALIDA;
 }
 
 

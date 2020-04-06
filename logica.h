@@ -1,3 +1,6 @@
+/**
+\brief Estrutura Lógica
+*/
 #ifndef PROJETOLI2_LOGICA_H
 #define PROJETOLI2_LOGICA_H
 

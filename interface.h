@@ -1,3 +1,6 @@
+/**
+\brief Estrutura de Interface
+*/
 #ifndef PROJETOLI2_INTERFACE_H
 #define PROJETOLI2_INTERFACE_H
 

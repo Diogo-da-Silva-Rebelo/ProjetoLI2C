@@ -54,31 +54,11 @@ void armazenar_jogada(ESTADO *e,JOGADA j,int l){
     e->jogadas[l].jogador2=j.jogador2;
 }
 
-void le(FILE *ficheiro,ESTADO *e,int j) {
-    if (j==1) ficheiro = fopen("ficheiro.txt", "w+");
-    else ficheiro = fopen("ficheiroaux.txt", "w+");
+void le(FILE *ficheiro,ESTADO *e) {
 
-    ESTADO *ne;
-    ne = inicializar_estado();
-    char buffer[BUF_SIZE];
-    int i = 0;
-    while (i<8) {
-        char linhat[BUF_SIZE];
-        char l[BUF_SIZE];
-        fgets(buffer, BUF_SIZE, ficheiro);
-        sscanf(linhat, "%s", l);
-        printf(l);
-        str_to_casa(l,ne,1);
-        i++;
-    }
-
-
-
-    fgets(buffer, BUF_SIZE, ficheiro);
-
-
+    ficheiro = fopen("ficheiro.txt", "w+");
     char linha[BUF_SIZE];
-
+    char buffer[BUF_SIZE];
     while (fgets(buffer, BUF_SIZE, ficheiro) != NULL) {
         int num_jog;
         char jog1[BUF_SIZE];
@@ -87,17 +67,16 @@ void le(FILE *ficheiro,ESTADO *e,int j) {
         if (num_tokens == 3) {
             COORDENADA c1 = str_to_coord(jog1);
             COORDENADA c2 = str_to_coord(jog2);
-            armazenar_jogada(ne, (JOGADA) {c1, c2}, num_jog);
-            printf("deed");
+            armazenar_jogada(e, (JOGADA) {c1, c2}, num_jog);
         } else {
             COORDENADA c1 = str_to_coord(jog1);
             COORDENADA c2 = {-1, -1};
-            armazenar_jogada(ne, (JOGADA) {c1, c2}, num_jog);
-            printf("no");
+            armazenar_jogada(e, (JOGADA) {c1, c2}, num_jog);
         }
+        fclose(ficheiro);
+
+
     }
-    *e=*ne;
-    fclose(ficheiro);
 }
 
 
@@ -148,16 +127,13 @@ void movs(ESTADO *e,FILE *stdout,int l) {
 }
 
 
-void pos(ESTADO *e,int i,FILE *ficheiroaux) {
+void pos(ESTADO *ae,ESTADO *e,int i) {
 
-    if (obter_comando(e) != 4) {
-        e->num_comando = 4;
-        grava(ficheiroaux, e);
+    if(e->num_comando==4){
+        *e=*ae;
     }
 
-    le(ficheiroaux, e,2);
-    if (i > obter_numero_de_jogadas(e)) printf("Impossível.");
-    else {
+    if (i < obter_numero_de_jogadas(e)) {
         e->jogador_atual = 1;
         e->ultima_jogada = e->jogadas[i].jogador2;
         e->tab[7 - e->jogadas[i].jogador2.linha][e->jogadas[i].jogador2.coluna] = BRANCA;
@@ -175,5 +151,6 @@ void pos(ESTADO *e,int i,FILE *ficheiroaux) {
             itemp++;
         }
         e->num_jogadas = i;
+
     }
 }

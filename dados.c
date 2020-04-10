@@ -1,11 +1,10 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "dados.h"
 #include "interface.h"
 
 /**
 @file dados.c
-Funções que alteram o estado.
+Funções que alteram o estado e que vão buscar dados a ele.
 */
 
 /**
@@ -31,7 +30,7 @@ ESTADO *inicializar_estado() {
     e->tab[7][0] = UM;
     e->tab[0][7] = DOIS;
 
-    refresh_board(e,e->ultima_jogada);
+    refresh_board(e, e->ultima_jogada);
 
     return e;
 }
@@ -39,7 +38,7 @@ ESTADO *inicializar_estado() {
 
 /**
 \brief Função que obtém o número do jogador atual.
- \param e Estado recebido.
+ \param e Estado.
  \returns O jogador que jogará a seguir.
 */
 int obter_jogador_atual(ESTADO *e) {
@@ -49,17 +48,17 @@ int obter_jogador_atual(ESTADO *e) {
 
 /**
 \brief Função que obtém a última jogada.
- \param e Estado recebido.
+ \param e Estado.
  \returns A última jogada.
 */
-COORDENADA obter_ultima_jogada(ESTADO *e){
+COORDENADA obter_ultima_jogada(ESTADO *e) {
     return e->ultima_jogada;
 }
 
 
 /**
 \brief Função que obtem o número de jogadas efetuadas
- \param e Estado recebido.
+ \param e Estado.
  \returns O número de jogadas.
 */
 int obter_numero_de_jogadas(ESTADO *e) {
@@ -69,18 +68,31 @@ int obter_numero_de_jogadas(ESTADO *e) {
 
 /**
 \brief Função que obtem o estado atual da casa.
- \param e Estado recebido.
+ \param e Estado.
  \returns Estado da coordenada.
 */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
-    return e->tab[c.linha][c.coluna];
+    return e->tab[7 - c.linha][c.coluna];
 }
 
+
 /**
-\brief Função que obtem o número do comando
- \param e Estado recebido.
+\brief Função que obtém o número do comando.
+ \param e Estado.
  \returns Número do comando, existem diferentes números consoante o tipo de comando.
 */
-int obter_comando(ESTADO *e){
+int obter_comando(ESTADO *e) {
     return e->num_comando;
+}
+
+
+/**
+\brief Função que obtém a coordenada jogada pelo jogador na jogada i.
+ \param e Estado;
+ \param i Número da jogada;
+ \param j Número do jogador.
+ \returns Número do comando, existem diferentes números consoante o tipo de comando.
+*/
+COORDENADA obter_coordenada(ESTADO *e, int i, int j) {
+    return (j == 1) ? e->jogadas[i].jogador1 : e->jogadas[i].jogador2;
 }

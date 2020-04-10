@@ -3,8 +3,6 @@
 #include "io.h"
 #include "interface.h"
 #include "dados.h"
-#include "logica.h"
-
 
 /**
 @file io.c
@@ -12,7 +10,9 @@ Funções que respondem a determinados comandos.
 */
 
 /**
-\brief Função que grava o estado atual do jogo num ficheiro que se chama "Ficheiro.txt"
+\brief Função que grava o estado atual do jogo num ficheiro que se chama "Ficheiro.txt".
+ \param ficheiro Apontador para o ficheiro;
+ \param e Estado.
 */
 void grava(FILE *ficheiro,ESTADO *e) {
     ficheiro = fopen("ficheiro.txt", "w");
@@ -21,11 +21,24 @@ void grava(FILE *ficheiro,ESTADO *e) {
     fclose(ficheiro);
 }
 
+
+/**
+\brief Função que transforma uma string em coordenada.
+ \param coordenada String do tipo letra-numero.
+ \returns Coordenada.
+*/
 COORDENADA str_to_coord (char *coordenada) {
     COORDENADA coord = {*coordenada - 'a', *(coordenada + 1) - '1'};
     return coord;
 }
 
+
+/**
+\brief Função que coloca altera o estado de cada casa de acordo com a char string recebida.
+ \param linha Apontador para a string que é uma linha do tabuleiro;
+ \param estado Estado;
+ \param l Número da linha.
+*/
 void str_to_casa (char *linha, ESTADO *estado, int l) {
     int i = 0;
     while (i < 8) {
@@ -48,17 +61,34 @@ void str_to_casa (char *linha, ESTADO *estado, int l) {
     }
 }
 
+
+/**
+\brief Função que armazena as duas coordenadas no array das jogadas no estado
+ \param c1 Coordenada do jogador 1;
+ \param c2 Coordenada do jogador 2;
+ \param i Número da jogada;
+ \param estado Estado.
+*/
 void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado){
     estado->jogadas[i].jogador1 = c1;
     estado->jogadas[i].jogador2 = c2;
 }
 
+
+/**
+\brief Função que lê o ficheiro criado e altera o estado do jogo.
+ \param ficheiro apontador do ficheiro;
+ \param estado Estado.
+*/
 void le(FILE *ficheiro,ESTADO *estado) {
     ficheiro = fopen("ficheiro.txt", "r");
 
     free(estado);
     estado = inicializar_estado();
 
+/**
+\brief Parte da função que lê o tabuleiro do ficheiro.
+*/
     int num_jog;
     int i = 0;
     char jog1[BUF_SIZE];
@@ -71,6 +101,10 @@ void le(FILE *ficheiro,ESTADO *estado) {
     }
 
     i = 0;
+
+/**
+\brief Parte da função que lê os movimentos do ficheiro.
+*/
 
     while (fgets(linha, BUF_SIZE, ficheiro) != NULL) {
         int num_tokens = sscanf(linha, "%d: %s %s", &num_jog, jog1, jog2);
@@ -100,11 +134,14 @@ void le(FILE *ficheiro,ESTADO *estado) {
 
 /**
 \brief Função que imprime todas as jogadas anteriores.
+ \param e Estado;
+ \param stdout Apontador para o ficheiro;
+ \param l Dá a opção de imprimir de uma forma (se é para o ficheiro criado, ou para a interface).
 */
 void movs(ESTADO *e,FILE *stdout,int l) {
     int j = obter_numero_de_jogadas(e);
     int i = 0;
-    int ljum, cjum, ljdois, cjdois;
+    int ljum = 0, cjum = 0, ljdois = 0, cjdois = 0;
 
     if (l == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
@@ -119,38 +156,46 @@ void movs(ESTADO *e,FILE *stdout,int l) {
         else fprintf(stdout, "%02d|    %c%d     |    %c%d\n", i + 1, cjum, ljum, cjdois, ljdois);
     }
 
+/**
+\brief Se o jogador a jogar for o jogador 2, então significa que o jogador 1 já jogou.
+*/
     if (obter_jogador_atual(e) == 2) {
         ljum = e->jogadas[j].jogador1.linha + 1;
         cjum = e->jogadas[j].jogador1.coluna + 97;
-    }
 
-    if (l == 1) fprintf(stdout, "%02d: %c%d\n", i + 1, cjum, ljum, cjdois, ljdois);
-    else {
-        fprintf(stdout, "%02d|    %c%d\n", i + 1, cjum, ljum, cjdois, ljdois);
-        fprintf(stdout, "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
+
+        if (l == 1) fprintf(stdout, "%02d: %c%d\n", i + 1, cjum, ljum);
+        else {
+            fprintf(stdout, "%02d|    %c%d\n", i + 1, cjum, ljum);
+            fprintf(stdout, "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
+        }
     }
 }
 
 
-void pos(ESTADO *e,int i,FILE *ficheiroaux) {
-    if (i < obter_numero_de_jogadas(e)) {
-        e->jogador_atual = 1;
-        e->ultima_jogada = e->jogadas[i].jogador2;
-        e->tab[7 - e->jogadas[i].jogador2.linha][e->jogadas[i].jogador2.coluna] = BRANCA;
+/**
+\brief Função que imprime todas as jogadas anteriores.
+ \param e Estado;
+ \param i Jogada para onde o jogador quer recuar.
+*/
+void pos(ESTADO *e,int i) {
 
-        int itemp = i + 1;
+    int itemp = i;
 
-        while (itemp <= obter_numero_de_jogadas(e)) {
-            int linha1 = e->jogadas[itemp].jogador1.linha;
-            int coluna1 = e->jogadas[itemp].jogador1.coluna;
-            int linha2 = e->jogadas[itemp].jogador2.linha;
-            int coluna2 = e->jogadas[itemp].jogador2.coluna;
+    while (itemp < obter_numero_de_jogadas(e)) {
+        int linha1 = e->jogadas[itemp].jogador1.linha;
+        int coluna1 = e->jogadas[itemp].jogador1.coluna;
+        int linha2 = e->jogadas[itemp].jogador2.linha;
+        int coluna2 = e->jogadas[itemp].jogador2.coluna;
 
-            e->tab[7 - linha1][coluna1] = VAZIO;
-            e->tab[7 - linha2][coluna2] = VAZIO;
-            itemp++;
-        }
-        e->num_jogadas = i;
-
+        e->tab[7 - linha1][coluna1] = VAZIO;
+        e->tab[7 - linha2][coluna2] = VAZIO;
+        itemp++;
     }
+    e->tab[7-e->jogadas[itemp].jogador1.linha][e->jogadas[itemp].jogador1.coluna]=VAZIO;
+    e->jogador_atual = 1;
+    e->ultima_jogada = e->jogadas[i-1].jogador2;
+    e->tab[7-e->ultima_jogada.linha][e->ultima_jogada.coluna] = BRANCA;
+
+    e->num_jogadas = i;
 }

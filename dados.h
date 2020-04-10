@@ -1,12 +1,12 @@
 /**
-\brief Estruturas de Dados
+\brief Estruturas de Dados.
 */
 #ifndef ___DADOS_H___
 #define  ___DADOS_H___
 #define BUF_SIZE 1024
 
 /**
-\brief Tipo de dados para os erros
+\brief Tipo de dados para os erros.
 */
 typedef enum {
     OK,
@@ -16,8 +16,9 @@ typedef enum {
     ERRO_ABRIR_FICHEIRO,
 } ERROS;
 
+
 /**
-\brief Tipo de dados para a casa
+\brief Tipo de dados para a casa.
 */
 typedef enum {
     UM = '1',
@@ -27,46 +28,50 @@ typedef enum {
     PRETA = '#'
 } CASA;
 
+
 /**
-\brief Tipo de dados para as coordenadas
+\brief Tipo de dados para as coordenadas.
 */
 typedef struct {
     int coluna;
     int linha;
 } COORDENADA;
 
+
 /**
-\brief Tipo de dados para a jogada
+\brief Tipo de dados para a jogada.
 */
 typedef struct {
     COORDENADA jogador1;
     COORDENADA jogador2;
 } JOGADA;
 
+
 /**
-\brief Tipo de dados para as jogadas
+\brief Tipo de dados para as jogadas.
 */
 typedef JOGADA JOGADAS[32];
 
+
 /**
-\brief Tipo de dados para o estado
+\brief Tipo de dados para o estado.
 */
 
+
 typedef struct {
-    /** O tabuleiro */
+    /** O tabuleiro. */
     CASA tab[9][9];
-    /** As jogadas */
+    /** As jogadas. */
     JOGADAS jogadas;
-    /** O número das jogadas, usado no prompt */
+    /** O número das jogadas, usado no prompt. */
     int num_jogadas;
-    /** O jogador atual */
+    /** O jogador atual. */
     int jogador_atual;
-    /** O nº de comando, usado no prompt */
+    /** O nº de comando, usado no prompt. */
     int num_comando;
-    /** A coordenada da última jogada */
+    /** A coordenada da última jogada. */
     COORDENADA ultima_jogada;
 } ESTADO;
-
 
 
 ESTADO *inicializar_estado();
@@ -75,5 +80,6 @@ COORDENADA obter_ultima_jogada(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 int obter_comando(ESTADO *e);
+COORDENADA obter_coordenada(ESTADO *e, int i, int j);
 
 #endif //___DADOS_H___

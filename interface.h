@@ -1,3 +1,4 @@
+#include <stdio.h>
 /**
 \brief Estrutura de Interface
 */
@@ -5,7 +6,8 @@
 #define PROJETOLI2_INTERFACE_H
 
 void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd);
-int interpretador(ESTADO *e, FILE *ficheiro, FILE *ficheiroaux);
+int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro);
+void vencedor(int i);
 void refresh_board (ESTADO *e, COORDENADA c);
 void prompt(ESTADO *e);
 

@@ -16,30 +16,19 @@ Funções que alteram o tabuleiro.
 \brief i é linha; j é coluna;
  \param e Estado recebido.
 */
-void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int i) {
+void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
     COORDENADA c;
-
-    if (i == 1) {
-        for (int i = 8; i > 0; i--) {
-            for (int j = 0; j <= 7; j++) {
-                c.linha = 8-i;
-                c.coluna = j;
-                fprintf(stdout, "%c ", obter_estado_casa(e,c));
-            }
-            fprintf(stdout, "\n");
+    for (int i = 8; i > 0; i--) {
+        if (cmd == 2) fprintf(stdout, "%d ", i);
+        for (int j = 0; j <= 7; j++) {
+            c.linha = 8 - i;
+            c.coluna = j;
+            if (cmd == 1) fprintf(stdout, "%c", obter_estado_casa(e, c));
+            else fprintf(stdout, "%c ", obter_estado_casa(e, c));
         }
-    } else {
-        for (int i = 8; i > 0; i--) {
-            fprintf(stdout, "%d ", i);
-            for (int j = 0; j <= 7; j++) {
-                c.linha = 8-i;
-                c.coluna = j;
-                fprintf(stdout, "%c ", obter_estado_casa(e, c));
-            }
-            fprintf(stdout, "\n");
-        }
-        fprintf(stdout, "  a b c d e f g h \n");
+        fprintf(stdout, "\n");
     }
+    if (cmd == 2) fprintf(stdout, "  a b c d e f g h \n");
 }
 
 /**
@@ -116,7 +105,7 @@ int interpretador(ESTADO *e, FILE *ficheiro,FILE *ficheiroaux) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        jogar(e, coord, ficheiro);
+        jogar(e, coord);
 
         e->num_comando = 1;
 
@@ -140,7 +129,7 @@ int interpretador(ESTADO *e, FILE *ficheiro,FILE *ficheiroaux) {
     if (strcmp(linha, "ler\n")==0) {
         e->num_comando = 3;
 
-        le(ficheiro,e,1);
+        le(ficheiro,e);
 
         return 1;
     }
@@ -160,9 +149,7 @@ int interpretador(ESTADO *e, FILE *ficheiro,FILE *ficheiroaux) {
         *(linha + 4) -= 47;
         *(linha + 5) -= 47;
 
-        if (strlen(linha)==6) pos(e,linha[4]-1,ficheiroaux);
-        else if (linha[4]==0) pos(e,linha[5]-1,ficheiroaux);
-        else pos(e,10*(linha[4]-1)+linha[5]-1,ficheiroaux);
+
 
 
         return 1;

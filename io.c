@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "io.h"
 #include "interface.h"
 #include "dados.h"
@@ -141,13 +142,13 @@ void le(FILE *ficheiro,ESTADO *estado) {
 */
 void movs(ESTADO *e,FILE *stdout,int l) {
     int j = obter_numero_de_jogadas(e);
-    int i = 0;
+    int i;
     int ljum = 0, cjum = 0, ljdois = 0, cjdois = 0;
 
     if (l == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
 
-    for (i; i < j; i++) {
+    for (i=0; i < j; i++) {
         ljum = e->jogadas[i].jogador1.linha + 1;
         cjum = e->jogadas[i].jogador1.coluna + 97;
         ljdois = e->jogadas[i].jogador2.linha + 1;
@@ -206,10 +207,34 @@ void jog(ESTADO *e) {
     c.linha = obter_ultima_jogada(e).linha;
     c.coluna = obter_ultima_jogada(e).coluna;
 
-    if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna - 1}) == 1)
-        jogar(e, (COORDENADA) {c.linha - 1, c.coluna - 1});
-    else if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna}) == 1)
-        jogar(e, (COORDENADA) {c.linha - 1, c.coluna});
+    COORDENADA hip1, hip2, hip3, hip4, hip5, hip6, hip7;
+
+    hip1.linha = c.linha-1;
+    hip1.coluna = c.coluna-1;
+
+    hip2.linha = c.linha -1;
+    hip2.coluna = c.coluna;
+
+    hip3.linha = c.linha;
+    hip3.coluna = c.coluna-1;
+
+    hip4.linha = c.linha;
+    hip4.coluna = c.coluna+1;
+
+    hip5.linha = c.linha+1;
+    hip5.coluna = c.coluna+1;
+
+    hip6.linha = c.linha+1;
+    hip6.coluna = c.coluna;
+
+    hip7.linha = c.linha+1;
+    hip7.coluna = c.coluna-1;
+/*Falta alterar as hip e falta o jogador 2*/
+
+    if (verifica_jogada(e, hip1) == 1)
+        jogar(e, hip1);
+    else if (verifica_jogada(e, hip2) == 1)
+        jogar(e, hip2);
     else if (verifica_jogada(e, (COORDENADA) {c.linha, c.coluna - 1}) == 1)
         jogar(e, (COORDENADA) {c.linha, c.coluna - 1});
     else if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna + 1}) == 1)
@@ -234,13 +259,20 @@ void jog(ESTADO *e) {
             jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna - 1});
             if (fim_jogo(etemp) == obter_jogador_atual(e))
                 jogar(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
-        }
-        else {
+        } else {
             int d, ci, cd, ce;
-            d=verifica_jogada(e, (COORDENADA) {c.linha, c.coluna + 1});
-            ci=verifica_jogada(e, (COORDENADA) {c.linha+1, c.coluna});
-            cd=verifica_jogada(e, (COORDENADA) {c.linha+1, c.coluna + 1});
-            ce=verifica_jogada(e, (COORDENADA) {c.linha+1, c.coluna -1});
+            d = verifica_jogada(e, (COORDENADA) {c.linha, c.coluna + 1});
+            ci = verifica_jogada(e, (COORDENADA) {c.linha + 1, c.coluna});
+            cd = verifica_jogada(e, (COORDENADA) {c.linha + 1, c.coluna + 1});
+            ce = verifica_jogada(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
+
+            srand(time(NULL));
+            int result = (rand() % 4);
+
+            if (d == 1 && result == 0) jogar(e, (COORDENADA) {c.linha, c.coluna + 1});
+            else if (ci == 1 && result == 1) jogar(e, (COORDENADA) {c.linha + 1, c.coluna});
+            else if (cd == 1 && result == 2) jogar(e, (COORDENADA) {c.linha + 1, c.coluna + 1});
+            else jogar(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
         }
     }
 }

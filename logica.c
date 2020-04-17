@@ -91,7 +91,7 @@ int fim_jogo(ESTADO *e) {
                 if (p1 == 1 || p2 == 1 || p3 == 1 || p4 == 1 || p5 == 1 || p6 == 1 || p7 == 1 || p8 == 1)
                     return 3;
                 else return 0;
-            };
+            }
         }
     }
 }

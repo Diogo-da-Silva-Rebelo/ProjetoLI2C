@@ -30,7 +30,7 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
     int reslinha = c.linha - obter_ultima_jogada(e).linha;
     int rescoluna = c.coluna - obter_ultima_jogada(e).coluna;
 
-    if (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 && obter_estado_casa(e,c)!=BRANCA) return 1;
+    if (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 && (obter_estado_casa(e,c)==VAZIO || obter_estado_casa(e,c)==UM || obter_estado_casa(e,c)==DOIS)) return 1;
     else return 0;
 }
 

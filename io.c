@@ -3,6 +3,7 @@
 #include "io.h"
 #include "interface.h"
 #include "dados.h"
+#include "logica.h"
 
 /**
 @file io.c
@@ -198,4 +199,48 @@ void pos(ESTADO *e,int i) {
     e->tab[7-e->ultima_jogada.linha][e->ultima_jogada.coluna] = BRANCA;
 
     e->num_jogadas = i;
+}
+
+void jog(ESTADO *e) {
+    COORDENADA c;
+    c.linha = obter_ultima_jogada(e).linha;
+    c.coluna = obter_ultima_jogada(e).coluna;
+
+    if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna - 1}) == 1)
+        jogar(e, (COORDENADA) {c.linha - 1, c.coluna - 1});
+    else if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna}) == 1)
+        jogar(e, (COORDENADA) {c.linha - 1, c.coluna});
+    else if (verifica_jogada(e, (COORDENADA) {c.linha, c.coluna - 1}) == 1)
+        jogar(e, (COORDENADA) {c.linha, c.coluna - 1});
+    else if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna + 1}) == 1)
+        jogar(e, (COORDENADA) {c.linha, c.coluna + 1});
+    else {
+        ESTADO *etemp;
+        etemp = inicializar_estado();
+        *etemp = *e;
+        if (verifica_jogada(etemp, (COORDENADA) {c.linha, c.coluna + 1}) == 1) {
+            jogar(etemp, (COORDENADA) {c.linha, c.coluna + 1});
+            if (fim_jogo(etemp) == obter_jogador_atual(e))
+                jogar(e, (COORDENADA) {c.linha, c.coluna + 1});
+        } else if (verifica_jogada(etemp, (COORDENADA) {c.linha + 1, c.coluna + 1}) == 1) {
+            jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna + 1});
+            if (fim_jogo(etemp) == obter_jogador_atual(e))
+                jogar(e, (COORDENADA) {c.linha + 1, c.coluna + 1});
+        } else if (verifica_jogada(etemp, (COORDENADA) {c.linha + 1, c.coluna}) == 1) {
+            jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna});
+            if (fim_jogo(etemp) == obter_jogador_atual(e))
+                jogar(e, (COORDENADA) {c.linha + 1, c.coluna});
+        } else if (verifica_jogada(etemp, (COORDENADA) {c.linha + 1, c.coluna - 1}) == 1) {
+            jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna - 1});
+            if (fim_jogo(etemp) == obter_jogador_atual(e))
+                jogar(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
+        }
+        else {
+            int d, ci, cd, ce;
+            d=verifica_jogada(e, (COORDENADA) {c.linha, c.coluna + 1});
+            ci=verifica_jogada(e, (COORDENADA) {c.linha+1, c.coluna});
+            cd=verifica_jogada(e, (COORDENADA) {c.linha+1, c.coluna + 1});
+            ce=verifica_jogada(e, (COORDENADA) {c.linha+1, c.coluna -1});
+        }
+    }
 }

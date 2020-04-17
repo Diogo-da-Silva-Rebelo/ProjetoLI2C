@@ -35,7 +35,6 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
 }
 
 
-
 /**
 \brief Função que verifica se o jogo acabou. Testa todas as possibilidades de jogada.
  \param e Estado.

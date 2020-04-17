@@ -13,5 +13,6 @@ void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
 void le(FILE *ficheiro,ESTADO *e);
 void movs(ESTADO *e,FILE *stdout,int l);
 void pos(ESTADO *e,int i);
+void jog(ESTADO *e);
 
 #endif //PROJETOLI2_IO_H

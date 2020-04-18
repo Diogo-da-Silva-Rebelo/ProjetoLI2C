@@ -71,7 +71,7 @@ void str_to_casa (char *linha, ESTADO *estado, int l) {
  \param i Número da jogada;
  \param estado Estado.
 */
-void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado){
+void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado) {
     estado->jogadas[i].jogador1 = c1;
     estado->jogadas[i].jogador2 = c2;
 }
@@ -148,7 +148,7 @@ void movs(ESTADO *e,FILE *stdout,int l) {
     if (l == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
 
-    for (i=0; i < j; i++) {
+    for (i = 0; i < j; i++) {
         ljum = e->jogadas[i].jogador1.linha + 1;
         cjum = e->jogadas[i].jogador1.coluna + 97;
         ljdois = e->jogadas[i].jogador2.linha + 1;
@@ -194,12 +194,27 @@ void pos(ESTADO *e,int i) {
         e->tab[7 - linha2][coluna2] = VAZIO;
         itemp++;
     }
-    e->tab[7-e->jogadas[itemp].jogador1.linha][e->jogadas[itemp].jogador1.coluna]=VAZIO;
+    e->tab[7 - e->jogadas[itemp].jogador1.linha][e->jogadas[itemp].jogador1.coluna] = VAZIO;
     e->jogador_atual = 1;
-    e->ultima_jogada = e->jogadas[i-1].jogador2;
-    e->tab[7-e->ultima_jogada.linha][e->ultima_jogada.coluna] = BRANCA;
+    e->ultima_jogada = e->jogadas[i - 1].jogador2;
+    e->tab[7 - e->ultima_jogada.linha][e->ultima_jogada.coluna] = BRANCA;
 
     e->num_jogadas = i;
+}
+
+int verifica_fim_jog(ESTADO *etemp, ESTADO *e,COORDENADA c) {
+    if (verifica_jogada(etemp, c) == 1) {
+        jogar(etemp, c);
+        if (fim_jogo(etemp) != 3)
+            return 1;
+        else {
+            *etemp = *e;
+            return 0;
+        }
+    } else {
+        *etemp = *e;
+        return 0;
+    }
 }
 
 void jog(ESTADO *e) {
@@ -207,72 +222,93 @@ void jog(ESTADO *e) {
     c.linha = obter_ultima_jogada(e).linha;
     c.coluna = obter_ultima_jogada(e).coluna;
 
-    COORDENADA hip1, hip2, hip3, hip4, hip5, hip6, hip7;
+    COORDENADA hip1, hip2, hip3, hip4, hip5, hip6, hip7, hip8;
 
-    hip1.linha = c.linha-1;
-    hip1.coluna = c.coluna-1;
+    if (obter_jogador_atual(e) == 1) {
+        hip1.linha = c.linha - 1;
+        hip1.coluna = c.coluna - 1;
 
-    hip2.linha = c.linha -1;
-    hip2.coluna = c.coluna;
+        hip2.linha = c.linha - 1;
+        hip2.coluna = c.coluna;
 
-    hip3.linha = c.linha;
-    hip3.coluna = c.coluna-1;
+        hip3.linha = c.linha;
+        hip3.coluna = c.coluna - 1;
 
-    hip4.linha = c.linha;
-    hip4.coluna = c.coluna+1;
+        hip4.linha = c.linha - 1;
+        hip4.coluna = c.coluna + 1;
 
-    hip5.linha = c.linha+1;
-    hip5.coluna = c.coluna+1;
+        hip5.linha = c.linha;
+        hip5.coluna = c.coluna + 1;
 
-    hip6.linha = c.linha+1;
-    hip6.coluna = c.coluna;
+        hip6.linha = c.linha + 1;
+        hip6.coluna = c.coluna + 1;
 
-    hip7.linha = c.linha+1;
-    hip7.coluna = c.coluna-1;
-/*Falta alterar as hip e falta o jogador 2*/
+        hip7.linha = c.linha + 1;
+        hip7.coluna = c.coluna;
+
+        hip8.linha = c.linha + 1;
+        hip8.coluna = c.coluna - 1;
+    } else {
+        hip1.linha = c.linha + 1;
+        hip1.coluna = c.coluna + 1;
+
+        hip2.linha = c.linha + 1;
+        hip2.coluna = c.coluna;
+
+        hip3.linha = c.linha;
+        hip3.coluna = c.coluna + 1;
+
+        hip4.linha = c.linha + 1;
+        hip4.coluna = c.coluna - 1;
+
+        hip5.linha = c.linha;
+        hip5.coluna = c.coluna - 1;
+
+        hip6.linha = c.linha - 1;
+        hip6.coluna = c.coluna - 1;
+
+        hip7.linha = c.linha - 1;
+        hip7.coluna = c.coluna;
+
+        hip8.linha = c.linha - 1;
+        hip8.coluna = c.coluna + 1;
+    }
+
 
     if (verifica_jogada(e, hip1) == 1)
         jogar(e, hip1);
     else if (verifica_jogada(e, hip2) == 1)
         jogar(e, hip2);
-    else if (verifica_jogada(e, (COORDENADA) {c.linha, c.coluna - 1}) == 1)
-        jogar(e, (COORDENADA) {c.linha, c.coluna - 1});
-    else if (verifica_jogada(e, (COORDENADA) {c.linha - 1, c.coluna + 1}) == 1)
-        jogar(e, (COORDENADA) {c.linha, c.coluna + 1});
+    else if (verifica_jogada(e, hip3) == 1)
+        jogar(e, hip3);
+    else if (verifica_jogada(e, hip4) == 1)
+        jogar(e, hip4);
     else {
         ESTADO *etemp;
         etemp = inicializar_estado();
         *etemp = *e;
-        if (verifica_jogada(etemp, (COORDENADA) {c.linha, c.coluna + 1}) == 1) {
-            jogar(etemp, (COORDENADA) {c.linha, c.coluna + 1});
-            if (fim_jogo(etemp) == obter_jogador_atual(e))
-                jogar(e, (COORDENADA) {c.linha, c.coluna + 1});
-        } else if (verifica_jogada(etemp, (COORDENADA) {c.linha + 1, c.coluna + 1}) == 1) {
-            jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna + 1});
-            if (fim_jogo(etemp) == obter_jogador_atual(e))
-                jogar(e, (COORDENADA) {c.linha + 1, c.coluna + 1});
-        } else if (verifica_jogada(etemp, (COORDENADA) {c.linha + 1, c.coluna}) == 1) {
-            jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna});
-            if (fim_jogo(etemp) == obter_jogador_atual(e))
-                jogar(e, (COORDENADA) {c.linha + 1, c.coluna});
-        } else if (verifica_jogada(etemp, (COORDENADA) {c.linha + 1, c.coluna - 1}) == 1) {
-            jogar(etemp, (COORDENADA) {c.linha + 1, c.coluna - 1});
-            if (fim_jogo(etemp) == obter_jogador_atual(e))
-                jogar(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
-        } else {
-            int d, ci, cd, ce;
-            d = verifica_jogada(e, (COORDENADA) {c.linha, c.coluna + 1});
-            ci = verifica_jogada(e, (COORDENADA) {c.linha + 1, c.coluna});
-            cd = verifica_jogada(e, (COORDENADA) {c.linha + 1, c.coluna + 1});
-            ce = verifica_jogada(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
+
+        if (verifica_fim_jog(etemp, e, hip5) == 1)
+            jogar(e, hip5);
+        else if (verifica_fim_jog(etemp, e, hip6) == 1)
+            jogar(e, hip6);
+        else if (verifica_fim_jog(etemp, e, hip7) == 1)
+            jogar(e, hip7);
+        else if (verifica_fim_jog(etemp, e, hip8) == 1)
+            jogar(e, hip8);
+        else {
+            int d, ci, cd;
+            d = verifica_jogada(e, hip5);
+            ci = verifica_jogada(e, hip6);
+            cd = verifica_jogada(e, hip7);
 
             srand(time(NULL));
             int result = (rand() % 4);
 
-            if (d == 1 && result == 0) jogar(e, (COORDENADA) {c.linha, c.coluna + 1});
-            else if (ci == 1 && result == 1) jogar(e, (COORDENADA) {c.linha + 1, c.coluna});
-            else if (cd == 1 && result == 2) jogar(e, (COORDENADA) {c.linha + 1, c.coluna + 1});
-            else jogar(e, (COORDENADA) {c.linha + 1, c.coluna - 1});
+            if (d == 1 && result == 0) jogar(e, hip5);
+            else if (ci == 1 && result == 1) jogar(e, hip6);
+            else if (cd == 1 && result == 2) jogar(e, hip7);
+            else jogar(e, hip8);
         }
     }
 }

@@ -131,6 +131,12 @@ void prompt(ESTADO *e) {
 int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     char linha[BUF_SIZE];
 
+    int r = fim_jogo(e);
+    if (r == 1 || r == 2) {
+        vencedor(r);
+        return 0;
+    }
+
     prompt(e);
     printf("Jogador %d, introduza uma jogada: ", obter_jogador_atual(e));
 
@@ -143,11 +149,6 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
         jogar(e, coord);
         e->num_comando = 1;
 
-        int r = fim_jogo(e);
-        if (r == 1 || r == 2) {
-            vencedor(r);
-            return 0;
-        }
         return 1;
     }
 
@@ -162,13 +163,6 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
         e->num_comando = 3;
 
         le(ficheiro, e);
-        return 1;
-    }
-
-    if (strcmp(linha, "movs\n") == 0) {
-        e->num_comando = 5;
-
-        movs(e, stdout, 2);
         return 1;
     }
 
@@ -199,10 +193,22 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
         return 1;
     }
 
+    if (strcmp(linha, "movs\n") == 0) {
+        e->num_comando = 5;
+
+        movs(e, stdout, 2);
+        return 1;
+    }
+
+    if(strcmp(linha, "jog\n")==0){
+        jog(e);
+        e->num_comando=6;
+        return 1;
+    }
+
     if (strcmp(linha, "Q\n") == 0) {
 
         printf("Prazer!");
         return 0;
     }
-    return 0;
-}
+    return 0;}

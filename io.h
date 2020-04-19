@@ -1,4 +1,5 @@
 #include "dados.h"
+#include "listas.h"
 /**
 \brief Estruturas de Comandos
 */
@@ -14,6 +15,8 @@ void le(FILE *ficheiro,ESTADO *e);
 void movs(ESTADO *e,FILE *stdout,int l);
 void pos(ESTADO *e,int i);
 int verifica_fim_jog(ESTADO *etemp, ESTADO *e, COORDENADA c);
-void jog(ESTADO *e);
+int compara_coord(COORDENADA c,COORDENADA d);
+int ver_jogada(LISTA sl,ESTADO *etemp, ESTADO *e,COORDENADA h1,COORDENADA h2,COORDENADA h3,COORDENADA h4);
+int jog(ESTADO *e);
 
 #endif //PROJETOLI2_IO_H

@@ -29,8 +29,9 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
 
     int reslinha = c.linha - obter_ultima_jogada(e).linha;
     int rescoluna = c.coluna - obter_ultima_jogada(e).coluna;
+    CASA casa = obter_estado_casa(e,c);
 
-    if (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 && (obter_estado_casa(e,c)==VAZIO || obter_estado_casa(e,c)==UM || obter_estado_casa(e,c)==DOIS)) return 1;
+    if (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 && (casa==VAZIO || casa==UM || casa==DOIS)) return 1;
     else return 0;
 }
 
@@ -86,7 +87,7 @@ int fim_jogo(ESTADO *e) {
             return 2;
         } else {
             if (p1 == 0 && p2 == 0 && p3 == 0 && p4 == 0 && p5 == 0 && p6 == 0 && p7 == 0 && p8 == 0) {
-                return (e->jogador_atual == 1) ? 2 : 1;
+                return (obter_jogador_atual(e) == 1) ? 2 : 1;
             } else return 3;
         }
     }

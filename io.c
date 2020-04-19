@@ -5,6 +5,7 @@
 #include "interface.h"
 #include "dados.h"
 #include "logica.h"
+#include "listas.h"
 
 /**
 @file io.c
@@ -202,113 +203,94 @@ void pos(ESTADO *e,int i) {
     e->num_jogadas = i;
 }
 
-int verifica_fim_jog(ESTADO *etemp, ESTADO *e,COORDENADA c) {
-    if (verifica_jogada(etemp, c) == 1) {
-        jogar(etemp, c);
-        if (fim_jogo(etemp) != 3)
-            return 1;
-        else {
-            *etemp = *e;
-            return 0;
-        }
-    } else {
-        *etemp = *e;
-        return 0;
-    }
+
+/**
+\brief Função que verifica se, com a jogada feita, o jogo acaba.
+ \param etemp Estado temporário que serve para testes;
+ \param c Coordenada que é jogada.
+*/
+int verifica_fim_jog(ESTADO *etemp, ESTADO *e, COORDENADA c) {
+    jogar(etemp, c);
+    if (fim_jogo(etemp) != 3)
+        return 1;
+    *etemp=*e;
+    return 0;
 }
 
-void jog(ESTADO *e) {
-    COORDENADA c;
+int compara_coord(COORDENADA c,COORDENADA d){
+    if (c.linha==d.linha && c.coluna==d.coluna)
+        return 1;
+    return 0;
+}
+
+int ver_jogada(LISTA sl,ESTADO *etemp, ESTADO *e,COORDENADA h1,COORDENADA h2,COORDENADA h3,COORDENADA h4){
+    COORDENADA *coord;
+    coord = malloc(sizeof(COORDENADA));
+    while(lista_esta_vazia(sl)==0){
+        coord = (COORDENADA *) sl->valor;
+
+        if (compara_coord(*coord,h1) || compara_coord(*coord,h2) || compara_coord(*coord,h3) || compara_coord(*coord,h4) || verifica_fim_jog(etemp, e, *coord) == 1) {
+            jogar(e, *coord);
+            return 1;
+        } else sl=remove_cabeca(sl);
+    }
+    return 0;
+}
+
+/**
+\brief Função que joga pela vez do jogador. Heurística: Flood Fill.
+ \param e Estado do jogo.
+*/
+int jog(ESTADO *e) {
+    COORDENADA c, *coord, h1, h2, h3, h4;
+
     c.linha = obter_ultima_jogada(e).linha;
     c.coluna = obter_ultima_jogada(e).coluna;
+    int i = 1;
+    if (obter_jogador_atual(e) == 2) i = -1;
+    h1.coluna = c.coluna - i;
+    h1.linha = c.linha - i;
 
-    COORDENADA hip1, hip2, hip3, hip4, hip5, hip6, hip7, hip8;
+    h2.coluna = c.coluna;
+    h2.linha = c.linha - i;
 
-    if (obter_jogador_atual(e) == 1) {
-        hip1.linha = c.linha - 1;
-        hip1.coluna = c.coluna - 1;
+    h3.coluna = c.coluna - i;
+    h3.linha = c.linha;
 
-        hip2.linha = c.linha - 1;
-        hip2.coluna = c.coluna;
+    h4.coluna = c.coluna + i;
+    h4.linha = c.linha - i;
 
-        hip3.linha = c.linha;
-        hip3.coluna = c.coluna - 1;
+    LISTA l = criar_lista();
 
-        hip4.linha = c.linha - 1;
-        hip4.coluna = c.coluna + 1;
+    for (i = -1; i <= 1; i++)
+        for (int j = -1; j <= 1; j++) {
+            COORDENADA *d;
+            d = malloc(sizeof(COORDENADA));
 
-        hip5.linha = c.linha;
-        hip5.coluna = c.coluna + 1;
-
-        hip6.linha = c.linha + 1;
-        hip6.coluna = c.coluna + 1;
-
-        hip7.linha = c.linha + 1;
-        hip7.coluna = c.coluna;
-
-        hip8.linha = c.linha + 1;
-        hip8.coluna = c.coluna - 1;
-    } else {
-        hip1.linha = c.linha + 1;
-        hip1.coluna = c.coluna + 1;
-
-        hip2.linha = c.linha + 1;
-        hip2.coluna = c.coluna;
-
-        hip3.linha = c.linha;
-        hip3.coluna = c.coluna + 1;
-
-        hip4.linha = c.linha + 1;
-        hip4.coluna = c.coluna - 1;
-
-        hip5.linha = c.linha;
-        hip5.coluna = c.coluna - 1;
-
-        hip6.linha = c.linha - 1;
-        hip6.coluna = c.coluna - 1;
-
-        hip7.linha = c.linha - 1;
-        hip7.coluna = c.coluna;
-
-        hip8.linha = c.linha - 1;
-        hip8.coluna = c.coluna + 1;
-    }
-
-
-    if (verifica_jogada(e, hip1) == 1)
-        jogar(e, hip1);
-    else if (verifica_jogada(e, hip2) == 1)
-        jogar(e, hip2);
-    else if (verifica_jogada(e, hip3) == 1)
-        jogar(e, hip3);
-    else if (verifica_jogada(e, hip4) == 1)
-        jogar(e, hip4);
-    else {
-        ESTADO *etemp;
-        etemp = inicializar_estado();
-        *etemp = *e;
-
-        if (verifica_fim_jog(etemp, e, hip5) == 1)
-            jogar(e, hip5);
-        else if (verifica_fim_jog(etemp, e, hip6) == 1)
-            jogar(e, hip6);
-        else if (verifica_fim_jog(etemp, e, hip7) == 1)
-            jogar(e, hip7);
-        else if (verifica_fim_jog(etemp, e, hip8) == 1)
-            jogar(e, hip8);
-        else {
-            int d, ci, cd;
-            d = verifica_jogada(e, hip5);
-            ci = verifica_jogada(e, hip6);
-            cd = verifica_jogada(e, hip7);
-
-            srand(time(NULL));
-            int result = (rand() % 4);
-
-            if (d == 1 && result == 0) jogar(e, hip5);
-            else if (ci == 1 && result == 1) jogar(e, hip6);
-            else if (cd == 1 && result == 2) jogar(e, hip7);
-            else jogar(e, hip8);
+            d->linha = c.linha + i;
+            d->coluna = c.coluna + j;
+            if (verifica_jogada(e, *d) == 1) {
+                l = insere_cabeca(l, d);
+            }
         }
+
+
+
+
+    ESTADO *etemp;
+    etemp = inicializar_estado();
+    *etemp = *e;
+    LISTA sl = criar_lista();
+    *sl = *l;
+
+    if (ver_jogada(sl, etemp, e, h1, h2, h3, h4) == 1) return 0;
+    else {
+        srand(time(NULL));
+        int tamanho = tamanho_lista(l)-1;
+        int result = (rand() % tamanho);
+        for (i = 0; i < result; i++, l = proximo(l));
+        coord = (COORDENADA *) devolve_cabeca(l);
+        jogar(e, *coord);
+        return 0;
     }
 }

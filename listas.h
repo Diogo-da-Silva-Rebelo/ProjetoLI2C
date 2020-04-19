@@ -22,5 +22,6 @@ LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 // Devolve verdareiro se a lista é vazia
 int lista_esta_vazia(LISTA L);
+int tamanho_lista(LISTA L);
 
 #endif //PROJETOLI2_LISTAS_H

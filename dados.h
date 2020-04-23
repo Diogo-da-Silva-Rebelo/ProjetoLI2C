@@ -80,6 +80,6 @@ COORDENADA obter_ultima_jogada(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 int obter_comando(ESTADO *e);
-COORDENADA obter_coordenada(ESTADO *e, int i, int j);
+void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
 
 #endif //___DADOS_H___

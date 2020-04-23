@@ -28,20 +28,20 @@ void vencedor(int i) {
     printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
 
     if (i == 1) {
-        printf("||                                          /‾‾‾|                                                       ||\n");
-        printf("||                                         /_/| |                                                       ||\n");
-        printf("||                                            | |                                                       ||\n");
-        printf("||                                            | |                                                       ||\n");
-        printf("||                                         ___| |__                                                     ||\n");
-        printf("||                                        |________|                                                    ||\n");
+        printf("||                                          ‾‾‾‾‾‾|                                                     ||\n");
+        printf("||                                          ‾‾‾‾| |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
 
     } else {
-        printf("||                                             /‾‾‾‾‾‾‾‾|                                               ||\n");
-        printf("||                                            \\ /‾‾‾‾ | |                                               ||\n");
+        printf("||                                           |‾‾‾‾‾‾‾‾‾‾|                                               ||\n");
+        printf("||                                            ‾‾‾‾‾‾‾ | |                                               ||\n");
         printf("||                                                    | |                                               ||\n");
-        printf("||                                                ____| |                                               ||\n");
-        printf("||                                             ||‾‾‾‾‾| |_____                                          ||\n");
-        printf("||                                             ||_____|_|_____|                                         ||\n");
+        printf("||                                            ________| |                                               ||\n");
+        printf("||                                            ||‾‾‾‾‾‾| |______                                         ||\n");
+        printf("||                                            ||______|_|_____/                                         ||\n");
     }
 }
 
@@ -58,7 +58,7 @@ void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
     for (int i = 8; i > 0; i--) {
         if (cmd == 2) fprintf(stdout, "%d ", i);
         for (int j = 0; j <= 7; j++) {
-            c.linha = i-1;
+            c.linha = i - 1;
             c.coluna = j;
             if (cmd == 1) fprintf(stdout, "%c", obter_estado_casa(e, c));
             else fprintf(stdout, "%c ", obter_estado_casa(e, c));
@@ -77,28 +77,28 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 /**
 \brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e o array de jogadas.
 */
-    if (e->jogador_atual==2) {
+    if (e->jogador_atual == 2) {
         e->jogadas[obter_numero_de_jogadas(e)].jogador2.linha = c.linha;
         e->jogadas[obter_numero_de_jogadas(e)].jogador2.coluna = c.coluna;
         e->jogador_atual = 1;
         e->num_jogadas++;
 
-    }
-    else {e->jogador_atual = 2;
-          e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
-          e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
+    } else {
+        e->jogador_atual = 2;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
     }
 
 /**
 \brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e/ou o array de jogadas.
 */
-    int ult_lin = 7-(e->ultima_jogada.linha);
-    e->tab[ult_lin][e->ultima_jogada.coluna]=PRETA;
-    int lin = 7-c.linha;
-    e->tab[lin][c.coluna]=BRANCA;
+    int ult_lin = 7 - (e->ultima_jogada.linha);
+    e->tab[ult_lin][e->ultima_jogada.coluna] = PRETA;
+    int lin = 7 - c.linha;
+    e->tab[lin][c.coluna] = BRANCA;
 
-    e->ultima_jogada.linha=(c.linha);
-    e->ultima_jogada.coluna=(c.coluna);
+    e->ultima_jogada.linha = (c.linha);
+    e->ultima_jogada.coluna = (c.coluna);
 }
 
 
@@ -145,23 +145,19 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     char col[2], lin[2];
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
-
         jogar(e, coord);
         e->num_comando = 1;
-
         return 1;
     }
 
     if (strcmp(linha, "gr\n") == 0) {
         e->num_comando = 2;
-
         grava(ficheiro, e);
         return 1;
     }
 
     if (strcmp(linha, "ler\n") == 0) {
         e->num_comando = 3;
-
         le(ficheiro, e);
         return 1;
     }
@@ -169,7 +165,6 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     if (linha[0] == 'p' && linha[1] == 'o' && linha[2] == 's' && linha[3] == ' ' &&
         ((strlen(linha) == 6 && linha[4] >= 48 && linha[4] <= 57) ||
          (strlen(linha) == 7 && linha[4] > 48 && linha[4] <= 57 && linha[5] >= 48 && linha[5] <= 57))) {
-
 
         *(linha + 4) -= 48;
         int numero = *(linha + 4);
@@ -180,9 +175,10 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
 
         if (obter_comando(e) != 4) *ae = *e;
 
-        if (numero > obter_numero_de_jogadas(ae))
+        if (numero > obter_numero_de_jogadas(ae)) {
             printf("Impossível, coloque um número inferior ao número de jogadas\n");
-        else if (numero > obter_numero_de_jogadas(e)) *e = *ae;
+            return 1;
+        } else if (numero > obter_numero_de_jogadas(e)) *e = *ae;
 
         if (numero == 0) {
             free(e);
@@ -195,20 +191,19 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
 
     if (strcmp(linha, "movs\n") == 0) {
         e->num_comando = 5;
-
         movs(e, stdout, 2);
         return 1;
     }
 
-    if(strcmp(linha, "jog\n")==0){
+    if (strcmp(linha, "jog\n") == 0) {
         jog(e);
-        e->num_comando=6;
+        e->num_comando = 6;
         return 1;
     }
 
     if (strcmp(linha, "Q\n") == 0) {
-
         printf("Prazer!");
         return 0;
     }
-    return 0;}
+    return 0;
+}

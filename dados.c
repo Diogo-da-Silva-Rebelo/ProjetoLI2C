@@ -87,12 +87,13 @@ int obter_comando(ESTADO *e) {
 
 
 /**
-\brief Função que obtém a coordenada jogada pelo jogador na jogada i.
- \param e Estado;
+\brief Função que armazena as duas coordenadas no array das jogadas no estado
+ \param c1 Coordenada do jogador 1;
+ \param c2 Coordenada do jogador 2;
  \param i Número da jogada;
- \param j Número do jogador.
- \returns Número do comando, existem diferentes números consoante o tipo de comando.
+ \param estado Estado.
 */
-COORDENADA obter_coordenada(ESTADO *e, int i, int j) {
-    return (j == 1) ? e->jogadas[i].jogador1 : e->jogadas[i].jogador2;
+void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado) {
+    estado->jogadas[i].jogador1 = c1;
+    estado->jogadas[i].jogador2 = c2;
 }

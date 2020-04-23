@@ -15,5 +15,5 @@ int main() {
     FILE *ficheiro;
     ficheiro = fopen("ficheiro.txt", "w+");
 
-    while (interpretador(ae, e, ficheiro) == 1);
+    while (interpretador(ae, e, ficheiro));
 }

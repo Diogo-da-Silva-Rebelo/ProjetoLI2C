@@ -4,48 +4,83 @@
 
 /**
 @file listas.c
-Funções que respondem a determinados comandos.
+Funções que alteram as listas.
 */
 
-LISTA criar_lista(){
+/**
+\brief Função que cria uma lista.
+ \returns Uma lista.
+*/
+LISTA criar_lista() {
     LISTA l = malloc(sizeof(NODO));
     return l;
 }
 
 
+/**
+\brief Função que insere um valor na cabeça da lista.
+ \param l Lista;
+ \param valor Valor que vai ser colocado na cabeça da lista.
+ \returns  Lista alterada.
+*/
 LISTA insere_cabeca(LISTA L, void *val) {
-    LISTA s =  malloc(sizeof(NODO));
+    LISTA s = malloc(sizeof(NODO));
     s->valor = val;
     s->proximo = L;
     return s;
 }
 
 
-void * devolve_cabeca(LISTA L){
+/**
+\brief Função que devolve a cabeça da lista.
+ \param l Lista.
+ \returns  Valor que estava na cabeça.
+*/
+void * devolve_cabeca(LISTA L) {
     return L->valor;
 }
 
 
-LISTA proximo(LISTA L){
+/**
+\brief Função que devolve a cauda da lista.
+ \param l Lista.
+ \returns  A lista inicial mas sem a cabeça.
+*/
+LISTA proximo(LISTA L) {
     return L->proximo;
 }
 
 
-LISTA remove_cabeca(LISTA L){
+/**
+\brief Função que remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda da lista.
+ \param l Lista.
+ \returns  A lista inicial mas sem a cabeça.
+*/
+LISTA remove_cabeca(LISTA L) {
     LISTA l = criar_lista();
-    *l=*L->proximo;
+    *l = *L->proximo;
     free(L);
     return l;
 }
 
-int lista_esta_vazia(LISTA L){
-    return L==NULL ? 1:0;
+
+/**
+\brief Função que verifica se a lista está vazia.
+ \param l Lista.
+ \returns  Verdadeiro ou falso.
+*/
+int lista_esta_vazia(LISTA L) {
+    return L->valor == NULL ? 1 : 0;
 }
 
-int tamanho_lista(LISTA L){
+
+/**
+\brief Função que calcula o tamanho da lista.
+ \param l Lista.
+ \returns  O tamanho.
+*/
+int tamanho_lista(LISTA L) {
     int i;
-    for(i = 0;!lista_esta_vazia(L);i++){
-        L=proximo(L);
-    }
+    for (i = 0; !lista_esta_vazia(L); i++, L = proximo(L));
     return i;
 }

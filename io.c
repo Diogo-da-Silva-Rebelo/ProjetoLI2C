@@ -20,6 +20,7 @@ Funções que respondem a determinados comandos.
 void grava(FILE *ficheiro,ESTADO *e) {
     ficheiro = fopen("ficheiro.txt", "w");
     mostrar_tabuleiro(e, ficheiro, 1);
+    fprintf(ficheiro,"\n");
     movs(e, ficheiro, 1);
     fclose(ficheiro);
 }
@@ -66,19 +67,6 @@ void str_to_casa (char *linha, ESTADO *estado, int l) {
 
 
 /**
-\brief Função que armazena as duas coordenadas no array das jogadas no estado
- \param c1 Coordenada do jogador 1;
- \param c2 Coordenada do jogador 2;
- \param i Número da jogada;
- \param estado Estado.
-*/
-void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado) {
-    estado->jogadas[i].jogador1 = c1;
-    estado->jogadas[i].jogador2 = c2;
-}
-
-
-/**
 \brief Função que lê o ficheiro criado e altera o estado do jogo.
  \param ficheiro apontador do ficheiro;
  \param estado Estado.
@@ -89,6 +77,7 @@ void le(FILE *ficheiro,ESTADO *estado) {
     free(estado);
     estado = inicializar_estado();
 
+
 /**
 \brief Parte da função que lê o tabuleiro do ficheiro.
 */
@@ -98,18 +87,18 @@ void le(FILE *ficheiro,ESTADO *estado) {
     char jog2[BUF_SIZE];
     char linha[BUF_SIZE];
 
-    while ((fgets(linha, BUF_SIZE, ficheiro) != NULL) && (i < 8)) {
+    while ((fgets(linha, BUF_SIZE, ficheiro) != NULL) && i<8) {
         str_to_casa(linha, estado, i);
         i++;
     }
 
     i = 0;
 
+
 /**
 \brief Parte da função que lê os movimentos do ficheiro.
 */
-
-    while (fgets(linha, BUF_SIZE, ficheiro) != NULL) {
+    while (fgets(linha, BUF_SIZE, ficheiro) != NULL ) {
         int num_tokens = sscanf(linha, "%d: %s %s", &num_jog, jog1, jog2);
         if (num_tokens == 3) {
             COORDENADA c1 = str_to_coord(jog1);
@@ -144,7 +133,7 @@ void le(FILE *ficheiro,ESTADO *estado) {
 void movs(ESTADO *e,FILE *stdout,int l) {
     int j = obter_numero_de_jogadas(e);
     int i;
-    int ljum = 0, cjum = 0, ljdois = 0, cjdois = 0;
+    int ljum, cjum, ljdois, cjdois;
 
     if (l == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
@@ -182,7 +171,6 @@ void movs(ESTADO *e,FILE *stdout,int l) {
  \param i Jogada para onde o jogador quer recuar.
 */
 void pos(ESTADO *e,int i) {
-
     int itemp = i;
 
     while (itemp < obter_numero_de_jogadas(e)) {
@@ -205,92 +193,89 @@ void pos(ESTADO *e,int i) {
 
 
 /**
-\brief Função que verifica se, com a jogada feita, o jogo acaba.
- \param etemp Estado temporário que serve para testes;
- \param c Coordenada que é jogada.
+\brief Função que elimina as jogadas não possíveis
+ \param l Lista de todas as jogadas;
+ \param e Estado do jogo;
+ \returns Uma lista com todas as jogadas possíveis.
 */
-int verifica_fim_jog(ESTADO *etemp, ESTADO *e, COORDENADA c) {
-    jogar(etemp, c);
-    if (fim_jogo(etemp) != 3)
-        return 1;
-    *etemp=*e;
-    return 0;
-}
+LISTA hipord(LISTA l,ESTADO *e) {
+    LISTA r, sl, result;
+    int i;
+    r = criar_lista();
+    result = criar_lista();
 
-int compara_coord(COORDENADA c,COORDENADA d){
-    if (c.linha==d.linha && c.coluna==d.coluna)
-        return 1;
-    return 0;
-}
-
-int ver_jogada(LISTA sl,ESTADO *etemp, ESTADO *e,COORDENADA h1,COORDENADA h2,COORDENADA h3,COORDENADA h4){
-    COORDENADA *coord;
-    coord = malloc(sizeof(COORDENADA));
-    while(lista_esta_vazia(sl)==0){
-        coord = (COORDENADA *) sl->valor;
-
-        if (compara_coord(*coord,h1) || compara_coord(*coord,h2) || compara_coord(*coord,h3) || compara_coord(*coord,h4) || verifica_fim_jog(etemp, e, *coord) == 1) {
-            jogar(e, *coord);
-            return 1;
-        } else sl=remove_cabeca(sl);
+    for (i = 0; i < 2; i++) {
+        r = insere_cabeca(r, devolve_cabeca(l));
+        l = proximo(l);
     }
-    return 0;
+
+    sl = proximo(l);
+    r = insere_cabeca(r, devolve_cabeca(sl));
+    r = insere_cabeca(r, devolve_cabeca(l));
+    sl = proximo(sl);
+
+    for (; !(lista_esta_vazia(sl)); sl = proximo(sl))
+        r = insere_cabeca(r, devolve_cabeca(sl));
+
+    for (; !(lista_esta_vazia(r)); r = proximo(r)) {
+        COORDENADA *coord;
+        coord = (COORDENADA *) devolve_cabeca(r);
+        if (coordenada_valida(*coord) && verifica_jogada(e, *coord))
+            result = insere_cabeca(result, devolve_cabeca(r));
+    }
+    return result;
 }
+
 
 /**
 \brief Função que joga pela vez do jogador. Heurística: Flood Fill.
  \param e Estado do jogo.
 */
 int jog(ESTADO *e) {
-    COORDENADA c, *coord, h1, h2, h3, h4;
-
-    c.linha = obter_ultima_jogada(e).linha;
-    c.coluna = obter_ultima_jogada(e).coluna;
-    int i = 1;
-    if (obter_jogador_atual(e) == 2) i = -1;
-    h1.coluna = c.coluna - i;
-    h1.linha = c.linha - i;
-
-    h2.coluna = c.coluna;
-    h2.linha = c.linha - i;
-
-    h3.coluna = c.coluna - i;
-    h3.linha = c.linha;
-
-    h4.coluna = c.coluna + i;
-    h4.linha = c.linha - i;
-
-    LISTA l = criar_lista();
-
-    for (i = -1; i <= 1; i++)
-        for (int j = -1; j <= 1; j++) {
-            COORDENADA *d;
-            d = malloc(sizeof(COORDENADA));
-
-            d->linha = c.linha + i;
-            d->coluna = c.coluna + j;
-            if (verifica_jogada(e, *d) == 1) {
-                l = insere_cabeca(l, d);
-            }
-        }
-
-
-
+    int i, t, result, z, jogador;
 
     ESTADO *etemp;
     etemp = inicializar_estado();
     *etemp = *e;
+
+    LISTA l = criar_lista();
     LISTA sl = criar_lista();
+
+    COORDENADA ultcrd;
+    ultcrd.linha = obter_ultima_jogada(e).linha;
+    ultcrd.coluna = obter_ultima_jogada(e).coluna;
+
+    int num1, num2;
+    jogador = obter_jogador_atual(e);
+    num1 = (jogador == 1) ? 1 : -1;
+    num2 = (jogador == 1) ? 1 : -1;
+
+    for (z = 1; z >= -1; z--) {
+        for (i = 1; i >= -1; i--) {
+            COORDENADA *coord;
+            coord = malloc(sizeof(COORDENADA));
+            (*coord).linha = ultcrd.linha + num2;
+            (*coord).coluna = ultcrd.coluna + num1;
+            l = insere_cabeca(l, coord);
+            num1 = (jogador == 1) ? num1 - 1 : num1 + 1;
+        }
+        num2 = (jogador == 1) ? num2 - 1 : num2 + 1;
+        num1 = (jogador == 1) ? 1 : -1;
+    }
+
+    l = hipord(l, e);
+
     *sl = *l;
 
-    if (ver_jogada(sl, etemp, e, h1, h2, h3, h4) == 1) return 0;
+    if (ver_jogada(l, etemp, e)) return 0;
     else {
+        t = tamanho_lista(sl);
         srand(time(NULL));
-        int tamanho = tamanho_lista(l)-1;
-        int result = (rand() % tamanho);
-        for (i = 0; i < result; i++, l = proximo(l));
-        coord = (COORDENADA *) devolve_cabeca(l);
-        jogar(e, *coord);
+        result= (rand() % t);
+        for(;result>0;result--,sl=proximo(sl));
+        COORDENADA *coord;
+        coord = (COORDENADA *) devolve_cabeca(sl);
+        jogar(e,*coord);
         return 0;
     }
 }

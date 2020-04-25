@@ -97,3 +97,29 @@ void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado) {
     estado->jogadas[i].jogador1 = c1;
     estado->jogadas[i].jogador2 = c2;
 }
+
+
+/**
+\brief Função que coloca altera o estado de cada casa de acordo com a char string recebida.
+ \param linha Apontador para a string que é uma linha do tabuleiro;
+ \param estado Estado;
+ \param l Número da linha.
+*/
+void str_to_casa (char *linha, ESTADO *estado, int l) {
+    for (int i = 0; i < 8; i++) {
+        if (linha[i] == '*')
+            estado->tab[l][i] = BRANCA;
+        else if (linha[i] == '#')
+            estado->tab[l][i] = PRETA;
+        else if (linha[i] == '1')
+            estado->tab[l][i] = UM;
+        else if (linha[i] == '2')
+            estado->tab[l][i] = DOIS;
+        else
+            estado->tab[l][i] = VAZIO;
+    }
+}
+
+COORDENADA coord_jogada(ESTADO *e,int i,int jogador){
+    return jogador==1 ? e->jogadas[i].jogador1:e->jogadas[i].jogador2;
+}

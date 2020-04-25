@@ -88,7 +88,6 @@ void refresh_board (ESTADO *e, COORDENADA c) {
         e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
         e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
     }
-
 /**
 \brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e/ou o array de jogadas.
 */
@@ -107,8 +106,6 @@ void refresh_board (ESTADO *e, COORDENADA c) {
  \param e Estado recebido.
  */
 void prompt(ESTADO *e) {
-    mostrar_tabuleiro(e, stdout, 2);
-
     printf("\n");
 
     printf(" _____________________________________________________________________________________________________\n");
@@ -130,6 +127,7 @@ void prompt(ESTADO *e) {
 */
 int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     char linha[BUF_SIZE];
+    mostrar_tabuleiro(e, stdout, 2);
 
     int r = fim_jogo(e);
     if (r == 1 || r == 2) {
@@ -141,7 +139,6 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     printf("Jogador %d, introduza uma jogada: ", obter_jogador_atual(e));
 
     if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
-
     char col[2], lin[2];
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};

@@ -9,7 +9,6 @@
 
 void grava(FILE *ficheiro, ESTADO *e);
 COORDENADA str_to_coord (char *coordenada);
-void str_to_casa (char *linha, ESTADO *estado, int l);
 void le(FILE *ficheiro,ESTADO *e);
 void movs(ESTADO *e,FILE *stdout,int l);
 void pos(ESTADO *e,int i);

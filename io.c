@@ -80,17 +80,14 @@ void le(FILE *ficheiro,ESTADO *estado) {
  \param l Dá a opção de imprimir de uma forma (se é para o ficheiro criado, ou para a interface).
 */
 void movs(ESTADO *e,FILE *stdout,int l) {
-    int j = obter_numero_de_jogadas(e);
-    int i;
-    int linUm, colUm;
-
+    int j = obter_numero_de_jogadas(e), i, linUm, colUm;
     if (l == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
     for (i = 0; i < j; i++) {
-        linUm = e->jogadas[i].jogador1.linha + 1;
-        colUm = e->jogadas[i].jogador1.coluna + 97;
-        int linDois = e->jogadas[i].jogador2.linha + 1;
-        int colDois = e->jogadas[i].jogador2.coluna + 97;
+        linUm = obter_x_jogada(e,i,1).linha + 1;
+        colUm = obter_x_jogada(e,i,1).coluna + 97;
+        int linDois = obter_x_jogada(e,i,2).linha + 1;
+        int colDois = obter_x_jogada(e,i,2).coluna + 97;
 
         if (l == 1) fprintf(stdout, "%02d: %c%d %c%d\n", i + 1, colUm, linUm, colDois, linDois);
         else fprintf(stdout, "%02d|    %c%d     |    %c%d\n", i + 1, colUm, linUm, colDois, linDois);
@@ -120,20 +117,19 @@ void pos(ESTADO *e,int i) {
     int itemp = i;
 
     while (itemp < obter_numero_de_jogadas(e)) {
-        int linha1 = coord_jogada(e,itemp,1).linha;
-        int coluna1 = coord_jogada(e,itemp,1).coluna;
-        int linha2 = coord_jogada(e,itemp,2).linha;
-        int coluna2 = coord_jogada(e,itemp,2).coluna;
+        int linha1 = obter_x_jogada(e, itemp, 1).linha;
+        int coluna1 = obter_x_jogada(e, itemp, 1).coluna;
+        int linha2 = obter_x_jogada(e, itemp, 2).linha;
+        int coluna2 = obter_x_jogada(e, itemp, 2).coluna;
 
         e->tab[7 - linha1][coluna1] = VAZIO;
         e->tab[7 - linha2][coluna2] = VAZIO;
         itemp++;
     }
-    e->tab[7 - coord_jogada(e,itemp,1).linha][coord_jogada(e,itemp,1).coluna] = VAZIO;
+    e->tab[7 - obter_x_jogada(e, itemp, 1).linha][obter_x_jogada(e, itemp, 1).coluna] = VAZIO;
     e->jogador_atual = 1;
-    e->ultima_jogada = e->jogadas[i - 1].jogador2;
-    e->tab[7 - e->ultima_jogada.linha][e->ultima_jogada.coluna] = BRANCA;
-
+    e->ultima_jogada = obter_x_jogada(e,i-1,2);
+    e->tab[7 - obter_ultima_jogada(e).linha][obter_ultima_jogada(e).coluna] = BRANCA;
     e->num_jogadas = i;
 }
 
@@ -180,42 +176,17 @@ int jog(ESTADO *e) {
     ESTADO etemp;
     etemp = *e;
 
-    LISTA l = criar_lista();
+    LISTA l = hipord(l_coord_adj(obter_ultima_jogada(e), obter_jogador_atual(e)), e);
+    LISTA segundal = l;
 
-    COORDENADA ultcrd;
-    ultcrd.linha = obter_ultima_jogada(e).linha;
-    ultcrd.coluna = obter_ultima_jogada(e).coluna;
-
-    int jogador = obter_jogador_atual(e);
-    int num1 = (jogador == 1) ? 1 : -1;
-    int num2 = (jogador == 1) ? 1 : -1;
-
-    for (int z = 1; z >= -1; z--) {
-        for (int i = 1; i >= -1; i--) {
-            COORDENADA *coord;
-            coord = malloc(sizeof(COORDENADA));
-            (*coord).linha = ultcrd.linha + num2;
-            (*coord).coluna = ultcrd.coluna + num1;
-            l = insere_cabeca(l, coord);
-            num1 = (jogador == 1) ? num1 - 1 : num1 + 1;
-        }
-        num2 = (jogador == 1) ? num2 - 1 : num2 + 1;
-        num1 = (jogador == 1) ? 1 : -1;
-    }
-
-    l = hipord(l, e);
-    LISTA segundal;
-    segundal=l;
-
-    if (ver_jogada(l, &etemp, e)) return 0;
-    else {
+    if (!ver_jogada(l, &etemp, e)) {
         int t = tamanho_lista(segundal);
         srand(time(NULL));
         int resultado = (rand() % t);
-        for (; resultado > 0; resultado--, segundal = proximo(segundal));
+        for (; resultado > 0; resultado--, segundal = remove_cabeca(segundal));
         COORDENADA *coord;
         coord = (COORDENADA *) devolve_cabeca(segundal);
         jogar(e, *coord);
-        return 0;
     }
+    return 0;
 }

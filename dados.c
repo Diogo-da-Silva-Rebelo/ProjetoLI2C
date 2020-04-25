@@ -31,7 +31,6 @@ ESTADO *inicializar_estado() {
     e->tab[0][7] = DOIS;
 
     refresh_board(e, e->ultima_jogada);
-
     return e;
 }
 
@@ -120,6 +119,7 @@ void str_to_casa (char *linha, ESTADO *estado, int l) {
     }
 }
 
-COORDENADA coord_jogada(ESTADO *e,int i,int jogador){
+
+COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador){
     return jogador==1 ? e->jogadas[i].jogador1:e->jogadas[i].jogador2;
 }

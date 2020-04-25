@@ -91,8 +91,7 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 /**
 \brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e/ou o array de jogadas.
 */
-    int ult_lin = 7 - (e->ultima_jogada.linha);
-    e->tab[ult_lin][e->ultima_jogada.coluna] = PRETA;
+    e->tab[7 - obter_ultima_jogada(e).linha][obter_ultima_jogada(e).coluna] = PRETA;
     int lin = 7 - c.linha;
     e->tab[lin][c.coluna] = BRANCA;
 
@@ -148,14 +147,14 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     }
 
     if (strcmp(linha, "gr\n") == 0) {
-        e->num_comando = 2;
         grava(ficheiro, e);
+        e->num_comando = 2;
         return 1;
     }
 
     if (strcmp(linha, "ler\n") == 0) {
-        e->num_comando = 3;
         le(ficheiro, e);
+        e->num_comando = 3;
         return 1;
     }
 
@@ -187,8 +186,8 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     }
 
     if (strcmp(linha, "movs\n") == 0) {
-        e->num_comando = 5;
         movs(e, stdout, 2);
+        e->num_comando = 5;
         return 1;
     }
 

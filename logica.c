@@ -2,6 +2,7 @@
 #include "dados.h"
 #include "logica.h"
 #include "interface.h"
+#include "io.h"
 
 /**
 @file logica.c
@@ -13,10 +14,11 @@ Funções que verificam as jogadas e se o jogo acabou.
  \param e Estado recebido.
  \param c Última coordenada recebida pelo jogador.
 */
-void jogar(ESTADO *e, COORDENADA c){
-    if (verifica_jogada(e,c)==0) printf ("Jogada impossível, tente novamente.\n");
-    else refresh_board(e,c);
+void jogar(ESTADO *e, COORDENADA c) {
+    if (!verifica_jogada(e, c)) printf("Jogada impossível, tente novamente.\n");
+    else refresh_board(e, c);
 }
+
 
 /**
 \brief Função que verifica se a jogada é válida. Para ser válido, a coordenada precisa de
@@ -26,13 +28,23 @@ void jogar(ESTADO *e, COORDENADA c){
  \returns Verdadeiro ou falso (1 ou 0, respetivamente) quando à possibilidade da jogada.
  */
 int verifica_jogada (ESTADO *e, COORDENADA c) {
-
     int reslinha = c.linha - obter_ultima_jogada(e).linha;
     int rescoluna = c.coluna - obter_ultima_jogada(e).coluna;
-    CASA casa = obter_estado_casa(e,c);
+    CASA casa = obter_estado_casa(e, c);
 
-    if (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 && (casa==VAZIO || casa==UM || casa==DOIS)) return 1;
-    else return 0;
+    return (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 &&
+            (casa == VAZIO || casa == UM || casa == DOIS)) ? 1:0;
+}
+
+
+/**
+\brief Função que verifica se, com a jogada feita, o jogo acaba.
+ \param etemp Estado temporário que serve para testes;
+ \param c Coordenada que é jogada.
+*/
+int verifica_fim_jog(ESTADO *etemp, COORDENADA c) {
+    jogar(etemp, c);
+    return (fim_jogo(etemp) != 3) ? 1:0;
 }
 
 
@@ -44,51 +56,74 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
   ou outro número que mostra que o jogo já acabou mas não há vencedores (0).
 */
 int fim_jogo(ESTADO *e) {
+    COORDENADA ultcrd = obter_ultima_jogada(e);
+    COORDENADA c;
 
-    COORDENADA c = e->ultima_jogada;
-    COORDENADA c1, c2, c3, c4, c5, c6, c7, c8;
-    c1.linha = c.linha + 1;
-    c1.coluna = c.coluna;
-
-    c2.linha = c.linha - 1;
-    c2.coluna = c.coluna;
-
-    c3.linha = c.linha;
-    c3.coluna = c.coluna + 1;
-
-    c4.linha = c.linha;
-    c4.coluna = c.coluna - 1;
-
-    c5.linha = c.linha + 1;
-    c5.coluna = c.coluna + 1;
-
-    c6.linha = c.linha - 1;
-    c6.coluna = c.coluna - 1;
-
-    c7.linha = c.linha + 1;
-    c7.coluna = c.coluna - 1;
-
-    c8.linha = c.linha - 1;
-    c8.coluna = c.coluna + 1;
-
-    int p1 = verifica_jogada(e, c1);
-    int p2 = verifica_jogada(e, c2);
-    int p3 = verifica_jogada(e, c3);
-    int p4 = verifica_jogada(e, c4);
-    int p5 = verifica_jogada(e, c5);
-    int p6 = verifica_jogada(e, c6);
-    int p7 = verifica_jogada(e, c7);
-    int p8 = verifica_jogada(e, c8);
-
-    if (c.linha == 0 && c.coluna == 0) {
+    if (ultcrd.linha == 0 && ultcrd.coluna == 0) {
         return 1;
-    } else {
-        if (c.linha == 7 && c.coluna == 7) {
-            return 2;
-        } else {
-            if (p1 == 0 && p2 == 0 && p3 == 0 && p4 == 0 && p5 == 0 && p6 == 0 && p7 == 0 && p8 == 0) {
-                return (obter_jogador_atual(e) == 1) ? 2 : 1;
-            } else return 3;
+    } else if (ultcrd.linha == 7 && ultcrd.coluna == 7)
+        return 2;
+
+    int result = 0;
+
+    for(int i=-1;i<=1;i++)
+        for(int j=-1;j<=1;j++){
+            c.linha=ultcrd.linha+i;
+            c.coluna=ultcrd.coluna+j;
+            if (coordenada_valida(c) && verifica_jogada(e,c))
+                result++;
         }
+
+    if (result == 0)
+        return (obter_jogador_atual(e) == 1) ? 2 : 1;
+    return 3;
+}
+
+
+/**
+\brief Função que compara duas coordenadas.
+ \param c Coordenada da lista;
+ \param d Coordenada mais vantajosa ao jogador.
+ \param e Estado do jogo.
+*/
+int compara_coord(COORDENADA c,ESTADO *e) {
+    int resultadoc = c.coluna - obter_ultima_jogada(e).coluna;
+    int resultadol = c.linha - obter_ultima_jogada(e).linha;
+    resultadol = (obter_jogador_atual(e)==2)? (-1*resultadol):(resultadol);
+    return (verifica_jogada(e, c)) &&
+           ((resultadol == 0 && resultadoc == -1) || (resultadol == -1) && resultadoc >= -1 && resultadoc <= 1) ? 1 : 0;
+}
+
+
+/**
+\brief Função que verifica se a coordenada é válida
+ \param c Coordenada.
+ \returns Verdadeiro ou falso.
+*/
+int coordenada_valida(COORDENADA c) {
+    return (c.linha >= 0 && c.linha <= 7 && c.coluna >= 0 && c.coluna <= 8) ? 1:0;
+}
+
+
+/**
+\brief Função que verifica se a coordenada é jogável
+ \param sl Lista das jogadas possíveis;
+ \param etemp Estado temporário;
+ \param e Estado do jogo.
+ \returns Verdadeiro ou falso.
+*/
+int ver_jogada(LISTA l,ESTADO *etemp, ESTADO *e) {
+    while (!lista_esta_vazia(l)) {
+        COORDENADA *coord;
+        coord = (COORDENADA *) devolve_cabeca(l);
+        *etemp = *e;
+
+        if (compara_coord(*coord, e) || (verifica_fim_jog(etemp, *coord))) {
+            jogar(e, *coord);
+            return 1;
+        }
+        l=proximo(l);
+        *etemp = *e;
     }
+    return 0;
 }

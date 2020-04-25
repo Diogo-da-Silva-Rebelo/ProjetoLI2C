@@ -162,16 +162,17 @@ LISTA area_par_possivel (LISTA l, ESTADO *etemp, ESTADO *e) {
     for(;!lista_esta_vazia(l); l = proximo(l)) {
         COORDENADA *cor;
         cor = (COORDENADA *) devolve_cabeca(l);
-        if(verifica_jogada(e,*cor)) {
+        if(coordenada_valida(*cor) && verifica_jogada(e,*cor)) {
             s_result = insere_cabeca(s_result, cor);
             if (area_par(etemp, *cor)) {
                 result = insere_cabeca(result, cor);
-                *etemp = *e;
             }
         }
+        *etemp = *e;
     }
     return lista_esta_vazia(result) ? s_result : result;
 }
+
 
 int area_par(ESTADO *etemp, COORDENADA c){
     jogar(etemp, c);

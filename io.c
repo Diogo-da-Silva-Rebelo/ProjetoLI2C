@@ -171,7 +171,8 @@ LISTA hipord(LISTA l,ESTADO *e) {
 /**
 \brief Função que joga pela vez do jogador. Heurística: Flood Fill.
  \param e Estado do jogo.
-*/
+ \returns Um inteiro.
+ */
 int jog(ESTADO *e) {
     ESTADO etemp;
     etemp = *e;
@@ -200,10 +201,12 @@ void jog2(ESTADO *e) {
 
     int t = tamanho_lista(l);
     srand(time(NULL));
+
     int resultado = (rand() % t);
-    for (; resultado > 0; resultado--, l = remove_cabeca(l));
+    for (; resultado > 1; resultado--, l = proximo(l));
     COORDENADA *coord;
     coord = (COORDENADA *) devolve_cabeca(l);
     jogar(e, *coord);
+
 
 }

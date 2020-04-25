@@ -190,3 +190,20 @@ int jog(ESTADO *e) {
     }
     return 0;
 }
+
+void jog2(ESTADO *e) {
+    ESTADO etemp;
+    etemp = *e;
+
+    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
+    l = area_par_possivel(l, &etemp, e);
+
+    int t = tamanho_lista(l);
+    srand(time(NULL));
+    int resultado = (rand() % t);
+    for (; resultado > 0; resultado--, l = remove_cabeca(l));
+    COORDENADA *coord;
+    coord = (COORDENADA *) devolve_cabeca(l);
+    jogar(e, *coord);
+
+}

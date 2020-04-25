@@ -14,5 +14,6 @@ void movs(ESTADO *e,FILE *stdout,int l);
 void pos(ESTADO *e,int i);
 LISTA hipord(LISTA l,ESTADO *e);
 int jog(ESTADO *e);
+void jog2 (ESTADO *e);
 
 #endif //PROJETOLI2_IO_H

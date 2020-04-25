@@ -77,7 +77,7 @@ int fim_jogo(ESTADO *e) {
 
     if (result == 0)
         return (obter_jogador_atual(e) == 1) ? 2 : 1;
-    return 3;
+    return 2 + result;
 }
 
 
@@ -154,4 +154,26 @@ LISTA l_coord_adj (COORDENADA ultcrd,int jogador) {
         num1 = (jogador == 1) ? 1 : -1;
     }
     return l;
+}
+
+LISTA area_par_possivel (LISTA l, ESTADO *etemp, ESTADO *e) {
+    LISTA result = criar_lista();
+    LISTA s_result = criar_lista();
+    for(;!lista_esta_vazia(l); l = proximo(l)) {
+        COORDENADA *cor;
+        cor = (COORDENADA *) devolve_cabeca(l);
+        if(verifica_jogada(e,*cor)) {
+            s_result = insere_cabeca(s_result, cor);
+            if (area_par(etemp, *cor)) {
+                result = insere_cabeca(result, cor);
+                *etemp = *e;
+            }
+        }
+    }
+    return lista_esta_vazia(result) ? s_result : result;
+}
+
+int area_par(ESTADO *etemp, COORDENADA c){
+    jogar(etemp, c);
+    return (fim_jogo(etemp) % 2 == 0) ? 1 : 0;
 }

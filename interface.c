@@ -196,7 +196,11 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
         e->num_comando = 6;
         return 1;
     }
-
+    if (strcmp(linha, "jog2\n") == 0) {
+        jog2(e);
+        e->num_comando = 7;
+        return 1;
+    }
     if (strcmp(linha, "Q\n") == 0) {
         printf("Prazer!");
         return 0;

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "dados.h"
 #include "logica.h"
 #include "interface.h"
@@ -33,7 +34,7 @@ int verifica_jogada (ESTADO *e, COORDENADA c) {
     CASA casa = obter_estado_casa(e, c);
 
     return (reslinha >= (-1) && reslinha <= 1 && rescoluna >= (-1) && rescoluna <= 1 &&
-            (casa == VAZIO || casa == UM || casa == DOIS)) ? 1:0;
+        (casa == VAZIO || casa == UM || casa == DOIS)) ? 1:0;
 }
 
 
@@ -91,7 +92,7 @@ int compara_coord(COORDENADA c,ESTADO *e) {
     int resultadol = c.linha - obter_ultima_jogada(e).linha;
     resultadol = (obter_jogador_atual(e)==2)? (-1*resultadol):(resultadol);
     return (verifica_jogada(e, c)) &&
-           ((resultadol == 0 && resultadoc == -1) || (resultadol == -1) && resultadoc >= -1 && resultadoc <= 1) ? 1 : 0;
+           ((resultadol == 0 && resultadoc == -1) || (resultadol == -1 && resultadoc >= -1 && resultadoc <= 1)) ? 1 : 0;
 }
 
 
@@ -126,4 +127,31 @@ int ver_jogada(LISTA l,ESTADO *etemp, ESTADO *e) {
         *etemp = *e;
     }
     return 0;
+}
+
+
+/**
+\brief Função que cria uma lista com todas as coordenadas adjacentes.
+ \param ultcrd Última coordenada do jogador
+ \param jogador Número do jogador
+ \returns Lista.
+*/
+LISTA l_coord_adj (COORDENADA ultcrd,int jogador) {
+    LISTA l = criar_lista();
+    int num1 = (jogador == 1) ? 1 : -1;
+    int num2 = (jogador == 1) ? 1 : -1;
+
+    for (int z = 1; z >= -1; z--) {
+        for (int i = 1; i >= -1; i--) {
+            COORDENADA *coord;
+            coord = malloc(sizeof(COORDENADA));
+            (*coord).linha = ultcrd.linha + num2;
+            (*coord).coluna = ultcrd.coluna + num1;
+            l = insere_cabeca(l, coord);
+            num1 = (jogador == 1) ? num1 - 1 : num1 + 1;
+        }
+        (jogador == 1) ? num2-- : num2++;
+        num1 = (jogador == 1) ? 1 : -1;
+    }
+    return l;
 }

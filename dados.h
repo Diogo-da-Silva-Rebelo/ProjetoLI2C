@@ -82,6 +82,6 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 int obter_comando(ESTADO *e);
 void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
 void str_to_casa (char *linha, ESTADO *estado, int l);
-COORDENADA coord_jogada(ESTADO *e,int i,int jogador);
+COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador);
 
 #endif //___DADOS_H___

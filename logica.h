@@ -13,6 +13,7 @@ int fim_jogo(ESTADO *e);
 int compara_coord(COORDENADA c, ESTADO *etemp);
 int coordenada_valida(COORDENADA d);
 int ver_jogada(LISTA sl,ESTADO *etemp, ESTADO *e);
+LISTA l_coord_adj (COORDENADA c,int jogador);
 
 
 #endif //PROJETOLI2_LOGICA_H

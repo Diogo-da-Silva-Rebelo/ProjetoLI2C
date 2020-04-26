@@ -171,9 +171,8 @@ LISTA hipord(LISTA l,ESTADO *e) {
 /**
 \brief Função que joga pela vez do jogador. Heurística: Flood Fill.
  \param e Estado do jogo.
- \returns Um inteiro.
  */
-int jog(ESTADO *e) {
+void jog(ESTADO *e) {
     ESTADO etemp;
     etemp = *e;
 
@@ -189,9 +188,13 @@ int jog(ESTADO *e) {
         coord = (COORDENADA *) devolve_cabeca(segundal);
         jogar(e, *coord);
     }
-    return 0;
 }
 
+
+/**
+\brief Função que joga pela vez do jogador. Heurística: Estratégia baseada na paridade.
+ \param e Estado do jogo.
+ */
 void jog2(ESTADO *e) {
     ESTADO etemp;
     etemp = *e;

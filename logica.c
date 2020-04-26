@@ -156,6 +156,16 @@ LISTA l_coord_adj (COORDENADA ultcrd,int jogador) {
     return l;
 }
 
+
+/**
+\brief Função que cria uma lista com as coordenadas em que se forem jogadas o numero de
+ jogadas possiveis do jogador adversário fica um numero par. Contudo, se nao houver estes casos
+ retorna uma lista com coodernadas possiveis de jogar.
+ \param l lista;
+ \param etemp estado temporário que serve de testes;
+ \param e estado do jogo.
+ \returns Lista.
+*/
 LISTA area_par_possivel (LISTA l, ESTADO *etemp, ESTADO *e) {
     LISTA result = criar_lista();
     LISTA s_result = criar_lista();
@@ -174,6 +184,13 @@ LISTA area_par_possivel (LISTA l, ESTADO *etemp, ESTADO *e) {
 }
 
 
+/**
+\brief Função que verifica se, apos jogar uma coordenada, o numero de jogadas possiveis
+ é par.
+ \param etemp estado temporário para testes;
+ \param c coordenada dada.
+ \returns Verdadeiro ou falso.
+*/
 int area_par(ESTADO *etemp, COORDENADA c){
     jogar(etemp, c);
     return (fim_jogo(etemp) % 2 == 0) ? 1 : 0;

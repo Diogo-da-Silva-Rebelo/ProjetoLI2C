@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['obter_5festado_5fcasa',['obter_estado_casa',['../dados_8c.html#a6faa68373203923729ed38657aa0f768',1,'dados.c']]],
-  ['obter_5fjogador_5fatual',['obter_jogador_atual',['../dados_8c.html#acc6c25533188a99cb69c12e7f2c406ef',1,'dados.c']]],
-  ['obter_5fnumero_5fde_5fjogadas',['obter_numero_de_jogadas',['../dados_8c.html#abbfeab93575f20e5867482fd41a71cba',1,'dados.c']]],
-  ['obter_5fultima_5fjogada',['obter_ultima_jogada',['../dados_8c.html#a40555aff97afc67bd1866f2785111310',1,'dados.c']]]
+  ['jog_18',['jog',['../io_8c.html#a9dfbc982d23a619e36575d8e7ec8e41c',1,'io.c']]],
+  ['jog2_19',['jog2',['../io_8c.html#a75a3c6feb2f2ec713f96559558b136d0',1,'io.c']]],
+  ['jogada_20',['JOGADA',['../structJOGADA.html',1,'']]],
+  ['jogadas_21',['jogadas',['../structESTADO.html#afae43b87a488fad0f2b56a18bad31d18',1,'ESTADO']]],
+  ['jogador_5fatual_22',['jogador_atual',['../structESTADO.html#a5dd28e2e68b7aef2b6b7ea88e02eff58',1,'ESTADO']]],
+  ['jogar_23',['jogar',['../logica_8c.html#a4e68d436fd02312dbf25a0876e6fcc29',1,'logica.c']]]
 ];

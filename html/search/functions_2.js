@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jogar',['jogar',['../logica_8c.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logica.c']]]
+  ['devolve_5fcabeca_71',['devolve_cabeca',['../listas_8c.html#abfcb205f3eb670157be0d1221021714b',1,'listas.c']]]
 ];

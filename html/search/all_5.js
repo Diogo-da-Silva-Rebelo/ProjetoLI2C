@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['jogada',['JOGADA',['../structJOGADA.html',1,'']]],
-  ['jogar',['jogar',['../logica_8c.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logica.c']]]
+  ['grava_11',['grava',['../io_8c.html#a3888ef0782a8877bba3cdbbb6a3b9f92',1,'io.c']]]
 ];

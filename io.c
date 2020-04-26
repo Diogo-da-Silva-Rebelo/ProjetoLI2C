@@ -210,6 +210,4 @@ void jog2(ESTADO *e) {
     COORDENADA *coord;
     coord = (COORDENADA *) devolve_cabeca(l);
     jogar(e, *coord);
-
-
 }

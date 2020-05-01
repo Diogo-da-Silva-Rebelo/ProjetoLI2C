@@ -26,47 +26,6 @@ void grava(FILE *ficheiro,ESTADO *e) {
     fclose(ficheiro);
 }
 
-
-/**
-\brief Função que joga pela vez do jogador. Heurística: Flood Fill.
- \param e Estado do jogo.
- */
-void jog(ESTADO *e) {
-    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
-    l = hipord(l, e);
-    LISTA segundal = l;
-
-    if (!jogada_favoravel(l, e)) {
-        int t = tamanho_lista(segundal);
-        srand(time(NULL));
-        int resultado = (rand() % t);
-        for (; resultado > 0; resultado--, segundal = proximo(segundal));
-        COORDENADA *coord;
-        coord = (COORDENADA *) devolve_cabeca(segundal);
-        jogar(e, *coord);
-    }
-}
-
-
-/**
-\brief Função que joga pela vez do jogador. Heurística: Estratégia baseada na paridade.
- \param e Estado do jogo.
- */
-void jog2(ESTADO *e) {
-    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
-    l = area_par_possivel(l, e);
-
-    int t = tamanho_lista(l);
-    srand(time(NULL));
-
-    int resultado = (rand() % t);
-    for (; resultado > 1; resultado--, l = proximo(l));
-    COORDENADA *coord;
-    coord = (COORDENADA *) devolve_cabeca(l);
-    jogar(e, *coord);
-}
-
-
 /**
 \brief Função que lê o ficheiro criado e altera o estado do jogo.
  \param ficheiro apontador do ficheiro;
@@ -136,30 +95,4 @@ void movs(ESTADO *e,FILE *stdout,int output) {
             fprintf(stdout, "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
         }
     }
-}
-
-
-/**
-\brief Função que imprime todas as jogadas anteriores.
- \param e Estado;
- \param i Jogada para onde o jogador quer recuar.
-*/
-void pos(ESTADO *e,int jogada) {
-    int itemp = jogada;
-
-    while (itemp < obter_numero_de_jogadas(e)) {
-        int linha1 = obter_x_jogada(e, itemp, 1).linha;
-        int coluna1 = obter_x_jogada(e, itemp, 1).coluna;
-        int linha2 = obter_x_jogada(e, itemp, 2).linha;
-        int coluna2 = obter_x_jogada(e, itemp, 2).coluna;
-
-        e->tab[7 - linha1][coluna1] = VAZIO;
-        e->tab[7 - linha2][coluna2] = VAZIO;
-        itemp++;
-    }
-    e->tab[7 - obter_x_jogada(e, itemp, 1).linha][obter_x_jogada(e, itemp, 1).coluna] = VAZIO;
-    e->jogador_atual = 1;
-    e->ultima_jogada = obter_x_jogada(e, jogada - 1, 2);
-    e->tab[7 - obter_ultima_jogada(e).linha][obter_ultima_jogada(e).coluna] = BRANCA;
-    e->num_jogadas = jogada;
 }

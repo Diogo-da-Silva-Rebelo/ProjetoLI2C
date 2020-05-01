@@ -1,5 +1,5 @@
-#ifndef RASTROSLI2_LISTAS_H
-#define RASTROSLI2_LISTAS_H
+#ifndef BOT_LISTAS_H
+#define BOT_LISTAS_H
 
 /**
 \brief Estruturas de Comandos
@@ -18,4 +18,4 @@ LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 int tamanho_lista(LISTA L);
 
-#endif //RASTROSLI2_LISTAS_H
+#endif //BOT_LISTAS_H

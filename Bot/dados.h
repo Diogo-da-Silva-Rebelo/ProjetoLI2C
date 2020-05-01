@@ -1,5 +1,5 @@
-#ifndef RASTROSLI2_DADOS_H
-#define RASTROSLI2_DADOS_H
+#ifndef BOT_DADOS_H
+#define BOT_DADOS_H
 
 /**
 \brief Estruturas de Dados.
@@ -75,4 +75,4 @@ COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador);
 void refresh_board (ESTADO *e, COORDENADA c);
 void altera_comando(ESTADO *e, int cmd);
 
-#endif //RASTROSLI2_DADOS_H
+#endif //BOT_DADOS_H

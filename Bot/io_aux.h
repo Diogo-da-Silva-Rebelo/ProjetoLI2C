@@ -1,5 +1,5 @@
-#ifndef RASTROSLI2_IO_AUX_H
-#define RASTROSLI2_IO_AUX_H
+#ifndef BOT_IO_AUX_H
+#define BOT_IO_AUX_H
 
 #include "dados.h"
 #include "listas.h"
@@ -14,4 +14,4 @@ LISTA l_coord_adj (COORDENADA c,int jogador);
 COORDENADA str_to_coord (const char *coordenada);
 int verifica_coord (ESTADO *e, COORDENADA c);
 
-#endif //RASTROSLI2_IO_AUX_H
+#endif //BOT_IO_AUX_H

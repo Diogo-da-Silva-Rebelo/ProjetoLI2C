@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "dados.h"
-#include "interface.h"
 
 /**
 @file dados.c

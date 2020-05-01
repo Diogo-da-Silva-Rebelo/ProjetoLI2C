@@ -1,6 +1,0 @@
-#ifndef PROJETOLI2_BOT_H
-#define PROJETOLI2_BOT_H
-
-
-
-#endif //PROJETOLI2_BOT_H

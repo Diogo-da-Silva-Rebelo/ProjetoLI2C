@@ -1,0 +1,3 @@
+/home/diogo/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/diogo/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/ProjetoLI2.dir
+/home/diogo/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -7,6 +7,30 @@
 Funções que vão buscar ou alterar dados ao estado do jogo.
 */
 
+
+/**
+\brief Função que atualiza o número do comando.
+ \param e Estado;
+ \param cmd Último comando usado.
+*/
+void altera_comando(ESTADO *e, int cmd) {
+    e->num_comando = cmd;
+}
+
+
+/**
+\brief Função que armazena as duas coordenadas no array das jogadas no estado
+ \param c1 Coordenada do jogador 1;
+ \param c2 Coordenada do jogador 2;
+ \param i Número da jogada;
+ \param estado Estado.
+*/
+void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado) {
+    estado->jogadas[i].jogador1 = c1;
+    estado->jogadas[i].jogador2 = c2;
+}
+
+
 /**
 \brief Função que inicia o estado com o tabuleiro vazio.
   \returns O estado inicializado, com a primeira jogada em e4.
@@ -36,32 +60,12 @@ ESTADO *inicializar_estado() {
 
 
 /**
-\brief Função que obtém o número do jogador atual.
+\brief Função que obtém o número do comando.
  \param e Estado.
- \returns O jogador que jogará a seguir.
+ \returns Número do comando, existem diferentes números consoante o tipo de comando.
 */
-int obter_jogador_atual(ESTADO *e) {
-    return e->jogador_atual;
-}
-
-
-/**
-\brief Função que obtém a última jogada.
- \param e Estado.
- \returns A última jogada.
-*/
-COORDENADA obter_ultima_jogada(ESTADO *e) {
-    return e->ultima_jogada;
-}
-
-
-/**
-\brief Função que obtem o número de jogadas efetuadas
- \param e Estado.
- \returns O número de jogadas.
-*/
-int obter_numero_de_jogadas(ESTADO *e) {
-    return e->num_jogadas;
+int obter_comando(ESTADO *e) {
+    return e->num_comando;
 }
 
 
@@ -76,47 +80,32 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
 
 
 /**
-\brief Função que obtém o número do comando.
+\brief Função que obtém o número do jogador atual.
  \param e Estado.
- \returns Número do comando, existem diferentes números consoante o tipo de comando.
+ \returns O jogador que jogará a seguir.
 */
-int obter_comando(ESTADO *e) {
-    return e->num_comando;
+int obter_jogador_atual(ESTADO *e) {
+    return e->jogador_atual;
 }
 
 
 /**
-\brief Função que armazena as duas coordenadas no array das jogadas no estado
- \param c1 Coordenada do jogador 1;
- \param c2 Coordenada do jogador 2;
- \param i Número da jogada;
- \param estado Estado.
+\brief Função que obtem o número de jogadas efetuadas
+ \param e Estado.
+ \returns O número de jogadas.
 */
-void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado) {
-    estado->jogadas[i].jogador1 = c1;
-    estado->jogadas[i].jogador2 = c2;
+int obter_numero_de_jogadas(ESTADO *e) {
+    return e->num_jogadas;
 }
 
 
 /**
-\brief Função que coloca altera o estado de cada casa de acordo com a char string recebida.
- \param linha Apontador para a string que é uma linha do tabuleiro;
- \param estado Estado;
- \param l Número da linha.
+\brief Função que obtém a última jogada.
+ \param e Estado.
+ \returns A última jogada.
 */
-void str_to_casa (char *linha, ESTADO *estado, int l) {
-    for (int i = 0; i < 8; i++) {
-        if (linha[i] == '*')
-            estado->tab[l][i] = BRANCA;
-        else if (linha[i] == '#')
-            estado->tab[l][i] = PRETA;
-        else if (linha[i] == '1')
-            estado->tab[l][i] = UM;
-        else if (linha[i] == '2')
-            estado->tab[l][i] = DOIS;
-        else
-            estado->tab[l][i] = VAZIO;
-    }
+COORDENADA obter_ultima_jogada(ESTADO *e) {
+    return e->ultima_jogada;
 }
 
 
@@ -163,10 +152,22 @@ void refresh_board (ESTADO *e, COORDENADA c) {
 
 
 /**
-\brief Função que atualiza o número do comando.
- \param e Estado;
- \param cmd Último comando usado.
+\brief Função que coloca altera o estado de cada casa de acordo com a char string recebida.
+ \param linha Apontador para a string que é uma linha do tabuleiro;
+ \param estado Estado;
+ \param l Número da linha.
 */
-void altera_comando(ESTADO *e, int cmd) {
-    e->num_comando = cmd;
+void str_to_casa (char *linha, ESTADO *estado, int l) {
+    for (int i = 0; i < 8; i++) {
+        if (linha[i] == '*')
+            estado->tab[l][i] = BRANCA;
+        else if (linha[i] == '#')
+            estado->tab[l][i] = PRETA;
+        else if (linha[i] == '1')
+            estado->tab[l][i] = UM;
+        else if (linha[i] == '2')
+            estado->tab[l][i] = DOIS;
+        else
+            estado->tab[l][i] = VAZIO;
+    }
 }

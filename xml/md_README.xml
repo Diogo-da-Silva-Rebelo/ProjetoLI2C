@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_README" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>ProjetoLI2</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>UC: Laboratórios de Informática II</para>
+<para>Turno Prático: PL7</para>
+<para>Grupo número 4 e constituído por:</para>
+<para>a93278: Diogo da Silva Rebelo</para>
+<para>a93316: Henrique José Fernandes Alvelos</para>
+<para>a93162: Norberto Alexandre Spínola de Ornelas Nunes </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

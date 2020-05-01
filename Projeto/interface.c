@@ -11,79 +11,9 @@
 Funções que modificam a interface do jogo.
 */
 
-/**
-\brief Função que mostra o vencedor do jogo.
- \param i Jogador do vencedor.
-*/
-void vencedor(int jogador) {
-    printf("  ______________________________________________________________________________________________________\n");
-    printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
-    printf("||    ______       ||       ______     ||       ______     _______              ________     _   _   _  ||\n");
-    printf("||  ||‾‾‾‾‾‾||    ||||    ||‾‾‾‾‾‾||  ||||    ||‾‾‾‾‾‾|| ||_______| \\\\      || | _______|   | | | | | | ||\n");
-    printf("||  ||______||   ||  ||   ||______|| ||  ||   ||______|| ||_____    ||\\\\    || | |______    | | | | | | ||\n");
-    printf("||  ||‾‾‾‾‾‾     ||__||   ||\\\\‾‾‾    ||__||   ||\\\\‾‾‾‾   ||_____|   ||  \\\\  || |_______ |   |_| |_| |_| ||\n");
-    printf("||  ||          ||____||  ||  \\\\    ||____||  ||  ‾‾‾‾|| ||_______  ||    \\\\||  ______| |    _   _   _  ||\n");
-    printf("||  ||         ||      || ||    \\\\ ||      || ||______|| ||_______| ||      \\\\ |________|   |_| |_| |_| ||\n");
-    printf("||______________________________________________________________________________________________________||\n");
-    printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
-
-    if (jogador == 1) {
-        printf("||                                          ‾‾‾‾‾‾|                                                     ||\n");
-        printf("||                                          ‾‾‾‾| |                                                     ||\n");
-        printf("||                                              | |                                                     ||\n");
-        printf("||                                              | |                                                     ||\n");
-        printf("||                                              | |                                                     ||\n");
-        printf("||                                              | |                                                     ||\n");
-
-    } else {
-        printf("||                                           |‾‾‾‾‾‾‾‾‾‾|                                               ||\n");
-        printf("||                                            ‾‾‾‾‾‾‾ | |                                               ||\n");
-        printf("||                                                    | |                                               ||\n");
-        printf("||                                            ________| |                                               ||\n");
-        printf("||                                            ||‾‾‾‾‾‾| |______                                         ||\n");
-        printf("||                                            ||______|_|_____/                                         ||\n");
-    }
-}
-
-
-/**
-\brief Função que mostra o tabuleiro ao receber um estado
-\brief i é linha; j é coluna;
- \param e Estado;
- \param stdout Apontador do ficheiro para onde vai imprimir o tabuleiro;
- \param cmd Número do comando.
-*/
-void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
-    COORDENADA c;
-    for (int lin = 8; lin > 0; lin--) {
-        if (cmd == 2) fprintf(stdout, "%d ", lin);
-        for (int col = 0; col <= 7; col++) {
-            c.linha = lin - 1;
-            c.coluna = col;
-            if (cmd == 1) fprintf(stdout, "%c", obter_estado_casa(e, c));
-            else fprintf(stdout, "%c ", obter_estado_casa(e, c));
-        }
-        fprintf(stdout, "\n");
-    }
-    if (cmd == 2) fprintf(stdout, "  a b c d e f g h \n");
-}
-
-
-/**
-\brief Função que mostra o tabuleiro, o número de jogadas, o próximo jogador, a última jogada e o último comando usado.
- \param e Estado recebido.
- */
-void prompt(ESTADO *e) {
-    printf("\n");
-
-    printf(" _____________________________________________________________________________________________________\n");
-    printf("|    Próximo jogador    |    Última jogada    |    Número de jogadas feitas    |    Último comando    |\n");
-    printf("|           %d           |         %c%d          |               %02d               |          %d           |\n",
-           obter_jogador_atual(e),
-           obter_ultima_jogada(e).coluna + 97, obter_ultima_jogada(e).linha + 1, obter_numero_de_jogadas(e),
-           obter_comando(e));
-    printf(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\n");
-}
+void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd);
+void prompt(ESTADO *e);
+void vencedor(int i);
 
 
 /**
@@ -175,4 +105,79 @@ int interpretador(ESTADO *antigoe,ESTADO *e, FILE *ficheiro) {
         return 0;
     }
     return 0;
+}
+
+
+/**
+\brief Função que mostra o tabuleiro ao receber um estado
+\brief i é linha; j é coluna;
+ \param e Estado;
+ \param stdout Apontador do ficheiro para onde vai imprimir o tabuleiro;
+ \param cmd Número do comando.
+*/
+void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
+    COORDENADA c;
+    for (int lin = 8; lin > 0; lin--) {
+        if (cmd == 2) fprintf(stdout, "%d ", lin);
+        for (int col = 0; col <= 7; col++) {
+            c.linha = lin - 1;
+            c.coluna = col;
+            if (cmd == 1) fprintf(stdout, "%c", obter_estado_casa(e, c));
+            else fprintf(stdout, "%c ", obter_estado_casa(e, c));
+        }
+        fprintf(stdout, "\n");
+    }
+    if (cmd == 2) fprintf(stdout, "  a b c d e f g h \n");
+}
+
+
+/**
+\brief Função que mostra o tabuleiro, o número de jogadas, o próximo jogador, a última jogada e o último comando usado.
+ \param e Estado recebido.
+ */
+void prompt(ESTADO *e) {
+    printf("\n");
+
+    printf(" _____________________________________________________________________________________________________\n");
+    printf("|    Próximo jogador    |    Última jogada    |    Número de jogadas feitas    |    Último comando    |\n");
+    printf("|           %d           |         %c%d          |               %02d               |          %d           |\n",
+           obter_jogador_atual(e),
+           obter_ultima_jogada(e).coluna + 97, obter_ultima_jogada(e).linha + 1, obter_numero_de_jogadas(e),
+           obter_comando(e));
+    printf(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\n");
+}
+
+
+/**
+\brief Função que mostra o vencedor do jogo.
+ \param i Jogador do vencedor.
+*/
+void vencedor(int jogador) {
+    printf("  ______________________________________________________________________________________________________\n");
+    printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
+    printf("||    ______       ||       ______     ||       ______     _______              ________     _   _   _  ||\n");
+    printf("||  ||‾‾‾‾‾‾||    ||||    ||‾‾‾‾‾‾||  ||||    ||‾‾‾‾‾‾|| ||_______| \\\\      || | _______|   | | | | | | ||\n");
+    printf("||  ||______||   ||  ||   ||______|| ||  ||   ||______|| ||_____    ||\\\\    || | |______    | | | | | | ||\n");
+    printf("||  ||‾‾‾‾‾‾     ||__||   ||\\\\‾‾‾    ||__||   ||\\\\‾‾‾‾   ||_____|   ||  \\\\  || |_______ |   |_| |_| |_| ||\n");
+    printf("||  ||          ||____||  ||  \\\\    ||____||  ||  ‾‾‾‾|| ||_______  ||    \\\\||  ______| |    _   _   _  ||\n");
+    printf("||  ||         ||      || ||    \\\\ ||      || ||______|| ||_______| ||      \\\\ |________|   |_| |_| |_| ||\n");
+    printf("||______________________________________________________________________________________________________||\n");
+    printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
+
+    if (jogador == 1) {
+        printf("||                                          ‾‾‾‾‾‾|                                                     ||\n");
+        printf("||                                          ‾‾‾‾| |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+        printf("||                                              | |                                                     ||\n");
+
+    } else {
+        printf("||                                           |‾‾‾‾‾‾‾‾‾‾|                                               ||\n");
+        printf("||                                            ‾‾‾‾‾‾‾ | |                                               ||\n");
+        printf("||                                                    | |                                               ||\n");
+        printf("||                                            ________| |                                               ||\n");
+        printf("||                                            ||‾‾‾‾‾‾| |______                                         ||\n");
+        printf("||                                            ||______|_|_____/                                         ||\n");
+    }
 }

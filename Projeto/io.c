@@ -20,20 +20,49 @@ Funções que respondem a determinados comandos.
 void grava(FILE *ficheiro,ESTADO *e) {
     ficheiro = fopen("ficheiro.txt", "w");
     mostrar_tabuleiro(e, ficheiro, 1);
-    fprintf(ficheiro,"\n");
+    fprintf(ficheiro, "\n");
     movs(e, ficheiro, 1);
     fclose(ficheiro);
 }
 
 
 /**
-\brief Função que transforma uma string em coordenada.
- \param coordenada String do tipo letra-numero.
- \returns Coordenada.
-*/
-COORDENADA str_to_coord (char *coordenada) {
-    COORDENADA coord = {*coordenada - 'a', *(coordenada + 1) - '1'};
-    return coord;
+\brief Função que joga pela vez do jogador. Heurística: Flood Fill.
+ \param e Estado do jogo.
+ */
+void jog(ESTADO *e) {
+    LISTA l = l_coord_adj(obter_ultima_jogada(e), obter_jogador_atual(e));
+    l = hipord(l, e);
+    LISTA segundal = l;
+
+    if (!jogada_favoravel(l, e)) {
+        int t = tamanho_lista(segundal);
+        srand(time(NULL));
+        int resultado = (rand() % t);
+        for (; resultado > 0; resultado--, segundal = proximo(segundal));
+        COORDENADA *coord;
+        coord = (COORDENADA *) devolve_cabeca(segundal);
+        jogar(e, *coord);
+    }
+}
+
+
+/**
+\brief Função que joga pela vez do jogador. Heurística: Estratégia baseada na paridade.
+ \param e Estado do jogo.
+ */
+void jog2(ESTADO *e) {
+    LISTA l = l_coord_adj(obter_ultima_jogada(e), obter_jogador_atual(e));
+    l = area_par_possivel(l, e);
+
+    int t = tamanho_lista(l);
+    srand(time(NULL));
+
+    int resultado = (rand() % t);
+    for (; resultado > 1; resultado--, l = proximo(l));
+    COORDENADA *coord;
+    coord = (COORDENADA *) devolve_cabeca(l);
+    jogar(e, *coord);
 }
 
 
@@ -85,10 +114,10 @@ void movs(ESTADO *e,FILE *stdout,int l) {
     if (l == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
     for (i = 0; i < j; i++) {
-        linUm = obter_x_jogada(e,i,1).linha + 1;
-        colUm = obter_x_jogada(e,i,1).coluna + 97;
-        int linDois = obter_x_jogada(e,i,2).linha + 1;
-        int colDois = obter_x_jogada(e,i,2).coluna + 97;
+        linUm = obter_x_jogada(e, i, 1).linha + 1;
+        colUm = obter_x_jogada(e, i, 1).coluna + 97;
+        int linDois = obter_x_jogada(e, i, 2).linha + 1;
+        int colDois = obter_x_jogada(e, i, 2).coluna + 97;
 
         if (l == 1) fprintf(stdout, "%02d: %c%d %c%d\n", i + 1, colUm, linUm, colDois, linDois);
         else fprintf(stdout, "%02d|    %c%d     |    %c%d\n", i + 1, colUm, linUm, colDois, linDois);
@@ -129,47 +158,7 @@ void pos(ESTADO *e,int i) {
     }
     e->tab[7 - obter_x_jogada(e, itemp, 1).linha][obter_x_jogada(e, itemp, 1).coluna] = VAZIO;
     e->jogador_atual = 1;
-    e->ultima_jogada = obter_x_jogada(e,i-1,2);
+    e->ultima_jogada = obter_x_jogada(e, i - 1, 2);
     e->tab[7 - obter_ultima_jogada(e).linha][obter_ultima_jogada(e).coluna] = BRANCA;
     e->num_jogadas = i;
-}
-
-
-/**
-\brief Função que joga pela vez do jogador. Heurística: Flood Fill.
- \param e Estado do jogo.
- */
-void jog(ESTADO *e) {
-    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
-    l = hipord(l, e);
-    LISTA segundal = l;
-
-    if (!jogada_favoravel(l, e)) {
-        int t = tamanho_lista(segundal);
-        srand(time(NULL));
-        int resultado = (rand() % t);
-        for (; resultado > 0; resultado--, segundal = proximo(segundal));
-        COORDENADA *coord;
-        coord = (COORDENADA *) devolve_cabeca(segundal);
-        jogar(e, *coord);
-    }
-}
-
-
-/**
-\brief Função que joga pela vez do jogador. Heurística: Estratégia baseada na paridade.
- \param e Estado do jogo.
- */
-void jog2(ESTADO *e) {
-    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
-    l = area_par_possivel(l, e);
-
-    int t = tamanho_lista(l);
-    srand(time(NULL));
-
-    int resultado = (rand() % t);
-    for (; resultado > 1; resultado--, l = proximo(l));
-    COORDENADA *coord;
-    coord = (COORDENADA *) devolve_cabeca(l);
-    jogar(e, *coord);
 }

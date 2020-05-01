@@ -1,5 +1,7 @@
 # ProjetoLI2
 
+Curso: MIEI
+
 UC: Laboratórios de Informática II
 
 Turno Prático: PL7

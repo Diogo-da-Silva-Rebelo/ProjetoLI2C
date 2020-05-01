@@ -10,10 +10,9 @@
 @file interface.c
 Funções que modificam a interface do jogo.
 */
-
 void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd);
 void prompt(ESTADO *e);
-void vencedor(int i);
+void vencedor(int jogador);
 
 
 /**
@@ -23,7 +22,7 @@ void vencedor(int i);
  \param ficheiro Apontador para o ficheiro, usado para os comandos ler e gr.
  \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
 */
-int interpretador(ESTADO *antigoe,ESTADO *e, FILE *ficheiro) {
+int interpretador(ESTADO *antigoe, ESTADO *e, FILE *ficheiro) {
     char linha[BUF_SIZE];
     mostrar_tabuleiro(e, stdout, 2);
 
@@ -41,19 +40,19 @@ int interpretador(ESTADO *antigoe,ESTADO *e, FILE *ficheiro) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
-        altera_comando(e,1);
+        altera_comando(e, 1);
         return 1;
     }
 
     if (strcmp(linha, "gr\n") == 0) {
         grava(ficheiro, e);
-        altera_comando(e,2);
+        altera_comando(e, 2);
         return 1;
     }
 
     if (strcmp(linha, "ler\n") == 0) {
         le(ficheiro, e);
-        altera_comando(e,3);
+        altera_comando(e, 3);
         return 1;
     }
 
@@ -80,24 +79,24 @@ int interpretador(ESTADO *antigoe,ESTADO *e, FILE *ficheiro) {
             e = inicializar_estado();
         } else pos(e, numero);
 
-        altera_comando(e,4);
+        altera_comando(e, 4);
         return 1;
     }
 
     if (strcmp(linha, "movs\n") == 0) {
         movs(e, stdout, 2);
-        altera_comando(e,5);
+        altera_comando(e, 5);
         return 1;
     }
 
     if (strcmp(linha, "jog\n") == 0) {
         jog(e);
-        altera_comando(e,6);
+        altera_comando(e, 6);
         return 1;
     }
     if (strcmp(linha, "jog2\n") == 0) {
         jog2(e);
-        altera_comando(e,7);
+        altera_comando(e, 7);
         return 1;
     }
     if (strcmp(linha, "Q\n") == 0) {
@@ -150,7 +149,7 @@ void prompt(ESTADO *e) {
 
 /**
 \brief Função que mostra o vencedor do jogo.
- \param i Jogador do vencedor.
+ \param jogador Jogador do vencedor.
 */
 void vencedor(int jogador) {
     printf("  ______________________________________________________________________________________________________\n");

@@ -1,8 +1,9 @@
+#ifndef RASTROSLI2_DADOS_H
+#define RASTROSLI2_DADOS_H
+
 /**
 \brief Estruturas de Dados.
 */
-#ifndef ___DADOS_H___
-#define  ___DADOS_H___
 #define BUF_SIZE 1024
 
 /**
@@ -16,6 +17,7 @@ typedef enum {
     PRETA = '#'
 } CASA;
 
+
 /**
 \brief Tipo de dados para as coordenadas.
 */
@@ -23,6 +25,7 @@ typedef struct {
     int coluna;
     int linha;
 } COORDENADA;
+
 
 /**
 \brief Tipo de dados para a jogada.
@@ -32,14 +35,17 @@ typedef struct {
     COORDENADA jogador2;
 } JOGADA;
 
+
 /**
 \brief Tipo de dados para as jogadas.
 */
 typedef JOGADA JOGADAS[32];
 
+
 /**
 \brief Tipo de dados para o estado.
 */
+
 
 typedef struct {
     /** O tabuleiro. */
@@ -57,16 +63,16 @@ typedef struct {
 } ESTADO;
 
 
-void altera_comando(ESTADO *e, int cmd);
-void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
 ESTADO *inicializar_estado();
-int obter_comando(ESTADO *e);
-CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 int obter_jogador_atual(ESTADO *estado);
-int obter_numero_de_jogadas(ESTADO *estado);
 COORDENADA obter_ultima_jogada(ESTADO *estado);
+int obter_numero_de_jogadas(ESTADO *estado);
+CASA obter_estado_casa(ESTADO *e, COORDENADA c);
+int obter_comando(ESTADO *e);
+void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
+void str_to_casa (char *linha, ESTADO *estado, int l);
 COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador);
 void refresh_board (ESTADO *e, COORDENADA c);
-void str_to_casa (char *linha, ESTADO *estado, int l);
+void altera_comando(ESTADO *e, int cmd);
 
-#endif //___DADOS_H___
+#endif //RASTROSLI2_DADOS_H

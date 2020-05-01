@@ -1,0 +1,125 @@
+\hypertarget{interface_8c}{}\doxysection{interface.\+c File Reference}
+\label{interface_8c}\index{interface.c@{interface.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logica.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_8c_a6821bafc3c88dfb2e433a095df9940c6}\label{interface_8c_a6821bafc3c88dfb2e433a095df9940c6}} 
+\#define {\bfseries B\+U\+F\+\_\+\+S\+I\+ZE}~1024
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_8c_a3d938bceb01a9acee28fe10ff0e2f9e4}{vencedor}} (int i)
+\begin{DoxyCompactList}\small\item\em Função que mostra o vencedor do jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_ab5791752505b2567b3667223b330500b}{mostrar\+\_\+tabuleiro}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e, F\+I\+LE $\ast$stdout, int cmd)
+\begin{DoxyCompactList}\small\item\em Função que mostra o tabuleiro ao receber um estado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_aac1f8a934d52c4c6550685e2749c48c4}{refresh\+\_\+board}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Função que atualiza o tabuleiro com a nova jogada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a33d09196f922a638847c19f3aca3fc3c}{prompt}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que mostra o tabuleiro, o número de jogadas, o próximo jogador, a última jogada e o último comando usado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_8c_a481c9756d775f26a46e6cd0b021d26b1}{interpretador}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$ae, \mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e, F\+I\+LE $\ast$ficheiro)
+\begin{DoxyCompactList}\small\item\em Função que interpreta o comando dado pelo utilizador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funções que modificam a interface do jogo. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{interface_8c_a481c9756d775f26a46e6cd0b021d26b1}\label{interface_8c_a481c9756d775f26a46e6cd0b021d26b1}} 
+\index{interface.c@{interface.c}!interpretador@{interpretador}}
+\index{interpretador@{interpretador}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{interpretador()}{interpretador()}}
+{\footnotesize\ttfamily int interpretador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{ae,  }\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{F\+I\+LE $\ast$}]{ficheiro }\end{DoxyParamCaption})}
+
+
+
+Função que interpreta o comando dado pelo utilizador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ae} & Estado antigo, usado para o comando pos; \\
+\hline
+{\em e} & Estado recebido; \\
+\hline
+{\em ficheiro} & Apontador para o ficheiro, usado para os comandos ler e gr. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso (1 ou 0) se o comando dado é valido. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_8c_ab5791752505b2567b3667223b330500b}\label{interface_8c_ab5791752505b2567b3667223b330500b}} 
+\index{interface.c@{interface.c}!mostrar\_tabuleiro@{mostrar\_tabuleiro}}
+\index{mostrar\_tabuleiro@{mostrar\_tabuleiro}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{mostrar\_tabuleiro()}{mostrar\_tabuleiro()}}
+{\footnotesize\ttfamily void mostrar\+\_\+tabuleiro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{F\+I\+LE $\ast$}]{stdout,  }\item[{int}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Função que mostra o tabuleiro ao receber um estado. 
+
+Estrutura de Interface.
+
+i é linha; j é coluna; 
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado; \\
+\hline
+{\em stdout} & Apontador do ficheiro para onde vai imprimir o tabuleiro; \\
+\hline
+{\em cmd} & Número do comando. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8c_a33d09196f922a638847c19f3aca3fc3c}\label{interface_8c_a33d09196f922a638847c19f3aca3fc3c}} 
+\index{interface.c@{interface.c}!prompt@{prompt}}
+\index{prompt@{prompt}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{prompt()}{prompt()}}
+{\footnotesize\ttfamily void prompt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que mostra o tabuleiro, o número de jogadas, o próximo jogador, a última jogada e o último comando usado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8c_aac1f8a934d52c4c6550685e2749c48c4}\label{interface_8c_aac1f8a934d52c4c6550685e2749c48c4}} 
+\index{interface.c@{interface.c}!refresh\_board@{refresh\_board}}
+\index{refresh\_board@{refresh\_board}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{refresh\_board()}{refresh\_board()}}
+{\footnotesize\ttfamily void refresh\+\_\+board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que atualiza o tabuleiro com a nova jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado; \\
+\hline
+{\em c} & Última coordenada dada pelo jogador. \\
+\hline
+\end{DoxyParams}
+Nesta parte, atualiza-\/se o número de jogadas, o jogador atual e o array de jogadas.
+
+Nesta parte, atualiza-\/se o número de jogadas, o jogador atual e/ou o array de jogadas.\mbox{\Hypertarget{interface_8c_a3d938bceb01a9acee28fe10ff0e2f9e4}\label{interface_8c_a3d938bceb01a9acee28fe10ff0e2f9e4}} 
+\index{interface.c@{interface.c}!vencedor@{vencedor}}
+\index{vencedor@{vencedor}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{vencedor()}{vencedor()}}
+{\footnotesize\ttfamily void vencedor (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Função que mostra o vencedor do jogo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Jogador do vencedor. \\
+\hline
+\end{DoxyParams}

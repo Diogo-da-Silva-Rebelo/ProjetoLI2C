@@ -1,0 +1,232 @@
+\hypertarget{logica_8c}{}\doxysection{logica.\+c File Reference}
+\label{logica_8c}\index{logica.c@{logica.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logica.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{logica_8c_a4e68d436fd02312dbf25a0876e6fcc29}{jogar}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Função que inicia o jogo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}{verifica\+\_\+jogada}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Função que verifica se a jogada é válida. Para ser válido, a coordenada precisa de ser adjacente à última jogada e o seu estado precisa de ser V\+A\+Z\+IO. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_a748f767c6cb4888533f46e81f65c15ca}{verifica\+\_\+fim\+\_\+jog}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$etemp, \mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Função que verifica se, com a jogada feita, o jogo acaba. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_ad3c7054170580d3d9c74e7d5cdd00395}{fim\+\_\+jogo}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que verifica se o jogo acabou. Testa todas as possibilidades de jogada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_aec7e4adfc2da77a07d18b65fd2777f19}{compara\+\_\+coord}} (\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c, \mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que compara duas coordenadas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_a66daa84cc18f7f5ad56aa9572a240800}{coordenada\+\_\+valida}} (\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Função que verifica se a coordenada é válida. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_ad02b4045c3f97d6d2f61ea3ecdf4b747}{ver\+\_\+jogada}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} l, \mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$etemp, \mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que verifica se a coordenada é jogável. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{logica_8c_a9f6a1441ea6aa0784170a686da674977}{l\+\_\+coord\+\_\+adj}} (\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} ultcrd, int jogador)
+\begin{DoxyCompactList}\small\item\em Função que cria uma lista com todas as coordenadas adjacentes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{logica_8c_ae925c5ade3fa83ad508c875f4f2cbe19}{area\+\_\+par\+\_\+possivel}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} l, \mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$etemp, \mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que cria uma lista com as coordenadas em que se forem jogadas o numero de jogadas possiveis do jogador adversário fica um numero par. Contudo, se nao houver estes casos retorna uma lista com coodernadas possiveis de jogar. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8c_a51e6aa0ed978abab4422df738531b7ee}{area\+\_\+par}} (\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$etemp, \mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Função que verifica se, apos jogar uma coordenada, o numero de jogadas possiveis é par. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funções que verificam as jogadas e se o jogo acabou. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{logica_8c_a51e6aa0ed978abab4422df738531b7ee}\label{logica_8c_a51e6aa0ed978abab4422df738531b7ee}} 
+\index{logica.c@{logica.c}!area\_par@{area\_par}}
+\index{area\_par@{area\_par}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{area\_par()}{area\_par()}}
+{\footnotesize\ttfamily int area\+\_\+par (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{etemp,  }\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se, apos jogar uma coordenada, o numero de jogadas possiveis é par. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em etemp} & estado temporário para testes; \\
+\hline
+{\em c} & coordenada dada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_ae925c5ade3fa83ad508c875f4f2cbe19}\label{logica_8c_ae925c5ade3fa83ad508c875f4f2cbe19}} 
+\index{logica.c@{logica.c}!area\_par\_possivel@{area\_par\_possivel}}
+\index{area\_par\_possivel@{area\_par\_possivel}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{area\_par\_possivel()}{area\_par\_possivel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} area\+\_\+par\+\_\+possivel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{l,  }\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{etemp,  }\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que cria uma lista com as coordenadas em que se forem jogadas o numero de jogadas possiveis do jogador adversário fica um numero par. Contudo, se nao houver estes casos retorna uma lista com coodernadas possiveis de jogar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & lista; \\
+\hline
+{\em etemp} & estado temporário que serve de testes; \\
+\hline
+{\em e} & estado do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_aec7e4adfc2da77a07d18b65fd2777f19}\label{logica_8c_aec7e4adfc2da77a07d18b65fd2777f19}} 
+\index{logica.c@{logica.c}!compara\_coord@{compara\_coord}}
+\index{compara\_coord@{compara\_coord}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{compara\_coord()}{compara\_coord()}}
+{\footnotesize\ttfamily int compara\+\_\+coord (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c,  }\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que compara duas coordenadas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Coordenada da lista; \\
+\hline
+{\em d} & Coordenada mais vantajosa ao jogador. \\
+\hline
+{\em e} & Estado do jogo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logica_8c_a66daa84cc18f7f5ad56aa9572a240800}\label{logica_8c_a66daa84cc18f7f5ad56aa9572a240800}} 
+\index{logica.c@{logica.c}!coordenada\_valida@{coordenada\_valida}}
+\index{coordenada\_valida@{coordenada\_valida}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{coordenada\_valida()}{coordenada\_valida()}}
+{\footnotesize\ttfamily int coordenada\+\_\+valida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se a coordenada é válida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Coordenada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_ad3c7054170580d3d9c74e7d5cdd00395}\label{logica_8c_ad3c7054170580d3d9c74e7d5cdd00395}} 
+\index{logica.c@{logica.c}!fim\_jogo@{fim\_jogo}}
+\index{fim\_jogo@{fim\_jogo}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{fim\_jogo()}{fim\_jogo()}}
+{\footnotesize\ttfamily int fim\+\_\+jogo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se o jogo acabou. Testa todas as possibilidades de jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o número do jogador vencedor (1 ou 2), um número que mostra que ainda há hipoteses de jogar (3), ou outro número que mostra que o jogo já acabou mas não há vencedores (0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_a4e68d436fd02312dbf25a0876e6fcc29}\label{logica_8c_a4e68d436fd02312dbf25a0876e6fcc29}} 
+\index{logica.c@{logica.c}!jogar@{jogar}}
+\index{jogar@{jogar}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily void jogar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que inicia o jogo. 
+
+Estrutura Lógica.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido. \\
+\hline
+{\em c} & Última coordenada recebida pelo jogador. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logica_8c_a9f6a1441ea6aa0784170a686da674977}\label{logica_8c_a9f6a1441ea6aa0784170a686da674977}} 
+\index{logica.c@{logica.c}!l\_coord\_adj@{l\_coord\_adj}}
+\index{l\_coord\_adj@{l\_coord\_adj}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{l\_coord\_adj()}{l\_coord\_adj()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} l\+\_\+coord\+\_\+adj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{ultcrd,  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Função que cria uma lista com todas as coordenadas adjacentes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ultcrd} & Última coordenada do jogador \\
+\hline
+{\em jogador} & Número do jogador \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_ad02b4045c3f97d6d2f61ea3ecdf4b747}\label{logica_8c_ad02b4045c3f97d6d2f61ea3ecdf4b747}} 
+\index{logica.c@{logica.c}!ver\_jogada@{ver\_jogada}}
+\index{ver\_jogada@{ver\_jogada}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{ver\_jogada()}{ver\_jogada()}}
+{\footnotesize\ttfamily int ver\+\_\+jogada (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{l,  }\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{etemp,  }\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se a coordenada é jogável. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sl} & Lista das jogadas possíveis; \\
+\hline
+{\em etemp} & Estado temporário; \\
+\hline
+{\em e} & Estado do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{logica_8c_a748f767c6cb4888533f46e81f65c15ca}\label{logica_8c_a748f767c6cb4888533f46e81f65c15ca}} 
+\index{logica.c@{logica.c}!verifica\_fim\_jog@{verifica\_fim\_jog}}
+\index{verifica\_fim\_jog@{verifica\_fim\_jog}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_fim\_jog()}{verifica\_fim\_jog()}}
+{\footnotesize\ttfamily int verifica\+\_\+fim\+\_\+jog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{etemp,  }\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se, com a jogada feita, o jogo acaba. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em etemp} & Estado temporário que serve para testes; \\
+\hline
+{\em c} & Coordenada que é jogada. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}\label{logica_8c_a93247f56972b42114bd135ad4ce3a0d0}} 
+\index{logica.c@{logica.c}!verifica\_jogada@{verifica\_jogada}}
+\index{verifica\_jogada@{verifica\_jogada}!logica.c@{logica.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_jogada()}{verifica\_jogada()}}
+{\footnotesize\ttfamily int verifica\+\_\+jogada (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structESTADO}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se a jogada é válida. Para ser válido, a coordenada precisa de ser adjacente à última jogada e o seu estado precisa de ser V\+A\+Z\+IO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Estado recebido; \\
+\hline
+{\em c} & Última coordenada recebida pelo jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso (1 ou 0, respetivamente) quando à possibilidade da jogada. 
+\end{DoxyReturn}

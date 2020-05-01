@@ -1,0 +1,154 @@
+\hypertarget{listas_8c}{}\doxysection{listas.\+c File Reference}
+\label{listas_8c}\index{listas.c@{listas.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}listas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+Include dependency graph for listas.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{listas_8c_ae3b99323b6f8f35d80bb69ff1a27985e}{criar\+\_\+lista}} ()
+\begin{DoxyCompactList}\small\item\em Função que cria uma lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{listas_8c_ac5e21ab64b129703089b0106afd0b6de}{insere\+\_\+cabeca}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L, void $\ast$val)
+\begin{DoxyCompactList}\small\item\em Função que insere um valor na cabeça da lista. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{listas_8c_abfcb205f3eb670157be0d1221021714b}{devolve\+\_\+cabeca}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Função que devolve a cabeça da lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{listas_8c_ad9380152361127432c55c1c6067e05ae}{proximo}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Função que devolve a cauda da lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{listas_8c_a9026a681a68322b5ec7f07137b864cbd}{remove\+\_\+cabeca}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Função que remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda da lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{listas_8c_a4c10928f7acaa4e3de3760cea0dfd9c0}{lista\+\_\+esta\+\_\+vazia}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Função que verifica se a lista está vazia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{listas_8c_a91c91e232af344576d000a1022f7b037}{tamanho\+\_\+lista}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Função que calcula o tamanho da lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funções que alteram as listas. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{listas_8c_ae3b99323b6f8f35d80bb69ff1a27985e}\label{listas_8c_ae3b99323b6f8f35d80bb69ff1a27985e}} 
+\index{listas.c@{listas.c}!criar\_lista@{criar\_lista}}
+\index{criar\_lista@{criar\_lista}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{criar\_lista()}{criar\_lista()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} criar\+\_\+lista (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que cria uma lista. 
+
+\begin{DoxyReturn}{Returns}
+Uma lista. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listas_8c_abfcb205f3eb670157be0d1221021714b}\label{listas_8c_abfcb205f3eb670157be0d1221021714b}} 
+\index{listas.c@{listas.c}!devolve\_cabeca@{devolve\_cabeca}}
+\index{devolve\_cabeca@{devolve\_cabeca}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{devolve\_cabeca()}{devolve\_cabeca()}}
+{\footnotesize\ttfamily void$\ast$ devolve\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que devolve a cabeça da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor que estava na cabeça. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listas_8c_ac5e21ab64b129703089b0106afd0b6de}\label{listas_8c_ac5e21ab64b129703089b0106afd0b6de}} 
+\index{listas.c@{listas.c}!insere\_cabeca@{insere\_cabeca}}
+\index{insere\_cabeca@{insere\_cabeca}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{insere\_cabeca()}{insere\_cabeca()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} insere\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L,  }\item[{void $\ast$}]{val }\end{DoxyParamCaption})}
+
+
+
+Função que insere um valor na cabeça da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lista; \\
+\hline
+{\em valor} & Valor que vai ser colocado na cabeça da lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista alterada. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listas_8c_a4c10928f7acaa4e3de3760cea0dfd9c0}\label{listas_8c_a4c10928f7acaa4e3de3760cea0dfd9c0}} 
+\index{listas.c@{listas.c}!lista\_esta\_vazia@{lista\_esta\_vazia}}
+\index{lista\_esta\_vazia@{lista\_esta\_vazia}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{lista\_esta\_vazia()}{lista\_esta\_vazia()}}
+{\footnotesize\ttfamily int lista\+\_\+esta\+\_\+vazia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se a lista está vazia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Verdadeiro ou falso. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listas_8c_ad9380152361127432c55c1c6067e05ae}\label{listas_8c_ad9380152361127432c55c1c6067e05ae}} 
+\index{listas.c@{listas.c}!proximo@{proximo}}
+\index{proximo@{proximo}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{proximo()}{proximo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} proximo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que devolve a cauda da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A lista inicial mas sem a cabeça. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listas_8c_a9026a681a68322b5ec7f07137b864cbd}\label{listas_8c_a9026a681a68322b5ec7f07137b864cbd}} 
+\index{listas.c@{listas.c}!remove\_cabeca@{remove\_cabeca}}
+\index{remove\_cabeca@{remove\_cabeca}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{remove\_cabeca()}{remove\_cabeca()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} remove\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A lista inicial mas sem a cabeça. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listas_8c_a91c91e232af344576d000a1022f7b037}\label{listas_8c_a91c91e232af344576d000a1022f7b037}} 
+\index{listas.c@{listas.c}!tamanho\_lista@{tamanho\_lista}}
+\index{tamanho\_lista@{tamanho\_lista}!listas.c@{listas.c}}
+\doxysubsubsection{\texorpdfstring{tamanho\_lista()}{tamanho\_lista()}}
+{\footnotesize\ttfamily int tamanho\+\_\+lista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que calcula o tamanho da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O tamanho. 
+\end{DoxyReturn}

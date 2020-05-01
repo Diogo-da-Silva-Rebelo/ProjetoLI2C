@@ -15,7 +15,7 @@ Funções que modificam a interface do jogo.
 \brief Função que mostra o vencedor do jogo.
  \param i Jogador do vencedor.
 */
-void vencedor(int i) {
+void vencedor(int jogador) {
     printf("  ______________________________________________________________________________________________________\n");
     printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
     printf("||    ______       ||       ______     ||       ______     _______              ________     _   _   _  ||\n");
@@ -27,7 +27,7 @@ void vencedor(int i) {
     printf("||______________________________________________________________________________________________________||\n");
     printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");
 
-    if (i == 1) {
+    if (jogador == 1) {
         printf("||                                          ‾‾‾‾‾‾|                                                     ||\n");
         printf("||                                          ‾‾‾‾| |                                                     ||\n");
         printf("||                                              | |                                                     ||\n");
@@ -55,48 +55,17 @@ void vencedor(int i) {
 */
 void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
     COORDENADA c;
-    for (int i = 8; i > 0; i--) {
-        if (cmd == 2) fprintf(stdout, "%d ", i);
-        for (int j = 0; j <= 7; j++) {
-            c.linha = i - 1;
-            c.coluna = j;
+    for (int lin = 8; lin > 0; lin--) {
+        if (cmd == 2) fprintf(stdout, "%d ", lin);
+        for (int col = 0; col <= 7; col++) {
+            c.linha = lin - 1;
+            c.coluna = col;
             if (cmd == 1) fprintf(stdout, "%c", obter_estado_casa(e, c));
             else fprintf(stdout, "%c ", obter_estado_casa(e, c));
         }
         fprintf(stdout, "\n");
     }
     if (cmd == 2) fprintf(stdout, "  a b c d e f g h \n");
-}
-
-/**
-\brief Função que atualiza o tabuleiro com a nova jogada.
- \param e Estado;
- \param c Última coordenada dada pelo jogador.
-*/
-void refresh_board (ESTADO *e, COORDENADA c) {
-/**
-\brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e o array de jogadas.
-*/
-    if (e->jogador_atual == 2) {
-        e->jogadas[obter_numero_de_jogadas(e)].jogador2.linha = c.linha;
-        e->jogadas[obter_numero_de_jogadas(e)].jogador2.coluna = c.coluna;
-        e->jogador_atual = 1;
-        e->num_jogadas++;
-
-    } else {
-        e->jogador_atual = 2;
-        e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
-        e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
-    }
-/**
-\brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e/ou o array de jogadas.
-*/
-    e->tab[7 - obter_ultima_jogada(e).linha][obter_ultima_jogada(e).coluna] = PRETA;
-    int lin = 7 - c.linha;
-    e->tab[lin][c.coluna] = BRANCA;
-
-    e->ultima_jogada.linha = (c.linha);
-    e->ultima_jogada.coluna = (c.coluna);
 }
 
 
@@ -124,7 +93,7 @@ void prompt(ESTADO *e) {
  \param ficheiro Apontador para o ficheiro, usado para os comandos ler e gr.
  \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
 */
-int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
+int interpretador(ESTADO *antigoe,ESTADO *e, FILE *ficheiro) {
     char linha[BUF_SIZE];
     mostrar_tabuleiro(e, stdout, 2);
 
@@ -142,19 +111,19 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
-        e->num_comando = 1;
+        altera_comando(e,1);
         return 1;
     }
 
     if (strcmp(linha, "gr\n") == 0) {
         grava(ficheiro, e);
-        e->num_comando = 2;
+        altera_comando(e,2);
         return 1;
     }
 
     if (strcmp(linha, "ler\n") == 0) {
         le(ficheiro, e);
-        e->num_comando = 3;
+        altera_comando(e,3);
         return 1;
     }
 
@@ -169,36 +138,36 @@ int interpretador(ESTADO *ae,ESTADO *e, FILE *ficheiro) {
             numero = (*(linha + 4)) * 10 + (*(linha + 5));
         }
 
-        if (obter_comando(e) != 4) *ae = *e;
+        if (obter_comando(e) != 4) *antigoe = *e;
 
-        if (numero > obter_numero_de_jogadas(ae)) {
+        if (numero > obter_numero_de_jogadas(antigoe)) {
             printf("Impossível, coloque um número inferior ao número de jogadas\n");
             return 1;
-        } else if (numero > obter_numero_de_jogadas(e)) *e = *ae;
+        } else if (numero > obter_numero_de_jogadas(e)) *e = *antigoe;
 
         if (numero == 0) {
             free(e);
             e = inicializar_estado();
         } else pos(e, numero);
 
-        e->num_comando = 4;
+        altera_comando(e,4);
         return 1;
     }
 
     if (strcmp(linha, "movs\n") == 0) {
         movs(e, stdout, 2);
-        e->num_comando = 5;
+        altera_comando(e,5);
         return 1;
     }
 
     if (strcmp(linha, "jog\n") == 0) {
         jog(e);
-        e->num_comando = 6;
+        altera_comando(e,6);
         return 1;
     }
     if (strcmp(linha, "jog2\n") == 0) {
         jog2(e);
-        e->num_comando = 7;
+        altera_comando(e,7);
         return 1;
     }
     if (strcmp(linha, "Q\n") == 0) {

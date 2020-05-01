@@ -6,18 +6,6 @@
 #define BUF_SIZE 1024
 
 /**
-\brief Tipo de dados para os erros.
-*/
-typedef enum {
-    OK,
-    COORDENADA_INVALIDA,
-    JOGADA_INVALIDA,
-    ERRO_LER_TAB,
-    ERRO_ABRIR_FICHEIRO,
-} ERROS;
-
-
-/**
 \brief Tipo de dados para a casa.
 */
 typedef enum {
@@ -83,5 +71,8 @@ int obter_comando(ESTADO *e);
 void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
 void str_to_casa (char *linha, ESTADO *estado, int l);
 COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador);
+void refresh_board (ESTADO *e, COORDENADA c);
+void altera_comando(ESTADO *e, int cmd);
+
 
 #endif //___DADOS_H___

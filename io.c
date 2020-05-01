@@ -57,16 +57,17 @@ void le(FILE *ficheiro,ESTADO *estado) {
 /**
 \brief Parte da função que lê os movimentos do ficheiro.
 */
-    for (int i = -1; fgets(linha, BUF_SIZE, ficheiro) != NULL; i++) {
+    for (int i = 0; fgets(linha, BUF_SIZE, ficheiro) != NULL; i++) {
         int num_tokens = sscanf(linha, "%d: %s %s", &num_jog, jog1, jog2);
         if (num_tokens == 3 || num_tokens == 2) {
             COORDENADA c1 = str_to_coord(jog1);
-            COORDENADA c2 = num_tokens==3 ? str_to_coord(jog2) : (COORDENADA) {-1, -1};
+            COORDENADA c2 = num_tokens == 3 ? str_to_coord(jog2) : (COORDENADA) {-1, -1};
             armazena_jogada(c1, c2, i, estado);
 
-            if (num_tokens==3) estado->num_jogadas++;
-            estado->jogador_atual = num_tokens==3 ? 1:2;
-            estado->ultima_jogada = num_tokens==3 ? c2:c1;
+            if (num_tokens == 3) estado->num_jogadas++;
+            estado->jogador_atual = num_tokens == 3 ? 1 : 2;
+            estado->ultima_jogada.linha = num_tokens == 3 ? c2.linha : c1.linha;
+            estado->ultima_jogada.coluna = num_tokens == 3 ? c2.coluna : c1.coluna;
         }
     }
     fclose(ficheiro);
@@ -135,55 +136,19 @@ void pos(ESTADO *e,int i) {
 
 
 /**
-\brief Função que elimina as jogadas não possíveis
- \param l Lista de todas as jogadas;
- \param e Estado do jogo;
- \returns Uma lista com todas as jogadas possíveis.
-*/
-LISTA hipord(LISTA l,ESTADO *e) {
-    LISTA r, sl, result;
-    r = criar_lista();
-    result = criar_lista();
-
-    for (int i = 0; i < 2; i++) {
-        r = insere_cabeca(r, devolve_cabeca(l));
-        l = proximo(l);
-    }
-
-    sl = proximo(l);
-    r = insere_cabeca(r, devolve_cabeca(sl));
-    r = insere_cabeca(r, devolve_cabeca(l));
-    sl = proximo(sl);
-
-    for (; !(lista_esta_vazia(sl)); sl = proximo(sl))
-        r = insere_cabeca(r, devolve_cabeca(sl));
-
-    for (; !(lista_esta_vazia(r)); r = proximo(r)) {
-        COORDENADA *coord;
-        coord = (COORDENADA *) devolve_cabeca(r);
-        if (coordenada_valida(*coord) && verifica_jogada(e, *coord))
-            result = insere_cabeca(result, devolve_cabeca(r));
-    }
-    return result;
-}
-
-
-/**
 \brief Função que joga pela vez do jogador. Heurística: Flood Fill.
  \param e Estado do jogo.
  */
 void jog(ESTADO *e) {
-    ESTADO etemp;
-    etemp = *e;
-
-    LISTA l = hipord(l_coord_adj(obter_ultima_jogada(e), obter_jogador_atual(e)), e);
+    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
+    l = hipord(l, e);
     LISTA segundal = l;
 
-    if (!ver_jogada(l, &etemp, e)) {
+    if (!jogada_favoravel(l, e)) {
         int t = tamanho_lista(segundal);
         srand(time(NULL));
         int resultado = (rand() % t);
-        for (; resultado > 0; resultado--, segundal = remove_cabeca(segundal));
+        for (; resultado > 0; resultado--, segundal = proximo(segundal));
         COORDENADA *coord;
         coord = (COORDENADA *) devolve_cabeca(segundal);
         jogar(e, *coord);
@@ -196,11 +161,8 @@ void jog(ESTADO *e) {
  \param e Estado do jogo.
  */
 void jog2(ESTADO *e) {
-    ESTADO etemp;
-    etemp = *e;
-
     LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
-    l = area_par_possivel(l, &etemp, e);
+    l = area_par_possivel(l, e);
 
     int t = tamanho_lista(l);
     srand(time(NULL));

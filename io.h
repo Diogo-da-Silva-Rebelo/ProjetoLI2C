@@ -12,7 +12,6 @@ COORDENADA str_to_coord (char *coordenada);
 void le(FILE *ficheiro,ESTADO *e);
 void movs(ESTADO *e,FILE *stdout,int l);
 void pos(ESTADO *e,int i);
-LISTA hipord(LISTA l,ESTADO *e);
 void jog(ESTADO *e);
 void jog2 (ESTADO *e);
 

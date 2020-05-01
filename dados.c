@@ -4,7 +4,7 @@
 
 /**
 @file dados.c
-Funções que alteram o estado e que vão buscar dados a ele.
+Funções que vão buscar ou alterar dados ao estado do jogo.
 */
 
 /**
@@ -17,8 +17,8 @@ ESTADO *inicializar_estado() {
     e->jogador_atual = 2;
     e->num_comando = 1;
     e->num_jogadas = -1;
-    e->ultima_jogada.coluna = 4;
     e->ultima_jogada.linha = 4;
+    e->ultima_jogada.coluna = 4;
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -30,7 +30,7 @@ ESTADO *inicializar_estado() {
     e->tab[7][0] = UM;
     e->tab[0][7] = DOIS;
 
-    refresh_board(e, e->ultima_jogada);
+    refresh_board(e, obter_ultima_jogada(e));
     return e;
 }
 
@@ -120,6 +120,53 @@ void str_to_casa (char *linha, ESTADO *estado, int l) {
 }
 
 
-COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador){
-    return jogador==1 ? e->jogadas[i].jogador1:e->jogadas[i].jogador2;
+/**
+\brief Função que atualiza o tabuleiro com a nova jogada.
+ \param e Estado;
+ \param c Última coordenada dada pelo jogador.
+*/
+COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador) {
+    return jogador == 1 ? e->jogadas[i].jogador1 : e->jogadas[i].jogador2;
+}
+
+
+/**
+\brief Função que atualiza o tabuleiro com a nova jogada.
+ \param e Estado;
+ \param c Última coordenada dada pelo jogador.
+*/
+void refresh_board (ESTADO *e, COORDENADA c) {
+/**
+\brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e o array de jogadas.
+*/
+    if (e->jogador_atual == 2) {
+        e->jogadas[obter_numero_de_jogadas(e)].jogador2.linha = c.linha;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador2.coluna = c.coluna;
+        e->jogador_atual = 1;
+        e->num_jogadas++;
+
+    } else {
+        e->jogador_atual = 2;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador1.linha = c.linha;
+        e->jogadas[obter_numero_de_jogadas(e)].jogador1.coluna = c.coluna;
+    }
+/**
+\brief Nesta parte, atualiza-se o número de jogadas, o jogador atual e/ou o array de jogadas.
+*/
+    e->tab[7 - obter_ultima_jogada(e).linha][obter_ultima_jogada(e).coluna] = PRETA;
+    int lin = 7 - c.linha;
+    e->tab[lin][c.coluna] = BRANCA;
+
+    e->ultima_jogada.linha = (c.linha);
+    e->ultima_jogada.coluna = (c.coluna);
+}
+
+
+/**
+\brief Função que atualiza o número do comando.
+ \param e Estado;
+ \param cmd Último comando usado.
+*/
+void altera_comando(ESTADO *e, int cmd) {
+    e->num_comando = cmd;
 }

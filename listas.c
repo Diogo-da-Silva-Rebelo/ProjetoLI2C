@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "listas.h"
-#include "dados.h"
 
 /**
 @file listas.c
@@ -14,6 +13,7 @@ Funções que alteram as listas.
 */
 LISTA criar_lista() {
     LISTA l = malloc(sizeof(NODO));
+    l->valor= NULL;
     return l;
 }
 

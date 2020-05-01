@@ -4,9 +4,12 @@
 
 /**
 @file main.c
-Função principal do projeto.
+ Ficheiro principal.
 */
 
+/**
+\brief Função principal do projeto.
+*/
 int main() {
     ESTADO *e, *ae;
     e = inicializar_estado();

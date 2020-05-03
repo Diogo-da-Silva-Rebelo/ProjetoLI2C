@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vortex/CLionProjects/LI2PL7G4/Bot
+CMAKE_SOURCE_DIR = "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Bot
+# Target rules for targets named RastrosLI2
 
 # Build rule for target.
-Bot: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Bot
-.PHONY : Bot
+RastrosLI2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 RastrosLI2
+.PHONY : RastrosLI2
 
 # fast build rule for target.
-Bot/fast:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/build
-.PHONY : Bot/fast
+RastrosLI2/fast:
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/build
+.PHONY : RastrosLI2/fast
 
 dados.o: dados.c.o
 
@@ -129,7 +129,7 @@ dados.o: dados.c.o
 
 # target to build an object file
 dados.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/dados.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/dados.c.o
 .PHONY : dados.c.o
 
 dados.i: dados.c.i
@@ -138,7 +138,7 @@ dados.i: dados.c.i
 
 # target to preprocess a source file
 dados.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/dados.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/dados.c.i
 .PHONY : dados.c.i
 
 dados.s: dados.c.s
@@ -147,7 +147,7 @@ dados.s: dados.c.s
 
 # target to generate assembly for a file
 dados.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/dados.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/dados.c.s
 .PHONY : dados.c.s
 
 interface.o: interface.c.o
@@ -156,7 +156,7 @@ interface.o: interface.c.o
 
 # target to build an object file
 interface.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/interface.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/interface.c.o
 .PHONY : interface.c.o
 
 interface.i: interface.c.i
@@ -165,7 +165,7 @@ interface.i: interface.c.i
 
 # target to preprocess a source file
 interface.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/interface.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/interface.c.i
 .PHONY : interface.c.i
 
 interface.s: interface.c.s
@@ -174,7 +174,7 @@ interface.s: interface.c.s
 
 # target to generate assembly for a file
 interface.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/interface.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/interface.c.s
 .PHONY : interface.c.s
 
 io.o: io.c.o
@@ -183,7 +183,7 @@ io.o: io.c.o
 
 # target to build an object file
 io.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/io.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/io.c.o
 .PHONY : io.c.o
 
 io.i: io.c.i
@@ -192,7 +192,7 @@ io.i: io.c.i
 
 # target to preprocess a source file
 io.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/io.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/io.c.i
 .PHONY : io.c.i
 
 io.s: io.c.s
@@ -201,7 +201,7 @@ io.s: io.c.s
 
 # target to generate assembly for a file
 io.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/io.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/io.c.s
 .PHONY : io.c.s
 
 io_aux.o: io_aux.c.o
@@ -210,7 +210,7 @@ io_aux.o: io_aux.c.o
 
 # target to build an object file
 io_aux.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/io_aux.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/io_aux.c.o
 .PHONY : io_aux.c.o
 
 io_aux.i: io_aux.c.i
@@ -219,7 +219,7 @@ io_aux.i: io_aux.c.i
 
 # target to preprocess a source file
 io_aux.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/io_aux.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/io_aux.c.i
 .PHONY : io_aux.c.i
 
 io_aux.s: io_aux.c.s
@@ -228,7 +228,7 @@ io_aux.s: io_aux.c.s
 
 # target to generate assembly for a file
 io_aux.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/io_aux.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/io_aux.c.s
 .PHONY : io_aux.c.s
 
 listas.o: listas.c.o
@@ -237,7 +237,7 @@ listas.o: listas.c.o
 
 # target to build an object file
 listas.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/listas.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/listas.c.o
 .PHONY : listas.c.o
 
 listas.i: listas.c.i
@@ -246,7 +246,7 @@ listas.i: listas.c.i
 
 # target to preprocess a source file
 listas.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/listas.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/listas.c.i
 .PHONY : listas.c.i
 
 listas.s: listas.c.s
@@ -255,7 +255,7 @@ listas.s: listas.c.s
 
 # target to generate assembly for a file
 listas.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/listas.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/listas.c.s
 .PHONY : listas.c.s
 
 logica.o: logica.c.o
@@ -264,7 +264,7 @@ logica.o: logica.c.o
 
 # target to build an object file
 logica.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/logica.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/logica.c.o
 .PHONY : logica.c.o
 
 logica.i: logica.c.i
@@ -273,7 +273,7 @@ logica.i: logica.c.i
 
 # target to preprocess a source file
 logica.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/logica.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/logica.c.i
 .PHONY : logica.c.i
 
 logica.s: logica.c.s
@@ -282,7 +282,7 @@ logica.s: logica.c.s
 
 # target to generate assembly for a file
 logica.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/logica.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/logica.c.s
 .PHONY : logica.c.s
 
 main.o: main.c.o
@@ -291,7 +291,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/main.c.o
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -300,7 +300,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/main.c.i
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -309,7 +309,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/main.c.s
+	$(MAKE) -f CMakeFiles/RastrosLI2.dir/build.make CMakeFiles/RastrosLI2.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -320,7 +320,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Bot"
+	@echo "... RastrosLI2"
 	@echo "... dados.o"
 	@echo "... dados.i"
 	@echo "... dados.s"

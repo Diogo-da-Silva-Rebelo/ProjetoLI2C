@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vortex/CLionProjects/LI2PL7G4/Bot
+CMAKE_SOURCE_DIR = "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Bot.dir/depend.make
@@ -59,94 +59,94 @@ include CMakeFiles/Bot.dir/flags.make
 
 CMakeFiles/Bot.dir/main.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Bot.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/main.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Bot.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/main.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/main.c"
 
 CMakeFiles/Bot.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/main.c > CMakeFiles/Bot.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/main.c" > CMakeFiles/Bot.dir/main.c.i
 
 CMakeFiles/Bot.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/main.c -o CMakeFiles/Bot.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/main.c" -o CMakeFiles/Bot.dir/main.c.s
 
 CMakeFiles/Bot.dir/dados.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/dados.c.o: ../dados.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Bot.dir/dados.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/dados.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/dados.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Bot.dir/dados.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/dados.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/dados.c"
 
 CMakeFiles/Bot.dir/dados.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/dados.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/dados.c > CMakeFiles/Bot.dir/dados.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/dados.c" > CMakeFiles/Bot.dir/dados.c.i
 
 CMakeFiles/Bot.dir/dados.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/dados.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/dados.c -o CMakeFiles/Bot.dir/dados.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/dados.c" -o CMakeFiles/Bot.dir/dados.c.s
 
 CMakeFiles/Bot.dir/io.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/io.c.o: ../io.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Bot.dir/io.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/io.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/io.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Bot.dir/io.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/io.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io.c"
 
 CMakeFiles/Bot.dir/io.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/io.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/io.c > CMakeFiles/Bot.dir/io.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io.c" > CMakeFiles/Bot.dir/io.c.i
 
 CMakeFiles/Bot.dir/io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/io.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/io.c -o CMakeFiles/Bot.dir/io.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io.c" -o CMakeFiles/Bot.dir/io.c.s
 
 CMakeFiles/Bot.dir/io_aux.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/io_aux.c.o: ../io_aux.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Bot.dir/io_aux.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/io_aux.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/io_aux.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Bot.dir/io_aux.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/io_aux.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io_aux.c"
 
 CMakeFiles/Bot.dir/io_aux.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/io_aux.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/io_aux.c > CMakeFiles/Bot.dir/io_aux.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io_aux.c" > CMakeFiles/Bot.dir/io_aux.c.i
 
 CMakeFiles/Bot.dir/io_aux.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/io_aux.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/io_aux.c -o CMakeFiles/Bot.dir/io_aux.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io_aux.c" -o CMakeFiles/Bot.dir/io_aux.c.s
 
 CMakeFiles/Bot.dir/listas.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/listas.c.o: ../listas.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Bot.dir/listas.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/listas.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/listas.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Bot.dir/listas.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/listas.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/listas.c"
 
 CMakeFiles/Bot.dir/listas.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/listas.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/listas.c > CMakeFiles/Bot.dir/listas.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/listas.c" > CMakeFiles/Bot.dir/listas.c.i
 
 CMakeFiles/Bot.dir/listas.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/listas.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/listas.c -o CMakeFiles/Bot.dir/listas.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/listas.c" -o CMakeFiles/Bot.dir/listas.c.s
 
 CMakeFiles/Bot.dir/logica.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/logica.c.o: ../logica.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Bot.dir/logica.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/logica.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/logica.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Bot.dir/logica.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/logica.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/logica.c"
 
 CMakeFiles/Bot.dir/logica.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/logica.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/logica.c > CMakeFiles/Bot.dir/logica.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/logica.c" > CMakeFiles/Bot.dir/logica.c.i
 
 CMakeFiles/Bot.dir/logica.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/logica.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/logica.c -o CMakeFiles/Bot.dir/logica.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/logica.c" -o CMakeFiles/Bot.dir/logica.c.s
 
 CMakeFiles/Bot.dir/interface.c.o: CMakeFiles/Bot.dir/flags.make
 CMakeFiles/Bot.dir/interface.c.o: ../interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Bot.dir/interface.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/interface.c.o   -c /home/vortex/CLionProjects/LI2PL7G4/Bot/interface.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Bot.dir/interface.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/interface.c.o   -c "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/interface.c"
 
 CMakeFiles/Bot.dir/interface.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/interface.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vortex/CLionProjects/LI2PL7G4/Bot/interface.c > CMakeFiles/Bot.dir/interface.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/interface.c" > CMakeFiles/Bot.dir/interface.c.i
 
 CMakeFiles/Bot.dir/interface.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/interface.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vortex/CLionProjects/LI2PL7G4/Bot/interface.c -o CMakeFiles/Bot.dir/interface.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/interface.c" -o CMakeFiles/Bot.dir/interface.c.s
 
 # Object files for target Bot
 Bot_OBJECTS = \
@@ -170,7 +170,7 @@ Bot: CMakeFiles/Bot.dir/logica.c.o
 Bot: CMakeFiles/Bot.dir/interface.c.o
 Bot: CMakeFiles/Bot.dir/build.make
 Bot: CMakeFiles/Bot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable Bot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable Bot"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Bot.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -183,6 +183,6 @@ CMakeFiles/Bot.dir/clean:
 .PHONY : CMakeFiles/Bot.dir/clean
 
 CMakeFiles/Bot.dir/depend:
-	cd /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vortex/CLionProjects/LI2PL7G4/Bot /home/vortex/CLionProjects/LI2PL7G4/Bot /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Bot.dir/depend
 

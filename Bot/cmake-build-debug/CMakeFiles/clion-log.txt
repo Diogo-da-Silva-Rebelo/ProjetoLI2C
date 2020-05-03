@@ -1,4 +1,4 @@
-/home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/vortex/CLionProjects/LI2PL7G4/Bot
+/home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot"
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug
+-- Build files have been written to: /home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug

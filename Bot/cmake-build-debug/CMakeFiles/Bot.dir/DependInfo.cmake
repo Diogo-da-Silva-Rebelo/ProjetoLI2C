@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/dados.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/dados.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/interface.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/interface.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/io.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/io.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/io_aux.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/io_aux.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/listas.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/listas.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/logica.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/logica.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Bot/main.c" "/home/vortex/CLionProjects/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/main.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/dados.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/dados.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/interface.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/interface.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/io.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io_aux.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/io_aux.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/listas.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/listas.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/logica.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/logica.c.o"
+  "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/main.c" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/CMakeFiles/Bot.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

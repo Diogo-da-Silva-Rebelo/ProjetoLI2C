@@ -13,7 +13,6 @@ CMakeFiles/Bot.dir/io.c.o: ../io.c
 CMakeFiles/Bot.dir/io.c.o: ../io.h
 CMakeFiles/Bot.dir/io.c.o: ../io_aux.h
 CMakeFiles/Bot.dir/io.c.o: ../listas.h
-CMakeFiles/Bot.dir/io.c.o: ../logica.h
 
 CMakeFiles/Bot.dir/io_aux.c.o: ../dados.h
 CMakeFiles/Bot.dir/io_aux.c.o: ../io_aux.c
@@ -30,4 +29,10 @@ CMakeFiles/Bot.dir/logica.c.o: ../listas.h
 CMakeFiles/Bot.dir/logica.c.o: ../logica.c
 CMakeFiles/Bot.dir/logica.c.o: ../logica.h
 
+CMakeFiles/Bot.dir/main.c.o: ../dados.h
+CMakeFiles/Bot.dir/main.c.o: ../io.h
+CMakeFiles/Bot.dir/main.c.o: ../io_aux.h
+CMakeFiles/Bot.dir/main.c.o: ../listas.h
+CMakeFiles/Bot.dir/main.c.o: ../logica.h
+CMakeFiles/Bot.dir/main.c.o: ../main.c
 

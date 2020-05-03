@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="Bot"/>
+		<Option title="RastrosLI2"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -37,8 +37,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Bot">
-				<Option output="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/Bot" prefix_auto="0" extension_auto="0"/>
+			<Target title="RastrosLI2">
+				<Option output="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/RastrosLI2" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -50,14 +50,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 Bot"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 RastrosLI2"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Bot/fast">
-				<Option output="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/Bot" prefix_auto="0" extension_auto="0"/>
+			<Target title="RastrosLI2/fast">
+				<Option output="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug/RastrosLI2" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -69,7 +69,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 Bot/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 RastrosLI2/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/henrique/2º\ Semestre/LI\ 2/LI2PL7G4/Bot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -77,43 +77,43 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/dados.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/dados.h">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/interface.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/interface.h">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io.h">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io_aux.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/io_aux.h">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/listas.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/listas.h">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/logica.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/logica.h">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/main.c">
-			<Option target="Bot"/>
+			<Option target="RastrosLI2"/>
 		</Unit>
 		<Unit filename="/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

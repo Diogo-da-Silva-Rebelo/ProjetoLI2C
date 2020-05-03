@@ -1,4 +1,1 @@
-/home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot"
--- Configuring done
--- Generating done
--- Build files have been written to: /home/henrique/2º Semestre/LI 2/LI2PL7G4/Bot/cmake-build-debug
+CMakeLists.txt not found in /home/henrique/2º Semestre/LI 2/LI2PL7G4/bot Select CMakeLists.txt file...

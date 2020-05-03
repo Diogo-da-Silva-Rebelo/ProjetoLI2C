@@ -1,5 +1,5 @@
-#ifndef BOT_DADOS_H
-#define BOT_DADOS_H
+#ifndef RASTROSLI2_DADOS_H
+#define RASTROSLI2_DADOS_H
 
 /**
  \brief BUF_SIZE
@@ -184,4 +184,4 @@ void refresh_board (ESTADO *e, COORDENADA c);
 */
 void str_to_casa (const char *linha, ESTADO *estado, int l);
 
-#endif //BOT_DADOS_H
+#endif //RASTROSLI2_DADOS_H

@@ -1,4 +1,12 @@
+/**
+@file interface.c
+*/
+
+/**
+\brief BUF_SIZE.
+*/
 #define BUF_SIZE 1024
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

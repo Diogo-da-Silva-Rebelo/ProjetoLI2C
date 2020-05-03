@@ -1,4 +1,7 @@
- #include <stdio.h>
+/**
+@file main.c
+*/
+#include <stdio.h>
 #include "dados.h"
 #include "interface.h"
 

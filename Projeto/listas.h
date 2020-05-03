@@ -6,10 +6,23 @@
 Funções que alteram as listas.
 */
 
+/**
+\brief Estrutura do nodo.
+*/
 typedef struct nodo {
+/**
+\brief Apontador do valor da lista.
+*/
     void *valor;
+/**
+\brief Apontador do próximo valor da lista.
+*/
     struct nodo *proximo;
-} NODO, *LISTA;
+} NODO,
+/**
+\brief Lista.
+*/
+*LISTA;
 
 
 /**
@@ -30,10 +43,10 @@ void *devolve_cabeca(LISTA l);
 /**
 \brief Função que insere um valor na cabeça da lista.
  \param l Lista;
- \param val Valor que vai ser colocado na cabeça da lista.
+ \param *val Valor que vai ser colocado na cabeça da lista.
  \returns  Lista alterada.
 */
-LISTA insere_cabeca(LISTA l, void *valor);
+LISTA insere_cabeca(LISTA l, void *val);
 
 
 /**

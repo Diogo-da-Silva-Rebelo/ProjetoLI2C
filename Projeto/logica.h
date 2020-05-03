@@ -10,7 +10,7 @@ Funções que verificam as jogadas e se o jogo acabou.
 
 /**
 \brief Função que inicia o jogo.
- \param e Estado recebido.
+ \param *e Estado recebido.
  \param c Última coordenada recebida pelo jogador.
 */
 void jogar(ESTADO *e, COORDENADA c);

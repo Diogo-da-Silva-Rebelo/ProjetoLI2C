@@ -10,9 +10,9 @@ Funções que modificam a interface do jogo.
 
 /**
 \brief Função que interpreta o comando dado pelo utilizador.
- \param antigoee Estado antigo, usado para o comando pos;
- \param e Estado recebido;
- \param ficheiro Apontador para o ficheiro, usado para os comandos ler e gr.
+ \param *antigoe Estado antigo, usado para o comando pos;
+ \param *e Estado recebido;
+ \param *ficheiro Apontador para o ficheiro, usado para os comandos ler e gr.
  \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
 */
 int interpretador(ESTADO *antigoe, ESTADO *e, FILE *ficheiro);

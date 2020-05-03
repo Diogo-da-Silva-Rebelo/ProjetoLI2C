@@ -2,21 +2,6 @@
 #include <stdio.h>
 #include "dados.h"
 
-
-
-/**
-@file interface.c
-Funções que modificam a interface do jogo.
-*/
-
-/**
-\brief Função que mostra o tabuleiro ao receber um estado
-\brief i é linha; j é coluna;
- \param e Estado;
- \param stdout Apontador do ficheiro para onde vai imprimir o tabuleiro;
- \param cmd Número do comando.
-*/
-
 void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
     COORDENADA c;
     for (int lin = 8; lin > 0; lin--) {

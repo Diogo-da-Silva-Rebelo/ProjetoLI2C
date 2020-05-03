@@ -1,6 +1,9 @@
 #ifndef RASTROSLI2_DADOS_H
 #define RASTROSLI2_DADOS_H
 
+/**
+ \brief BUF_SIZE
+ */
 #define BUF_SIZE 1024
 
 /**
@@ -26,7 +29,13 @@ typedef enum {
 \brief Tipo de dados para as coordenadas.
 */
 typedef struct {
+/**
+\brief Coluna da coordenada.
+*/
     int coluna;
+/**
+\brief Linha da coordenada.
+*/
     int linha;
 } COORDENADA;
 
@@ -35,7 +44,13 @@ typedef struct {
 \brief Tipo de dados para a jogada.
 */
 typedef struct {
+/**
+\brief Coordenada do jogador 1.
+*/
     COORDENADA jogador1;
+/**
+\brief Coordenada do jogador 2.
+*/
     COORDENADA jogador2;
 } JOGADA;
 
@@ -70,7 +85,7 @@ typedef struct {
 
 /**
 \brief Função que atualiza o número do comando.
- \param e Estado;
+ \param *e Estado;
  \param cmd Último comando usado.
 */
 void altera_comando(ESTADO *e, int cmd);
@@ -81,7 +96,7 @@ void altera_comando(ESTADO *e, int cmd);
  \param c1 Coordenada do jogador 1;
  \param c2 Coordenada do jogador 2;
  \param i Número da jogada;
- \param estado Estado.
+ \param *estado Estado.
 */
 void armazena_jogada(COORDENADA c1, COORDENADA c2, int i, ESTADO *estado);
 
@@ -97,7 +112,7 @@ ESTADO *inicializar_estado();
 
 /**
 \brief Função que obtém o número do comando.
- \param e Estado.
+ \param *e Estado.
  \returns Número do comando, existem diferentes números consoante o tipo de comando.
 */
 int obter_comando(ESTADO *e);
@@ -105,7 +120,8 @@ int obter_comando(ESTADO *e);
 
 /**
 \brief Função que obtem o estado atual da casa.
- \param e Estado.
+ \param *e Estado.
+ \param c Coordenada dada;
  \returns Estado da coordenada.
 */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
@@ -113,39 +129,40 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 
 /**
 \brief Função que obtém o número do jogador atual.
- \param e Estado.
+ \param *e Estado.
  \returns O jogador que jogará a seguir.
 */
-int obter_jogador_atual(ESTADO *estado);
+int obter_jogador_atual(ESTADO *e);
 
 
 /**
 \brief Função que obtem o número de jogadas efetuadas
- \param e Estado.
+ \param *e Estado.
  \returns O número de jogadas.
 */
-int obter_numero_de_jogadas(ESTADO *estado);
+int obter_numero_de_jogadas(ESTADO *e);
 
 
 /**
 \brief Função que obtém a última jogada.
- \param e Estado.
+ \param *e Estado.
  \returns A última jogada.
 */
-COORDENADA obter_ultima_jogada(ESTADO *estado);
+COORDENADA obter_ultima_jogada(ESTADO *e);
 
 
 /**
-\brief Função que atualiza o tabuleiro com a nova jogada.
- \param e Estado;
- \param c Última coordenada dada pelo jogador.
+\brief Função que vai buscar uma coordenada de um jogador a uma jogada
+ \param *e Estado;
+ \param i Número da jogada;
+ \param jogador Jogador.
 */
 COORDENADA obter_x_jogada(ESTADO *e,int i,int jogador);
 
 
 /**
 \brief Função que atualiza o tabuleiro com a nova jogada.
- \param e Estado;
+ \param *e Estado;
  \param c Última coordenada dada pelo jogador.
 */
 void refresh_board (ESTADO *e, COORDENADA c);
@@ -154,7 +171,7 @@ void refresh_board (ESTADO *e, COORDENADA c);
 /**
 \brief Função que coloca altera o estado de cada casa de acordo com a char string recebida.
  \param linha Apontador para a string que é uma linha do tabuleiro;
- \param estado Estado;
+ \param *estado Estado;
  \param l Número da linha.
 */
 void str_to_casa (const char *linha, ESTADO *estado, int l);

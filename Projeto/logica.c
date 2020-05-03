@@ -1,3 +1,6 @@
+/**
+@file logica.c
+*/
 #include <stdio.h>
 #include "dados.h"
 #include "logica.h"

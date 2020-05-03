@@ -1,3 +1,6 @@
+/**
+@file io_aux.c
+*/
 #include <stdlib.h>
 #include "dados.h"
 #include "logica.h"

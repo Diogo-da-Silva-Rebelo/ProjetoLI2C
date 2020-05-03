@@ -12,14 +12,14 @@ Funções que respondem a determinados comandos.
 
 /**
 \brief Função que grava o estado atual do jogo num ficheiro que se chama "Ficheiro.txt".
- \param ficheiro Apontador para o ficheiro;
+ \param c Ficheiro;
  \param e Estado.
 */
 void grava(char c[], ESTADO *e);
 
 /**
 \brief Função que lê o ficheiro criado e altera o estado do jogo.
- \param ficheiro apontador do ficheiro.
+ \param c Ficheiro.
  \returns O estado que estava no ficheiro.
 */
 ESTADO le(char c[]);

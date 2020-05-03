@@ -16,6 +16,10 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>listas.h</label>
+        <link refid="listas_8h"/>
+      </node>
       <node id="1">
         <label>io_aux.c</label>
         <link refid="io__aux_8c"/>
@@ -35,10 +39,6 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="5">
-        <label>listas.h</label>
-        <link refid="listas_8h"/>
       </node>
       <node id="3">
         <label>dados.h</label>
@@ -405,6 +405,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para>Ficheiro com funções auxiliares dos comandos. </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
@@ -440,8 +441,8 @@
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="io__aux_8c_1aec7e4adfc2da77a07d18b65fd2777f19" kindref="member">compara_coord</ref>(<ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>c,<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e)<sp/>{</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>difc<sp/>=<sp/>c.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/><ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>difl<sp/>=<sp/>c.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/><ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>difc<sp/>=<sp/>c.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>-<sp/><ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>difl<sp/>=<sp/>c.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>-<sp/><ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref>;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>difl<sp/>=<sp/>(<ref refid="dados_8c_1acc6c25533188a99cb69c12e7f2c406ef" kindref="member">obter_jogador_atual</ref>(e)==2)?<sp/>(-1*difl):(difl);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="logica_8c_1ac1b764c95eed782bd255c57191885747" kindref="member">verifica_coord</ref>(e,<sp/>c))<sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((difl<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>difc<sp/>==<sp/>-1)<sp/>||<sp/>(difl<sp/>==<sp/>-1<sp/>&amp;&amp;<sp/>difc<sp/>&gt;=<sp/>-1<sp/>&amp;&amp;<sp/>difc<sp/>&lt;=<sp/>1))<sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
@@ -449,7 +450,7 @@
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="io__aux_8c_1a66daa84cc18f7f5ad56aa9572a240800" kindref="member">coordenada_valida</ref>(<ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>c)<sp/>{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(c.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>c.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>&lt;=<sp/>7<sp/>&amp;&amp;<sp/>c.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>c.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>&lt;=<sp/>8)<sp/>?<sp/>1:0;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(c.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>c.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>&lt;=<sp/>7<sp/>&amp;&amp;<sp/>c.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>c.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>&lt;=<sp/>8)<sp/>?<sp/>1:0;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
@@ -507,8 +508,8 @@
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&gt;=<sp/>-1;<sp/>i--)<sp/>{</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>*coord;</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref>));</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*coord).linha<sp/>=<sp/>ultcrd.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>num2;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*coord).coluna<sp/>=<sp/>ultcrd.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>num1;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*coord).linha<sp/>=<sp/>ultcrd.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>+<sp/>num2;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*coord).coluna<sp/>=<sp/>ultcrd.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>+<sp/>num1;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l<sp/>=<sp/><ref refid="listas_8c_1a9cf9ab6cac1a50979776c589aee90b51" kindref="member">insere_cabeca</ref>(l,<sp/>coord);</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num1<sp/>=<sp/>(jogador<sp/>==<sp/>1)<sp/>?<sp/>num1<sp/>-<sp/>1<sp/>:<sp/>num1<sp/>+<sp/>1;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

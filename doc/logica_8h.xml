@@ -40,13 +40,13 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>io_aux.c</label>
-        <link refid="io__aux_8c"/>
-      </node>
       <node id="2">
         <label>interface.c</label>
         <link refid="interface_8c"/>
+      </node>
+      <node id="4">
+        <label>io_aux.c</label>
+        <link refid="io__aux_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="func">

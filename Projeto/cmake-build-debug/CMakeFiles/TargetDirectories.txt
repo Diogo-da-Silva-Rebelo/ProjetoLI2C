@@ -1,3 +1,0 @@
-/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir

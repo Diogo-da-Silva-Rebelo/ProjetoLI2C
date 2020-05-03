@@ -1,26 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.17">
   <compound refid="structCOORDENADA" kind="struct"><name>COORDENADA</name>
-    <member refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kind="variable"><name>coluna</name></member>
-    <member refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kind="variable"><name>linha</name></member>
+    <member refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kind="variable"><name>coluna</name></member>
+    <member refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kind="variable"><name>linha</name></member>
   </compound>
   <compound refid="structESTADO" kind="struct"><name>ESTADO</name>
-    <member refid="structESTADO_1aa0f2ee3dac26efcd6204af58f4f679ff" kind="variable"><name>tab</name></member>
-    <member refid="structESTADO_1afae43b87a488fad0f2b56a18bad31d18" kind="variable"><name>jogadas</name></member>
-    <member refid="structESTADO_1a261495728744647e618b4e623f5a4b7a" kind="variable"><name>num_jogadas</name></member>
-    <member refid="structESTADO_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kind="variable"><name>jogador_atual</name></member>
-    <member refid="structESTADO_1adf1064dfc09145b6995a7897249f1674" kind="variable"><name>num_comando</name></member>
-    <member refid="structESTADO_1a4896a5c5c1f40b43fb795623327e3f47" kind="variable"><name>ultima_jogada</name></member>
+    <member refid="structESTADO_1a23c59b8da36aa5d62895cdf92de6aa1c" kind="variable"><name>tab</name></member>
+    <member refid="structESTADO_1a4644134671f07be5e0e02e37d06d3678" kind="variable"><name>jogadas</name></member>
+    <member refid="structESTADO_1a2c12e80093249fca3ee1f598ee41474a" kind="variable"><name>num_jogadas</name></member>
+    <member refid="structESTADO_1a7b7bfae97a75221f999d8b697f458cb0" kind="variable"><name>jogador_atual</name></member>
+    <member refid="structESTADO_1aedc0c8e9ca5502bd643b350c31231369" kind="variable"><name>num_comando</name></member>
+    <member refid="structESTADO_1a75adaf0d470225879490601dfc655c4e" kind="variable"><name>ultima_jogada</name></member>
   </compound>
   <compound refid="structJOGADA" kind="struct"><name>JOGADA</name>
-    <member refid="structJOGADA_1a93d9306cb0c49b66b7d9a615bffe0149" kind="variable"><name>jogador1</name></member>
-    <member refid="structJOGADA_1ab46b16dfbdc7f2af9430c8dcdac0914b" kind="variable"><name>jogador2</name></member>
+    <member refid="structJOGADA_1a880582c073999b13f278a9ce47e16eb8" kind="variable"><name>jogador1</name></member>
+    <member refid="structJOGADA_1a6e6dcfc7e5be8fbbe76750f7ae47ba70" kind="variable"><name>jogador2</name></member>
   </compound>
   <compound refid="structnodo" kind="struct"><name>nodo</name>
-    <member refid="structnodo_1ab63adcdb83ea1fdcf4fa10f3cafc4a6a" kind="variable"><name>valor</name></member>
-    <member refid="structnodo_1aaaabdcb6641ddcdac8990402242b154a" kind="variable"><name>proximo</name></member>
-  </compound>
-  <compound refid="CMakeLists_8txt" kind="file"><name>CMakeLists.txt</name>
+    <member refid="structnodo_1ae15731225441a940966b5d6ce32c23f5" kind="variable"><name>valor</name></member>
+    <member refid="structnodo_1aade85d7ddbd1b14d52617be67f46f14c" kind="variable"><name>proximo</name></member>
   </compound>
   <compound refid="dados_8c" kind="file"><name>dados.c</name>
     <member refid="dados_8c_1a12fba3f0d60f8263957ff8eaecdee4c4" kind="function"><name>altera_comando</name></member>
@@ -38,12 +36,12 @@
   <compound refid="dados_8h" kind="file"><name>dados.h</name>
     <member refid="dados_8h_1a6821bafc3c88dfb2e433a095df9940c6" kind="define"><name>BUF_SIZE</name></member>
     <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kind="enum"><name>CASA</name></member>
-    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" kind="enumvalue"><name>UM</name></member>
-    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" kind="enumvalue"><name>DOIS</name></member>
-    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kind="enumvalue"><name>VAZIO</name></member>
-    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" kind="enumvalue"><name>BRANCA</name></member>
-    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" kind="enumvalue"><name>PRETA</name></member>
-    <member refid="dados_8h_1a94c221d29a1760f008b7834093259b7d" kind="typedef"><name>JOGADAS</name></member>
+    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a26cc77ca028d9e0f79b9478eda1c6634" kind="enumvalue"><name>UM</name></member>
+    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aa2f6e310d5c8da4f7e26d83a51af6c84" kind="enumvalue"><name>DOIS</name></member>
+    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aeeab96915e2c34aba2f9e220cf4edd4d" kind="enumvalue"><name>VAZIO</name></member>
+    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aa606dbe5da5103293b4307974fc23da9" kind="enumvalue"><name>BRANCA</name></member>
+    <member refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a42871fa6f5d76e767df21c02eba1f085" kind="enumvalue"><name>PRETA</name></member>
+    <member refid="dados_8h_1a8be315308d96a2904c258c3c6b89e53c" kind="typedef"><name>JOGADAS</name></member>
     <member refid="dados_8h_1a12fba3f0d60f8263957ff8eaecdee4c4" kind="function"><name>altera_comando</name></member>
     <member refid="dados_8h_1a6623b2f5eb73a5b81cdd067859ace4f3" kind="function"><name>armazena_jogada</name></member>
     <member refid="dados_8h_1a7e0c7e26fb685d9ab501e19b05e6954f" kind="function"><name>inicializar_estado</name></member>

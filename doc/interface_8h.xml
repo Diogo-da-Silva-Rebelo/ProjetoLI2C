@@ -17,10 +17,6 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>main.c</label>
-        <link refid="main_8c"/>
-      </node>
       <node id="2">
         <label>io.c</label>
         <link refid="io_8c"/>
@@ -32,6 +28,10 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="3">
+        <label>main.c</label>
+        <link refid="main_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="func">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="interface.h" line="18" column="5" bodyfile="interface.c" bodystart="21" bodyend="103" declfile="interface.h" declline="18" declcolumn="5"/>
+        <location file="interface.h" line="18" column="5" bodyfile="interface.c" bodystart="20" bodyend="102" declfile="interface.h" declline="18" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="interface_8h_1ab5791752505b2567b3667223b330500b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="interface.h" line="27" column="6" bodyfile="interface.c" bodystart="106" bodyend="119" declfile="interface.h" declline="27" declcolumn="6"/>
+        <location file="interface.h" line="27" column="6" bodyfile="interface.c" bodystart="105" bodyend="118" declfile="interface.h" declline="27" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="interface_8h_1a33d09196f922a638847c19f3aca3fc3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -167,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="interface.h" line="35" column="6" bodyfile="interface.c" bodystart="122" bodyend="132" declfile="interface.h" declline="35" declcolumn="6"/>
+        <location file="interface.h" line="35" column="6" bodyfile="interface.c" bodystart="121" bodyend="131" declfile="interface.h" declline="35" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="interface_8h_1a8163b75fdcbc79407abb95f0c6a10613" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="interface.h" line="42" column="6" bodyfile="interface.c" bodystart="135" bodyend="163" declfile="interface.h" declline="42" declcolumn="6"/>
+        <location file="interface.h" line="42" column="6" bodyfile="interface.c" bodystart="134" bodyend="162" declfile="interface.h" declline="42" declcolumn="6"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

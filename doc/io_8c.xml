@@ -51,6 +51,16 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
+      <node id="7">
+        <label>listas.h</label>
+        <link refid="listas_8h"/>
+      </node>
+      <node id="8">
+        <label>interface.h</label>
+        <link refid="interface_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="10">
         <label>io_aux.h</label>
         <link refid="io__aux_8h"/>
@@ -59,22 +69,12 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>interface.h</label>
-        <link refid="interface_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>listas.h</label>
-        <link refid="listas_8h"/>
+      <node id="4">
+        <label>time.h</label>
       </node>
       <node id="6">
         <label>dados.h</label>
         <link refid="dados_8h"/>
-      </node>
-      <node id="4">
-        <label>time.h</label>
       </node>
       <node id="2">
         <label>stdio.h</label>
@@ -303,6 +303,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para>Ficheiro com funções que respondem a determinados comandos </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
@@ -375,10 +376,10 @@
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>c2<sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/><ref refid="io__aux_8c_1ae6bb329908cc765fe6ff8321c4f281c2" kindref="member">str_to_coord</ref>(<ref refid="io_8c_1a75a3c6feb2f2ec713f96559558b136d0" kindref="member">jog2</ref>)<sp/>:<sp/>(<ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref>)<sp/>{-1,<sp/>-1};</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dados_8c_1a6623b2f5eb73a5b81cdd067859ace4f3" kindref="member">armazena_jogada</ref>(c1,<sp/>c2,<sp/>i,<sp/>estado);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_tokens<sp/>==<sp/>3)<sp/>estado-&gt;<ref refid="structESTADO_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>++;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="structESTADO_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref><sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/>1<sp/>:<sp/>2;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="structESTADO_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/>c2.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>:<sp/>c1.<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="structESTADO_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/>c2.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>:<sp/>c1.<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_tokens<sp/>==<sp/>3)<sp/>estado-&gt;<ref refid="structESTADO_1a2c12e80093249fca3ee1f598ee41474a" kindref="member">num_jogadas</ref>++;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="structESTADO_1a7b7bfae97a75221f999d8b697f458cb0" kindref="member">jogador_atual</ref><sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/>1<sp/>:<sp/>2;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="structESTADO_1a75adaf0d470225879490601dfc655c4e" kindref="member">ultima_jogada</ref>.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/>c2.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>:<sp/>c1.<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="structESTADO_1a75adaf0d470225879490601dfc655c4e" kindref="member">ultima_jogada</ref>.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>=<sp/>num_tokens<sp/>==<sp/>3<sp/>?<sp/>c2.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>:<sp/>c1.<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref>;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>fclose(ficheiro);</highlight></codeline>
@@ -391,18 +392,18 @@
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output<sp/>==<sp/>2)<sp/>fprintf(stdout,<sp/></highlight><highlight class="stringliteral">&quot;__|<sp/>Jogador<sp/>1<sp/>|<sp/>Jogador<sp/>2\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>j;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linUm<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>1).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colUm<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>1).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>97;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linDois<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>2).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>colDois<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>2).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>97;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linUm<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>1).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colUm<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>1).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>+<sp/>97;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linDois<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>2).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>colDois<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>i,<sp/>2).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref><sp/>+<sp/>97;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output<sp/>==<sp/>1)<sp/>fprintf(stdout,<sp/></highlight><highlight class="stringliteral">&quot;%02d:<sp/>%c%d<sp/>%c%d\n&quot;</highlight><highlight class="normal">,<sp/>i<sp/>+<sp/>1,<sp/>colUm,<sp/>linUm,<sp/>colDois,<sp/>linDois);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>fprintf(stdout,<sp/></highlight><highlight class="stringliteral">&quot;%02d|<sp/><sp/><sp/><sp/>%c%d<sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/>%c%d\n&quot;</highlight><highlight class="normal">,<sp/>i<sp/>+<sp/>1,<sp/>colUm,<sp/>linUm,<sp/>colDois,<sp/>linDois);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dados_8c_1acc6c25533188a99cb69c12e7f2c406ef" kindref="member">obter_jogador_atual</ref>(e)<sp/>==<sp/>2)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linUm<sp/>=<sp/>e-&gt;<ref refid="structESTADO_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[j].jogador1.linha<sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colUm<sp/>=<sp/>e-&gt;<ref refid="structESTADO_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[j].jogador1.coluna<sp/>+<sp/>97;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linUm<sp/>=<sp/>e-&gt;<ref refid="structESTADO_1a4644134671f07be5e0e02e37d06d3678" kindref="member">jogadas</ref>[j].jogador1.linha<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colUm<sp/>=<sp/>e-&gt;<ref refid="structESTADO_1a4644134671f07be5e0e02e37d06d3678" kindref="member">jogadas</ref>[j].jogador1.coluna<sp/>+<sp/>97;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output<sp/>==<sp/>1)<sp/>fprintf(stdout,<sp/></highlight><highlight class="stringliteral">&quot;%02d:<sp/>%c%d\n&quot;</highlight><highlight class="normal">,<sp/>i<sp/>+<sp/>1,<sp/>colUm,<sp/>linUm);</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -417,20 +418,20 @@
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>itemp<sp/>=<sp/>jogada;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(itemp<sp/>&lt;<sp/><ref refid="dados_8c_1abbfeab93575f20e5867482fd41a71cba" kindref="member">obter_numero_de_jogadas</ref>(e))<sp/>{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha1<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>coluna1<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha2<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>2).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>coluna2<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>2).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha1<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>coluna1<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha2<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>2).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>coluna2<sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>2).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref>;</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1aa0f2ee3dac26efcd6204af58f4f679ff" kindref="member">tab</ref>[7<sp/>-<sp/>linha1][coluna1]<sp/>=<sp/>VAZIO;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1aa0f2ee3dac26efcd6204af58f4f679ff" kindref="member">tab</ref>[7<sp/>-<sp/>linha2][coluna2]<sp/>=<sp/>VAZIO;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a23c59b8da36aa5d62895cdf92de6aa1c" kindref="member">tab</ref>[7<sp/>-<sp/>linha1][coluna1]<sp/>=<sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aeeab96915e2c34aba2f9e220cf4edd4d" kindref="member">VAZIO</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a23c59b8da36aa5d62895cdf92de6aa1c" kindref="member">tab</ref>[7<sp/>-<sp/>linha2][coluna2]<sp/>=<sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aeeab96915e2c34aba2f9e220cf4edd4d" kindref="member">VAZIO</ref>;</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>itemp++;</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1aa0f2ee3dac26efcd6204af58f4f679ff" kindref="member">tab</ref>[7<sp/>-<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>][<ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>]<sp/>=<sp/>VAZIO;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref><sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref><sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>jogada<sp/>-<sp/>1,<sp/>2);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1aa0f2ee3dac26efcd6204af58f4f679ff" kindref="member">tab</ref>[7<sp/>-<sp/><ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>][<ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>]<sp/>=<sp/>BRANCA;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref><sp/>=<sp/>jogada;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a23c59b8da36aa5d62895cdf92de6aa1c" kindref="member">tab</ref>[7<sp/>-<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref>][<ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>itemp,<sp/>1).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref>]<sp/>=<sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aeeab96915e2c34aba2f9e220cf4edd4d" kindref="member">VAZIO</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a7b7bfae97a75221f999d8b697f458cb0" kindref="member">jogador_atual</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a75adaf0d470225879490601dfc655c4e" kindref="member">ultima_jogada</ref><sp/>=<sp/><ref refid="dados_8c_1a31d1f203e713554344976084e068f0b7" kindref="member">obter_x_jogada</ref>(e,<sp/>jogada<sp/>-<sp/>1,<sp/>2);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a23c59b8da36aa5d62895cdf92de6aa1c" kindref="member">tab</ref>[7<sp/>-<sp/><ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1a369e9a4d96b7450bbc640fe737db2977" kindref="member">linha</ref>][<ref refid="dados_8c_1a40555aff97afc67bd1866f2785111310" kindref="member">obter_ultima_jogada</ref>(e).<ref refid="structCOORDENADA_1ac241af99d2fb991831964fb94b86c7de" kindref="member">coluna</ref>]<sp/>=<sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039aa606dbe5da5103293b4307974fc23da9" kindref="member">BRANCA</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structESTADO_1a2c12e80093249fca3ee1f598ee41474a" kindref="member">num_jogadas</ref><sp/>=<sp/>jogada;</highlight></codeline>
 <codeline lineno="129"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="io.c"/>

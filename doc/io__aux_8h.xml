@@ -8,6 +8,10 @@
     <includedby refid="io__aux_8c" local="yes">io_aux.c</includedby>
     <includedby refid="logica_8c" local="yes">logica.c</includedby>
     <incdepgraph>
+      <node id="3">
+        <label>listas.h</label>
+        <link refid="listas_8h"/>
+      </node>
       <node id="1">
         <label>io_aux.h</label>
         <link refid="io__aux_8h"/>
@@ -15,10 +19,6 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>listas.h</label>
-        <link refid="listas_8h"/>
       </node>
       <node id="2">
         <label>dados.h</label>
@@ -442,7 +442,8 @@
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="io__aux_8h_1a96815a1a2a72414ab5cb4eb0194107d6" kindref="member">verifica_fim_jogo</ref>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*etemp,<sp/><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>c);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//RASTROSLI2_IO_AUX_H</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//RASTROSLI2_IO_AUX_H</highlight></codeline>
     </programlisting>
     <location file="io_aux.h"/>
   </compounddef>

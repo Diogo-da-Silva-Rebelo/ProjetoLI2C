@@ -3,7 +3,6 @@
 
 CMakeFiles/RastrosLI2.dir/dados.c.o: ../dados.c
 CMakeFiles/RastrosLI2.dir/dados.c.o: ../dados.h
-CMakeFiles/RastrosLI2.dir/dados.c.o: ../interface.h
 
 CMakeFiles/RastrosLI2.dir/interface.c.o: ../dados.h
 CMakeFiles/RastrosLI2.dir/interface.c.o: ../interface.c

@@ -8,31 +8,17 @@
 #include "listas.h"
 #include "io_aux.h"
 
-/**
-@file io.c
-Funções que respondem a determinados comandos.
-*/
-
-/**
-\brief Função que grava o estado atual do jogo num ficheiro que se chama "Ficheiro.txt".
- \param ficheiro Apontador para o ficheiro;
- \param e Estado.
-*/
 void grava(FILE *ficheiro,ESTADO *e) {
     ficheiro = fopen("ficheiro.txt", "w");
     mostrar_tabuleiro(e, ficheiro, 1);
-    fprintf(ficheiro,"\n");
+    fprintf(ficheiro, "\n");
     movs(e, ficheiro, 1);
     fclose(ficheiro);
 }
 
 
-/**
-\brief Função que joga pela vez do jogador. Heurística: Flood Fill.
- \param e Estado do jogo.
- */
 void jog(ESTADO *e) {
-    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
+    LISTA l = l_coord_adj(obter_ultima_jogada(e), obter_jogador_atual(e));
     l = hipord(l, e);
     LISTA segundal = l;
 
@@ -48,12 +34,8 @@ void jog(ESTADO *e) {
 }
 
 
-/**
-\brief Função que joga pela vez do jogador. Heurística: Estratégia baseada na paridade.
- \param e Estado do jogo.
- */
 void jog2(ESTADO *e) {
-    LISTA l = l_coord_adj(obter_ultima_jogada(e),obter_jogador_atual(e));
+    LISTA l = l_coord_adj(obter_ultima_jogada(e), obter_jogador_atual(e));
     l = area_par_possivel(l, e);
 
     int t = tamanho_lista(l);
@@ -67,26 +49,17 @@ void jog2(ESTADO *e) {
 }
 
 
-/**
-\brief Função que lê o ficheiro criado e altera o estado do jogo.
- \param ficheiro apontador do ficheiro;
- \param estado Estado.
-*/
-void le(FILE *ficheiro,ESTADO *estado) {
+ESTADO le(FILE *ficheiro) {
     ficheiro = fopen("ficheiro.txt", "r");
-    free(estado);
+    ESTADO *estado;
     estado = inicializar_estado();
-/**
-\brief Parte da função que lê o tabuleiro do ficheiro.
-*/
+
     int num_jog;
     char jog1[BUF_SIZE], jog2[BUF_SIZE], linha[BUF_SIZE];
 
     for (int i = 0; fgets(linha, BUF_SIZE, ficheiro) != NULL && i < 8; i++)
         str_to_casa(linha, estado, i);
-/**
-\brief Parte da função que lê os movimentos do ficheiro.
-*/
+
     for (int i = 0; fgets(linha, BUF_SIZE, ficheiro) != NULL; i++) {
         int num_tokens = sscanf(linha, "%d: %s %s", &num_jog, jog1, jog2);
         if (num_tokens == 3 || num_tokens == 2) {
@@ -101,31 +74,24 @@ void le(FILE *ficheiro,ESTADO *estado) {
         }
     }
     fclose(ficheiro);
+    return *estado;
 }
 
 
-/**
-\brief Função que imprime todas as jogadas anteriores.
- \param e Estado;
- \param stdout Apontador para o ficheiro;
- \param l Dá a opção de imprimir de uma forma (se é para o ficheiro criado, ou para a interface).
-*/
 void movs(ESTADO *e,FILE *stdout,int output) {
     int j = obter_numero_de_jogadas(e), i, linUm, colUm;
     if (output == 2) fprintf(stdout, "__| Jogador 1 | Jogador 2\n");
 
     for (i = 0; i < j; i++) {
-        linUm = obter_x_jogada(e,i,1).linha + 1;
-        colUm = obter_x_jogada(e,i,1).coluna + 97;
-        int linDois = obter_x_jogada(e,i,2).linha + 1;
-        int colDois = obter_x_jogada(e,i,2).coluna + 97;
+        linUm = obter_x_jogada(e, i, 1).linha + 1;
+        colUm = obter_x_jogada(e, i, 1).coluna + 97;
+        int linDois = obter_x_jogada(e, i, 2).linha + 1;
+        int colDois = obter_x_jogada(e, i, 2).coluna + 97;
 
         if (output == 1) fprintf(stdout, "%02d: %c%d %c%d\n", i + 1, colUm, linUm, colDois, linDois);
         else fprintf(stdout, "%02d|    %c%d     |    %c%d\n", i + 1, colUm, linUm, colDois, linDois);
     }
-/**
-\brief Se o jogador a jogar for o jogador 2, então significa que o jogador 1 já jogou.
-*/
+
     if (obter_jogador_atual(e) == 2) {
         linUm = e->jogadas[j].jogador1.linha + 1;
         colUm = e->jogadas[j].jogador1.coluna + 97;
@@ -139,11 +105,6 @@ void movs(ESTADO *e,FILE *stdout,int output) {
 }
 
 
-/**
-\brief Função que imprime todas as jogadas anteriores.
- \param e Estado;
- \param i Jogada para onde o jogador quer recuar.
-*/
 void pos(ESTADO *e,int jogada) {
     int itemp = jogada;
 

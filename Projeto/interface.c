@@ -6,22 +6,10 @@
 #include "logica.h"
 #include "io.h"
 
-/**
-@file interface.c
-Funções que modificam a interface do jogo.
-*/
 void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd);
 void prompt(ESTADO *e);
 void vencedor(int jogador);
 
-
-/**
-\brief Função que interpreta o comando dado pelo utilizador.
- \param ae Estado antigo, usado para o comando pos;
- \param e Estado recebido;
- \param ficheiro Apontador para o ficheiro, usado para os comandos ler e gr.
- \returns Verdadeiro ou falso (1 ou 0) se o comando dado é valido.
-*/
 int interpretador(ESTADO *antigoe, ESTADO *e, FILE *ficheiro) {
     char linha[BUF_SIZE];
     mostrar_tabuleiro(e, stdout, 2);
@@ -51,7 +39,7 @@ int interpretador(ESTADO *antigoe, ESTADO *e, FILE *ficheiro) {
     }
 
     if (strcmp(linha, "ler\n") == 0) {
-        le(ficheiro, e);
+        *e=le(ficheiro);
         altera_comando(e, 3);
         return 1;
     }
@@ -107,13 +95,6 @@ int interpretador(ESTADO *antigoe, ESTADO *e, FILE *ficheiro) {
 }
 
 
-/**
-\brief Função que mostra o tabuleiro ao receber um estado
-\brief i é linha; j é coluna;
- \param e Estado;
- \param stdout Apontador do ficheiro para onde vai imprimir o tabuleiro;
- \param cmd Número do comando.
-*/
 void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
     COORDENADA c;
     for (int lin = 8; lin > 0; lin--) {
@@ -130,10 +111,6 @@ void mostrar_tabuleiro(ESTADO *e,FILE *stdout,int cmd) {
 }
 
 
-/**
-\brief Função que mostra o tabuleiro, o número de jogadas, o próximo jogador, a última jogada e o último comando usado.
- \param e Estado recebido.
- */
 void prompt(ESTADO *e) {
     printf("\n");
 
@@ -147,10 +124,6 @@ void prompt(ESTADO *e) {
 }
 
 
-/**
-\brief Função que mostra o vencedor do jogo.
- \param jogador Jogador do vencedor.
-*/
 void vencedor(int jogador) {
     printf("  ______________________________________________________________________________________________________\n");
     printf("||‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾||\n");

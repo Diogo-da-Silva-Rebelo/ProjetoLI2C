@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/dados.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/dados.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/interface.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/interface.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/io.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/io.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/io_aux.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/io_aux.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/listas.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/listas.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/logica.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/logica.c.o"
-  "/home/vortex/CLionProjects/LI2PL7G4/Projeto/main.c" "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/CMakeFiles/RastrosLI2.dir/main.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/dados.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/dados.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/interface.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/interface.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/io.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/io.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/io_aux.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/io_aux.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/listas.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/listas.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/logica.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/logica.c.o"
+  "/home/henrique/CLionProjects/RastrosLI2/main.c" "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/CMakeFiles/RastrosLI2.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

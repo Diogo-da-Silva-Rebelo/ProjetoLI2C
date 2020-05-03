@@ -1,5 +1,5 @@
-/home/vortex/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.7223.86/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/vortex/CLionProjects/LI2PL7G4/Projeto
--- The C compiler identification is GNU 8.3.0
+/home/henrique/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/henrique/CLionProjects/RastrosLI2
+-- The C compiler identification is GNU 9.3.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
 -- Detecting C compiler ABI info
@@ -8,4 +8,4 @@
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug
+-- Build files have been written to: /home/henrique/CLionProjects/RastrosLI2/cmake-build-debug

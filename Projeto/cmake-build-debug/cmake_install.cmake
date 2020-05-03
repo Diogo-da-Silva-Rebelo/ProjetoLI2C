@@ -1,4 +1,4 @@
-# Install script for directory: /home/vortex/CLionProjects/LI2PL7G4/Projeto
+# Install script for directory: /home/henrique/CLionProjects/RastrosLI2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/vortex/CLionProjects/LI2PL7G4/Projeto/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/henrique/CLionProjects/RastrosLI2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
